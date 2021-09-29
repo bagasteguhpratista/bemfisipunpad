@@ -1,0 +1,12 @@
+<div class="app-main__outer">
+    <div class="app-main__inner">
+        <div class="app-page-title">
+            <div class="page-title-wrapper">
+                <div class="page-title-heading">
+                    <?= ucwords(str_replace('_', ' ', $title)); ?>
+                </div>
+            </div>
+            <hr>
+            <div class="main-card mb-3 card">
+                <div class="card-body" style="background:transparent;padding: 36px;">
+                    <form action="<?= $var['app_url'] .'/'. $url  ?>" enctype="multipart/form-data" method="post" name="checkidot" class="" id="formUp" novalidate>

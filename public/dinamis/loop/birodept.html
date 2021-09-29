@@ -1,0 +1,157 @@
+
+		            <div class="box-struktur biro mt-5 pt-5">
+		            	<div class="title-struktur ml-5">
+		            		<h4>Biro</h4>
+		            		<div class="line-struktur mt-1 ml-3"></div>
+		            	</div>
+		            	<div class="container row col-md-12 col-sm-12 container-biro mt-5 pt-3">
+		            		<?php
+		            			$biro = admin::array_filter_by_value($data,'type','biro');
+		            			if(count($biro)>0){
+		            				foreach($biro as $item_biro){
+		            		?>
+		            		<div class="col-md-6 col-sm-12 p-4 ftco-animate">
+		            			<h3><?= $item_biro['name_dept_biro'] ?></h3>
+		            			<div class="row col-lg-12 col-md-12 col-sm-12">
+			            			<div class="card-struktur col-md-6 col-sm-6 p-2">
+			            				<div class="box-img-deptbiro">
+			            					<img class="img-struktur mb-3" src="<?= $item_biro['photo_chairman'] ?>">
+			            				</div>
+			            				<div class="box-content-deptbiro">
+			            					<h4 class="title-name-struktur"><?= $item_biro['name_chairman'] ?></h4>
+			            					<h4 class="position-name-struktur">Ketua <?= $item_biro['name_dept_biro'] ?></h4>
+			            				</div>
+			            			</div>
+			            			<div class="card-struktur col-md-6 col-sm-6 p-2">
+			            				<div class="box-img-deptbiro">
+			            					<img class="img-struktur mb-3" src="<?= $item_biro['photo_vice'] ?>">
+			            				</div>
+			            				<div class="box-content-deptbiro">
+				            				<h4 class="title-name-struktur"><?= $item_biro['name_vice'] ?></h4>
+				            				<h4 class="position-name-struktur">Wakil Ketua <?= $item_biro['name_dept_biro'] ?></h4>
+				            			</div>
+			            			</div>
+		            			</div>
+		            		</div>
+		            		<?php
+		            				} 
+		            			}
+		            		?>
+		            	</div>
+		            </div>
+		            <div class="box-struktur biro mt-5 pt-5">
+		            	<div class="title-struktur ml-5">
+		            		<h4>Departemen</h4>
+		            		<div class="line-struktur mt-1 ml-5"></div>
+		            	</div>
+		            	<?php
+		            		$department_name = [["id"=>"relasi_kemasyarakatan"],["id"=>"sosial_politik"],["id"=>"kemahasiswaan"]];
+		            		$dept = admin::array_filter_by_value($data,'type','department');
+		            		if(count($dept)>0){
+		            		$relkem = admin::array_filter_by_value($dept,'department','relasi_kemasyarakatan');
+		            		$sospol = admin::array_filter_by_value($dept,'department','sosial_politik');
+		            		$kema = admin::array_filter_by_value($dept,'department','kemahasiswaan');
+		            		if(count($relkem) >0){
+		            	?>
+		            	<div class="container row col-md-12 col-sm-12 container-biro mt-5 pt-3">
+		            	<?php 
+		            				foreach($relkem as $item_relkem){
+		            		?>
+		            		<div class="col-md-6 col-sm-12 p-4 ftco-animate">
+		            			<h3><?= $item_relkem['name_dept_biro'] ?></h3>
+		            			<div class="row col-lg-12 col-md-12 col-sm-12">
+			            			<div class="card-struktur col-md-6 col-sm-6 p-2">
+			            				<div class="box-img-deptbiro">
+			            					<img class="img-struktur mb-3" src="<?= $item_relkem['photo_chairman'] ?>">
+			            				</div>
+			            				<div class="box-content-deptbiro">
+				            				<h4 class="title-name-struktur"><?= $item_relkem['name_chairman'] ?></h4>
+				            				<h4 class="position-name-struktur">Ketua <?= $item_relkem['name_dept_biro'] ?></h4>
+				            			</div>
+			            			</div>
+			            			<div class="card-struktur col-md-6 col-sm-6 p-2">
+			            				<div class="box-img-deptbiro">
+			            					<img class="img-struktur mb-3" src="<?= $item_relkem['photo_vice'] ?>">
+			            				</div>
+			            				<div class="box-content-deptbiro">
+				            				<h4 class="title-name-struktur"><?= $item_relkem['name_vice'] ?></h4>
+				            				<h4 class="position-name-struktur">Wakil Ketua <?= $item_relkem['name_dept_biro'] ?></h4>
+				            			</div>
+			            			</div>
+		            			</div>
+		            		</div>
+		            		<?php } ?>
+		            	</div>
+		            		<?php
+	            			}
+	            			if(count($sospol) >0){
+		            		?>
+		            	<div class="container row col-md-12 col-sm-12 container-biro mt-5 pt-3">
+		            		<?php
+		            			foreach($sospol as $item_sospol){
+		            		?>
+	            			<div class="col-md-6 col-sm-12 p-4 ftco-animate">
+		            			<h3><?= $item_sospol['name_dept_biro'] ?></h3>
+		            			<div class="row col-lg-12 col-md-12 col-sm-12">
+			            			<div class="card-struktur col-md-6 col-sm-6 p-2">
+			            				<div class="box-img-deptbiro">
+			            					<img class="img-struktur mb-3" src="<?= $item_sospol['photo_chairman'] ?>">
+			            				</div>
+			            				<div class="box-content-deptbiro">
+				            				<h4 class="title-name-struktur"><?= $item_sospol['name_chairman'] ?></h4>
+				            				<h4 class="position-name-struktur">Ketua <?= $item_sospol['name_dept_biro'] ?></h4>
+				            			</div>
+			            			</div>
+			            			<div class="card-struktur col-md-6 col-sm-6 p-2">
+			            				<div class="box-img-deptbiro">
+			            					<img class="img-struktur mb-3" src="<?= $item_sospol['photo_vice'] ?>">
+			            				</div>
+			            				<div class="box-content-deptbiro">
+				            				<h4 class="title-name-struktur"><?= $item_sospol['name_vice'] ?></h4>
+				            				<h4 class="position-name-struktur">Wakil Ketua <?= $item_sospol['name_dept_biro'] ?></h4>
+				            			</div>
+			            			</div>
+		            			</div>
+		            		</div>
+		            		<?php } ?>
+		            	</div>
+		            	<?php
+		            		}
+		            		if(count($kema) >0){
+		            	?>
+		            	<div class="container row col-md-12 col-sm-12 container-biro mt-5 pt-3">
+		            		<?php
+		            			foreach($kema as $item_kema){
+		            		?>
+		            		<div class="col-md-6 col-sm-12 p-4 ftco-animate">
+		            			<h3><?= $item_kema['name_dept_biro'] ?></h3>
+		            			<div class="row col-lg-12 col-md-12 col-sm-12">
+			            			<div class="card-struktur col-md-6 col-sm-6 p-2">
+			            				<div class="box-img-deptbiro">
+			            					<img class="img-struktur mb-3" src="<?= $item_kema['photo_chairman'] ?>">
+			            				</div>
+			            				<div class="box-content-deptbiro">
+				            				<h4 class="title-name-struktur"><?= $item_kema['name_chairman'] ?></h4>
+				            				<h4 class="position-name-struktur">Ketua <?= $item_kema['name_dept_biro'] ?></h4>
+				            			</div>
+			            			</div>
+			            			<div class="card-struktur col-md-6 col-sm-6 p-2">
+			            				<div class="box-img-deptbiro">
+			            					<img class="img-struktur mb-3" src="<?= $item_kema['photo_vice'] ?>">
+			            				</div>
+			            				<div class="box-content-deptbiro">
+				            				<h4 class="title-name-struktur"><?= $item_kema['name_vice'] ?></h4>
+				            				<h4 class="position-name-struktur">Wakil Ketua <?= $item_kema['name_dept_biro'] ?></h4>
+				            			</div>
+			            			</div>
+		            			</div>
+		            		</div>
+		            		<?php } ?>
+		            	</div>
+		            		<?php
+		            		} 
+		            	}
+		            
+		            		?>
+		            </div>
+		            

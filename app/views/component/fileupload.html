@@ -1,0 +1,7 @@
+<div class="position-relative row form-group">
+    <label for="<?php echo $param['name']; ?>" class="col-sm-3 col-form-label"><?php echo admin::lang($param['name']) ?></label>
+    <div class="col-sm-7" id="<?php echo $param['name'] . '_class'?>">
+        <input type="file" id="<?php echo $param['name']; ?>" name="p_<?php echo $param['name']; ?>" class="form-control col-md-7 col-xs-12" value="<?php echo isset($param['value'])?$param['value']:null; ?>">
+        <?php echo isset($param['content']); ?>
+    </div>
+</div>

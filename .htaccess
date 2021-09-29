@@ -1,0 +1,21 @@
+<IfModule mod_rewrite.c>
+
+Options +FollowSymLinks
+RewriteEngine on
+
+RewriteRule ^import(.*)$ library/import/$1 [L]
+RewriteRule ^control/denied$ app/denied.php [L]
+RewriteRule ^control/auth/logout$ app/auth.php?ret=logout [L]
+RewriteRule ^control/auth$ app/auth.php [L]
+RewriteRule ^control(.*)$ app/$1 [L]
+RewriteRule ^assets/(.*)$ app/views/$1 [L]
+RewriteRule ^_frontend(.*)$ public/$1 [L]
+RewriteRule ^_import(.*)$ library/import/$1 [L]
+
+RewriteRule ^([a-zA-Z_-]+)/(.*)/(.*)$ index.php?page=$1&page1=$2&page2=$3 [L]
+RewriteRule ^([a-zA-Z_-]+)/(.*)$ index.php?page=$1&page1=$2 [L]
+RewriteRule ^([a-zA-Z_-]+)&(.*)$ index.php?page=$1&$2 [L]
+RewriteRule ^([a-zA-Z_-]+)$ index.php?page=$1 [L]
+
+ErrorDocument 404 /build_framework_3/error/404.html
+</IfModule>

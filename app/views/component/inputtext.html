@@ -1,0 +1,16 @@
+<?php
+    $param_name = $param['name'];
+    $validate_name = (isset($_SESSION['validate'][$param_name])) ? $_SESSION['validate'][$param_name] : null ;
+?>
+<div class="position-relative row form-group">
+    <label for="<?php echo $param['name']; ?>" class="col-sm-3 col-form-label"><?php echo admin::lang($param['name']) ?></label>
+    <div class="col-sm-7" id="<?php echo $param['name'] . '_class'?>">
+        <input name="<?php echo $param['name']; ?>" id="<?php echo $param['name']; ?>" type="<?php echo (isset($param['type'])?$param['type']:'text'); ?>" value="<?php echo isset($param['value']) ? $param['value'] : '' ?>"<?php echo (isset($param['placeholder']))? 'placeholder="'.$param['placeholder'].'"' : null ?><?php echo !empty($param['readonly'])?"readonly":''; ?> class="form-control <?php echo isset($validate_name) ? 'form-invalid' : ''?> <?php echo isset($param['class'])?$param['class']:null; ?>" <?php echo (isset($param['validate']) ? 'required' : '')?>>
+        <?php if(isset($param['detail'])){?>
+            <span><?php echo $param['detail']; ?></span>
+        <?php } ?>
+        <?php
+            view::validation($param['name'],$validate_name);
+        ?>
+    </div>
+</div>

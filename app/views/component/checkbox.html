@@ -1,0 +1,12 @@
+<div class="position-relative row form-group">
+	<label for="exampleEmail" class="col-sm-3 col-form-label"><?php echo isset($param['label']) ? admin::lang($param['label']) : '' ?></label>
+	<div class="col-sm-9" >
+		<?php for($i=0;$i < count($param['datas']);$i++){?>
+		<div class="checkbox">
+			<label>
+				<input id="<?php echo $param['datas'][$i] ?>" name="<?php echo $param['name'] ?>[]" type="checkbox" value="<?php echo $param['datas'][$i] ?>" <?php echo ($param['value'] == $param['datas'][$i])? "checked":null ?> <?php echo (isset($param['validate'])) ? $param['validate'] : '' ?>  > <?php echo admin::lang($param['datas'][$i]); ?>
+			</label>
+		</div>
+		<?php } ?>
+	</div>
+</div>

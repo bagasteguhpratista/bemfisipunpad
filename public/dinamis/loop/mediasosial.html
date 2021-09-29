@@ -1,0 +1,25 @@
+
+    <section class="sc_media_sosial">
+    	<h4 class="title-list ftco-animate mb-5">AKUN MEDIA SOSIAL</h4>
+      		<div class="box-media-sosial ftco-animate">
+      			<div class="col-md-10 row container-media-sosial">
+      				<?php 
+      					if(count($data) > 0){
+      						foreach($data as $item){
+      				?>
+      				<div class="col-lg-3 col-md-4 col-sm-6 list-media-sosial">
+                        <a href="<?= $item['link']?>" target="<?= $item['link'] == '#' ? '_self' : '_blank' ?>" class="col-lg-3 col-md-4 col-sm-6">
+          					<div class="img-media-sosial">
+    	      					<img src="<?= $item['image'] ?>">
+          					</div>
+          					<h4><?= $item['id_name'] ?></h4>
+                        </a>
+      				</div>
+      				<?php 
+      						}
+      					}
+      				?>
+      			</div>
+      		</div>
+    </section>
+    

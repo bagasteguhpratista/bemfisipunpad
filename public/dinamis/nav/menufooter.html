@@ -1,0 +1,19 @@
+<?php $config = db::data_record("configuration","id","1");?>
+				<div class="navbar-nav-footer col-md-12d-flex justify-content-center">
+					<?php 
+		        		if(count($data) > 0){
+		        			foreach($data as $item){
+		        	 ?>
+		          	<div class="nav-item <?= ($pg == $item['alias']) ? 'active' : '' ?>"><a href="<?= $item['link'] ?>" class="nav-link"><?= $item['name'] ?></a></div>
+		          	<?php
+		          			}
+		          		} 
+		          	?>
+		        </div>
+				<div class="social_media col-md-12d-flex justify-content-center">
+					<div><a target="_blank" href="<?= $config['link_twitter']?>"><i class="fab fa-twitter"></i></a></div>
+					<div><a target="_blank" href="<?= $config['link_line']?>"><i class="fab fa-line"></i></a></div>
+					<div><a target="_blank" href="<?= $config['link_youtube']?>"><i class="fab fa-youtube"></i></a></div>
+					<div><a target="_blank" href="<?= $config['link_instagram']?>"><i class="fab fa-instagram"></i></a></div>
+				</div>
+				

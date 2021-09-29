@@ -1,0 +1,30 @@
+<?php
+$items = [];
+if(!is_array($param['items']))
+{
+	while($row=db::fetch($param['items']))
+	{
+		$items[] = $row;
+	}
+}
+else
+{
+	$items = $param['items'];
+}
+
+?>
+
+<div class="position-relative row form-group">
+	<label for="<?= $param['name'] ?>" class="col-sm-3 col-form-label"><?php echo admin::lang($param['name']) ?></label>
+	<div class="col-sm-7">
+			<select id="<?php echo $param['name'] ?>" name="<?php echo $param['name']; ?><?php echo isset($param['multiple']) || isset($param['array']) ? '[]' : ''; ?>" <?php echo isset($param['multiple']) ? 'multiple=' . $param['multiple'] : '' ?>  class="select2 form-control <?php echo $param['name'] ?>" style="width:100%;">
+				<?php if(!isset($param['multiple'])){ ?>
+				<option value="" disabled="" <?php echo isset($param['multiple'])? '' : 'selected' ?> selected=""><?php echo admin::lang('select');  ?></option>
+				<?php 
+					}
+				foreach($items as $row){ ?>
+						<option value="<?php echo $row['id']; ?>" <?php echo preg_match("/".$row['id']."/i",$param['value']) ?'selected':null; ?> <?php echo isset($param['one_choice']) ? 'selected' : '' ?> <?php echo $param['value'] == $row['id'] ?'selected':null; ?>><?php echo $row['name']; ?></option>
+				<?php } ?>
+			</select>
+	</div>
+</div>

@@ -1,0 +1,48 @@
+<script src="<?= $var['app_assets']?>/_js/phone.js"></script>
+<?php
+    $param_name = $param['name'];
+    $validate_name = (isset($_SESSION['validate'][$param_name])) ? $_SESSION['validate'][$param_name] : null ;
+?>
+<div class="position-relative row form-group">
+    <label for="<?php echo $param['name']; ?>" class="col-sm-3 col-form-label"><?php echo admin::lang($param['name']) ?></label>
+    <div class="col-sm-3" id="<?php echo $param['name'] . '_class'?>">
+        <div class="input-group" id="form2">
+            <span class="input-group-addon">
+                <i class="fa <?php echo isset($param['phone']) ? 'fa-fax' : 'fa-phone' ?>"></i>
+            </span>
+            <input name="<?php echo $param['name']; ?>" id="<?php echo $param['name']; ?>" type="<?php echo (isset($param['type'])?$param['type']:'text'); ?>" value="<?php echo isset($param['value']) ? $param['value'] : '' ?>"<?php echo (isset($param['placeholder']))? 'placeholder="'.$param['placeholder'].'"' : null ?><?php echo isset($param['readonly'])?"readonly":null; ?> class="form-control <?php echo isset($validate_name) ? 'form-invalid' : ''?>" <?php echo (isset($param['validate']) ? 'required' : '')?>>
+            <?php
+                view::validation($param['name'],$validate_name);
+            ?>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        var phone = '<?php echo isset($param["phone"]) ? $param["phone"] : "" ?>';
+        var format = '<?php echo isset($param["format"]) ? $param["format"] : "" ?>';
+        if(phone){
+            if(format){
+                $('#<?php echo $param['name']?>').inputmask({
+                    mask: "(99) 999-9999",
+                });
+            }else{
+                $('#<?php echo $param['name']?>').inputmask({
+                    mask: "(999) 999-9999",
+                });
+            }
+        }else{
+            if(format){
+                $('#<?php echo $param['name']?>').inputmask({
+                    mask: "999-9999-9999",
+                });
+            }else{
+                $('#<?php echo $param['name']?>').inputmask({
+                    mask: "9999-9999-9999-99",
+                });
+            }
+        }
+    });
+</script>

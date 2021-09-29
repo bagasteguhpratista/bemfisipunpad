@@ -1,0 +1,25 @@
+<script src="<?php echo $var['app_assets']; ?>/_js/inputnumber/bootstrap-number-input.js"></script>
+<?php
+    $param_name = $param['name'];
+    $validate_name = (isset($_SESSION['validate'][$param_name])) ? $_SESSION['validate'][$param_name] : null ;
+?>
+<style type="text/css">
+	.input-group-btn .btn{border-radius: 0;padding: 7px 12px;}
+</style>
+<div class="position-relative row form-group" id="fg_<?php echo $param['name']?>">
+	<label class="col-sm-3 col-form-label" for=""><?= admin::lang($param['name']) ?></label>
+	<div class="col-sm-3">
+			<input id="colorful" class="form-control <?php echo $param['name']?>" type="number" <?php echo isset($param['readonly']) ? 'readonly' : '' ?> min="<?php echo (isset($param['minims']) ? $param['minims'] : '0') ?>" max="<?php echo (isset($param['maximum']) ? $param['maximum'] : '') ?>" data-decimals="<?php echo isset($param['decimal']) ? $param['decimal'] : 0 ?>" step="<?php echo isset($param['step']) ? $param['step'] : 0 ?>" <?php echo isset($param['disabled']) ? 'disabled' : '' ?> name="<?php echo $param['name'] ?>" value="<?php echo isset($param['value'])?$param['value']:0; ?>" placeholder="<?php echo isset($param['placeholder']) ? $param['placeholder'] : ''?>" />
+		<?php if(isset($param['note'])){?>
+		<div class="col-md-12 col-sm-6" style="padding:7px 0;">
+			<span><?php echo (isset($param['size'])?$param['size']:"") ?><i style="color:red"><?php echo (isset($param['note'])?$param['note']:"") ?></i></span>
+		</div>
+		<?php } ?>
+	</div>
+</div>
+<script>
+$('#colorful').bootstrapNumber({
+	upClass: 'success',
+	downClass: 'danger'
+});
+</script>

@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+Options +FollowSymLinks
+RewriteEngine on
+
+
+RewriteRule ^_css/(.*)$ assets/css/$1 [L]
+RewriteRule ^_js/(.*)$ assets/js/$1 [L]
+RewriteRule ^_images/(.*)$ assets/images/$1 [L]
+RewriteRule ^_fonts/(.*)$ assets/fonts/$1 [L]
+RewriteRule ^_vendors/(.*)$ assets/vendors/$1 [L]
+
+
+##ErrorDocument 404 error/404.html
+
+</IfModule>

@@ -1,0 +1,45 @@
+
+		            <div class="box-struktur pimpinan">		        
+		            	<div class="title-struktur ml-5">
+		            		<h4>Pimpinan Kabinet</h4>
+		            		<div class="line-struktur mt-1 ml-5"></div>
+		            	</div>
+		            	<?php
+		            	$table = "pimpinan_kabinet";
+		            	$ketua = db::data_record($table,"position","2610072021203345");
+		            	$wakil = db::data_record($table,"position","6910072021203407");
+		            	$sekum = db::data_record($table,"position","6610072021203416");
+		            	?>
+		            	<div class="col-md-12 container-pimpinan mt-5">
+							<div class="col-md-4 p-3 ftco-animate sekum_pimkab">
+		            			<div class="card-struktur">
+		            				<img class="img-struktur mb-3" src="<?= $sekum['photo'] ?>">
+		            				<h4 class="title-name-struktur"><?= $sekum['name'] ?></h4>
+		            				<h4 class="position-name-struktur"><?= db::data_where("title","list_position","id",$sekum['position']); ?></h4>
+		            			</div>
+							</div>
+							<div class="col-md-4 p-3 ftco-animate ketua_pimkab">
+		            			<div class="card-struktur">
+		            				<img class="img-struktur mb-3" src="<?= $ketua['photo'] ?>">
+		            				<h4 class="title-name-struktur"><?= $ketua['name'] ?></h4>
+		            				<h4 class="position-name-struktur"><?= db::data_where("title","list_position","id",$ketua['position']); ?></h4>
+		            			</div>
+		            		</div>
+							<div class="col-md-4 p-3 ftco-animate wakil_pimkab">
+		            			<div class="card-struktur">
+		            				<img class="img-struktur mb-3" src="<?= $wakil['photo'] ?>">
+		            				<h4 class="title-name-struktur"><?= $wakil['name'] ?></h4>
+		            				<h4 class="position-name-struktur"><?= db::data_where("title","list_position","id",$wakil['position']); ?></h4>
+		            			</div>
+		            		</div>
+		            	</div>
+					</div>
+					<script src="_frontend/scripts/jquery.min.js"></script>
+					<script>
+						var windowsize = $(window).width();
+						if(windowsize < 576)
+						{
+							$('.wakil_pimkab').after($('.sekum_pimkab'));
+						}
+					</script>
+		            

@@ -1,0 +1,66 @@
+
+       	<section class="container ftco-counter img sc_jumlahdata" id="section-counter">
+       		<h5 class="desc-list mt-3 col-md-6 ftco-animate"></h5>
+	    	<div class="box-counter justify-content-center mt-5">
+	    		<div class="col-md-12 row">
+	    			<?php 
+	    				$config = db::data_record("configuration","id","1");
+	    			?>
+	    			<div class="box-data col-lg-4 col-md-6 col-sm-6 col-xs-12">              
+						<div class="box-part text-center">
+	                        <img class="img-data" src="assets/img/logo_department.png">
+							<div class="box-title ml-3">
+								<h4 class="number" data-number="<?= $config['jumlah_departementbiro']; ?>"></h4>
+								<span>Departement/Biro</span>
+							</div>
+						 </div>
+					</div>
+					<div class="box-data col-lg-4 col-md-6 col-sm-6 col-xs-12">              
+						<div class="box-part text-center">
+	                        <img class="img-data" src="assets/img/logo_staff.png">
+							<div class="box-title ml-3">
+								<h4 class="number" data-number="<?= $config['jumlah_staff']; ?>"></h4>
+								<span>Staff</span>
+							</div>
+						 </div>
+					</div>
+					<div class="box-data col-lg-4 col-md-6 col-sm-6 col-xs-12">              
+						<div class="box-part text-center">
+	                        <img class="img-data" src="assets/img/logo_program.png">
+							<div class="box-title ml-3">
+								<h4 class="number" data-number="<?= $config['jumlah_programkerja']; ?>"></h4>
+								<span>Program Kerja</span>
+							</div>
+						 </div>
+					</div>
+					<div class="box-data col-lg-4 col-md-6 col-sm-6 col-xs-12">              
+						<div class="box-part text-center">
+	                        <img class="img-data" src="assets/img/logo_aksi.png">
+							<div class="box-title ml-3">
+								<h4 class="number" data-number="<?= $config['jumlah_aksi']; ?>"></h4>
+								<span>Aksi</span>
+							</div>
+						 </div>
+					</div>
+					<div class="box-data col-lg-4 col-md-6 col-sm-6 col-xs-12">              
+						<div class="box-part text-center">
+	                        <img class="img-data" src="assets/img/logo_kajian.png">
+							<div class="box-title ml-3">
+								<h4 class="number" data-number="<?= $config['jumlah_kajian']; ?>"></h4>
+								<span>Kajian</span>
+							</div>
+						 </div>
+					</div>
+					<div class="box-data col-lg-4 col-md-6 col-sm-6 col-xs-12">              
+						<div class="box-part text-center">
+	                        <img class="img-data" src="assets/img/logo_post_instagram.png">
+							<div class="box-title ml-3">
+								<h4 class="number" data-number="<?= $config['jumlah_postinstagram']; ?>"></h4>
+								<span>Post Instagram</span>
+							</div>
+						 </div>
+					</div>
+	    		</div>
+	    	</div>
+        </section>
+        

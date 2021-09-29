@@ -1,0 +1,24 @@
+<IfModule mod_rewrite.c>
+Options +FollowSymLinks
+RewriteEngine on
+
+#Json
+RewriteRule ^json/([a-zA-Z_-]+)$ _json&page=$1 [L]
+
+#RewriteEngine On
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_FILENAME} !-f
+
+
+#RewriteRule ^([a-zA-Z_-]+).dev/(.*)/(.*)$ default/$1/$2/$3 [L]
+#RewriteRule ^([a-zA-Z_-]+).dev/(.*)&(.*)$ default/$1/$2&$3 [L]
+RewriteRule ^_filemanager/(.*)$ views/assets/images/filemanager/$1 [L]
+RewriteRule ^([a-zA-Z_-]+).dev&([a-zA-Z_-]+)$ default/$1&$2 [L]
+RewriteRule ^([a-zA-Z_-]+).dev/(.*)$ default/$1/$2 [L]
+RewriteRule ^([a-zA-Z_-]+).dev$ default/$1 [L]
+
+RewriteRule ^([a-zA-Z_-]+)/(.*)$ index.php?url=$1/$2 [L]
+RewriteRule ^([a-zA-Z_-]+)&(.*)$ index.php?url=$1&$2 [L]
+RewriteRule ^([a-zA-Z_-]+)$ index.php?url=$1 [L]
+
+</IfModule>

@@ -1,0 +1,81 @@
+<script>
+	function open_popup(id)
+	{
+		var w = 880;
+		var h = 570;
+		var l = Math.floor((screen.width-w)/2);
+		var t = Math.floor((screen.height-h)/2);
+		var win = window.open("<?= $var['http']; ?>/import/responsive_filemanager/filemanager/dialog.php?type=2&popup=1&relative_url=1&field_id=" + id, 'ResponsiveFilemanager', "scrollbars=1,width=" + w + ",height=" + h + ",top=" + t + ",left=" + l);
+	}
+	function responsive_filemanager_callback(id){
+		if(id){
+			var img = document.getElementById('view-' + id);
+			var value = document.getElementById(id).value;
+			img.style.display = "block";
+			img.src = value;
+			document.getElementById(id).value = value.replace("<?php echo $var['data_lib']; ?>/","");
+		}
+	}
+	function chkExtFile(file, exts){
+		  // first check if file field has any value
+		if ( file ) {
+			// split file name at dot
+			var get_ext = file.split('.');
+			// reverse name to check extension
+			get_ext = get_ext.reverse();
+			// check file type is valid as given in 'exts' array
+			if ( $.inArray ( get_ext[0].toLowerCase(), exts ) > -1 ){
+				return true;
+			} else {
+				return false;
+			}
+		}
+	}
+	function readURL(input) {
+		var id = $(input).attr('name');
+		// alert(id);
+		$('#' + id).show();
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function (e) {
+				if($(input).attr('category') == 'image')
+				{
+					$('#'+ id).attr('src', e.target.result);
+				}
+				else
+				{
+					var file_name = $(input).val().replace(/\\/g, '/').replace(/.*\//, '');
+					$('#'+ id).text(file_name);
+					$( "a#"+id ).replaceWith( "<p id='p_"+id+"'>"+file_name+"</p>" );
+				}
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+	function bytesToSize(bytes) {
+	   var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+	   if (bytes == 0) return '0 Byte';
+	   // var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+	   return bytes / Math.pow(1024, 2);
+	}
+	$(function(){
+		$('input[type=file]').change(function(){
+		    // alert($(this).attr("accept").split("|"));
+		    var files 	= $(this).val();
+		    var id 		= $(this).attr('id');
+		    var get_ext = files.split('.').pop().toLowerCase();
+			if(!chkExtFile($(this).val(), $(this).attr("accept").split("+")))
+			{
+			 	alert('Invalid file.');
+				$(this).val("");
+				return true;
+			}
+			if(get_ext=="png" && bytesToSize(this.files[0].size) >= 2){
+				alert('File cant exceed 2mb (for ext .png)');
+				$(this).val("");
+				return true;
+			}
+			readURL(this);
+		});
+	});
+</script>

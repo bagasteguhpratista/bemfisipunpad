@@ -1,0 +1,22 @@
+<?php
+    $param_name = $param['name'];
+    $validate_name = (isset($_SESSION['validate'][$param_name])) ? $_SESSION['validate'][$param_name] : null ;
+?>
+<div class="position-relative form-group row">
+    <label for="<?php echo $param['name']; ?>" class="col-sm-3 col-form-label"><?php echo admin::lang($param['name']) ?></label>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <?php
+        if(count($param['choice']) > 0 ){
+            for($i=0;$i<count($param['choice']);$i++){
+        ?>
+        <div class="custom-radio custom-control pt-2">
+            <input type="radio" id="<?= $param['choice'][$i] ?>" name="<?= $param['name'] ?>" class="custom-control-input" value="<?= $param['choice'][$i] ?>"  <?php echo ($param['value'] == $param['choice'][$i])? "checked":null ?> >
+            <label class="custom-control-label" for="<?= $param['choice'][$i] ?>"><?php echo admin::lang($param['choice'][$i])?></label>
+        </div>
+        <?php
+                }
+            }
+            view::validation($param['name'],$validate_name);
+        ?>
+    </div>
+</div>

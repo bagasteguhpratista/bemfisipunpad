@@ -1,0 +1,24 @@
+<script language="javascript" type="text/javascript" src="<?php echo $var['app_assets'] .'/_vendors/tinymce/tinymce.min.js?v='. rand(1,1000); ?>"></script>
+<script type="text/javascript">
+    tinymce.init({
+        //selector: 'textarea',
+        mode : "specific_textareas",
+        editor_selector  : "mceEditor",
+        height: 500,
+        menubar: false,
+        plugins: [
+            'advlist autolink lists link image preview anchor',
+            'searchreplace visualblocks code fullscreen',
+            'insertdatetime media table contextmenu paste code'
+        ],
+        toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent image | link | code',
+        //content_css: '//www.tinymce.com/css/codepen.min.css'
+        external_filemanager_path: "<?php echo $var['http']; ?>/import/responsive_filemanager/filemanager/",
+        external_plugins: { "filemanager" : "<?php echo $var['http']; ?>/import/responsive_filemanager/filemanager/plugin.min.js" },
+        filemanager_type:2,
+        extended_valid_elements: "span",
+        forced_root_block : false,
+        force_br_newlines : false,
+        force_p_newlines : false,
+    });
+</script>

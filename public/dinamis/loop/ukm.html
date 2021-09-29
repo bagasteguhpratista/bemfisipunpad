@@ -1,0 +1,28 @@
+
+    <section class="sc_ukm sc_himpunan mt-0">
+        <h4 class="title-list ftco-animate mb-5">UNIT KEGIATAN MAHASISWA</h4>
+  		<div class="box-media-sosial ftco-animate">
+  			<div class="col-md-12 row container-media-sosial">
+  				<?php
+  					$datas = admin::array_filter_by_value($data,'category','ukm');
+  					if(count($datas) > 0){
+  						foreach($datas as $item){ 
+  				?>
+                <a href="<?= $item['link_instagram']; ?>" target="<?= $item['link'] == '#' ? '_self' : '_blank' ?>" class="col-lg-3 col-md-4">
+      				<div class="col-lg-12 col-md-12 col-sm-6 list-akun p-5">
+                            <div class="img-akun col-sm-3 col-lg-12">
+                                <img src="<?= $item['image'] ?>">
+                            </div>
+                            <div class="list-content col-sm-9 col-lg-12" style="display:block;">
+                                <h4 class="title-himp"><?= $item['name']?></h4>
+                                <h5 class="content-himp"><?= $item['content']?></h4>
+                            </div>
+                    </div>
+                </a>
+  				<?php
+  					}}
+  				?>
+  			</div>
+  		</div>
+    </section>
+    

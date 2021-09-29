@@ -1,0 +1,18 @@
+
+        <div class="ftco-animate">
+			<div class="row col-md-10 doc-title">
+				<div class="row doc-list-title portfolio-controllers wow fadeLeft artikel" data-wow-duration="1s" data-wow-delay=".1s">
+					<?php
+						if(count($data) > 0 ){
+							$i=0;
+							foreach($data as $item){
+							$i++;
+					?>
+							<div class="filter-btn <?= $i;?> <?= ($i==1) ? 'mixitup-control-active' : ''  ?>" id="filter-<?= $item['alias']?>" data-filter="<?= ($item['alias'] == 'all' ? 'all' : '.' . $item['alias'] ) ?>"><span class="btn-doc-list-artikel" alias="<?= $item['alias'] ?>"><?= $item['name']?></span></div>
+					<?php
+							}
+						}
+					?>
+				</div>
+			</div>
+        </div>    

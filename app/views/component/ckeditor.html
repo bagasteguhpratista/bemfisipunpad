@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<!-- <link type="text/css" href="<?php echo $var['ckeditor_path']; ?>/sample/css/sample.css" rel="stylesheet" media="screen" /> -->
+</head>
+<body>
+
+<div class="position-relative row form-group">
+    <label for="<?php echo $param['name']; ?>" class="col-sm-3 col-form-label"></label>
+    <div class="col-sm-9" id="<?php echo $param['name'] . '_class'?>">
+		<div name="<?= $param['name']?>" id="p_<?= $param['name']?>" class="ckeditor"><?= (isset($param['value']) ? $param['value'] : 'Masukan text disini.' ) ?></div>
+		<input type="hidden" id="i_<?= $param['name']?>" name="<?= $param['name']?>">
+    </div>
+</div>
+
+<!-- <script src="https://cdn.ckeditor.com/ckeditor5/29.2.0/balloon-block/ckeditor.js"></script> -->
+<!-- <script src="https://cdn.ckeditor.com/ckeditor5/29.2.0/classic/ckeditor.js"></script> -->
+<!-- <script src="https://cdn.ckeditor.com/ckeditor5/29.2.0/classic/ckeditor.js"></script> -->
+<script src="<?= $var['ckeditor_path'] ?>/ckeditor.js"></script>
+<script src="<?= $var['ckfinder_path'] ?>/ckfinder.js"></script>
+<script>
+BalloonBlockEditor
+		.create( document.querySelector( '#p_<?= $param["name"]?>' ), {
+			
+		toolbar: {
+			items: [
+				'bold',
+				'italic',
+				'underline',
+				'link',
+				'fontSize',
+				'fontFamily',
+				'strikethrough',
+				'blockQuote',
+				'highlight',
+				'fontColor',
+				'heading',
+				'alignment',
+				'imageUpload'
+			]
+		},
+		language: 'en',
+		blockToolbar: [
+			'imageInsert',
+			'CKFinder',
+			'mediaEmbed',
+			'indent',
+			'outdent',
+			'numberedList',
+			'bulletedList',
+			'todoList',
+			'insertTable',
+			'undo',
+			'redo',
+			'sourceEditing'
+		],
+		image: {
+			toolbar: [
+				'imageTextAlternative',
+				'imageStyle:inline',
+				'imageStyle:block',
+				'imageStyle:side'
+			]
+		},
+		table: {
+			contentToolbar: [
+				'tableColumn',
+				'tableRow',
+				'mergeTableCells',
+				'tableProperties'
+			]
+		},
+		ckfinder: {
+            // Upload the images to the server using the CKFinder QuickUpload command.
+            uploadUrl: '<?= $var["ckfinder_path"]?>/core/connector/php/connector.php?command=QuickUpload&type=Images&responseType=json',
+
+            // Define the CKFinder configuration (if necessary).
+            options: {
+                resourceType: 'Images'
+            }
+        },
+        removePlugins: ['Title'],
+  		placeholder: 'Type or paste your content here.',
+			
+		} )
+		.then( editor => {
+			window.editor = editor;
+		} )
+		.catch( error => {
+			// console.error( 'Oops, something went wrong!' );
+			// console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
+			// console.warn( 'Build id: vdluve9u0omp-5guenac83qth' );
+			// console.error( error );
+		} );
+</script>
+</body>
+</html>
+

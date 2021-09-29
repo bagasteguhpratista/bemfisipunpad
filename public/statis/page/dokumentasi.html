@@ -1,0 +1,74 @@
+<!--!!ST-HEADER!!-->
+	<div class="section-banner hero-wrap">
+	    <div class="container-fluid px-0">
+	      	<div class="box-banner d-md-flex slider-text">
+		        <div class="content-banner ftco-animate col-md-11 banner-pendukung">
+		        	<div class="text col-lg-6 col-md-9 col-sm-10">
+			        	<div class="ml-5 text-kabinet col-md-12 mb-3">
+			            	<p class="h1-banner-beranda mb-4">Dokumentasi</p>
+			            	<p class="h4-banner-beranda">BEM FISIP Unpad memiliki berbagai macam kegiatan yang telah terdokumentasikan. Harapannya kema FISIP dapat melihat proses kegiatan BEM FISIP melalui dokumentasi tersebut.</p>
+			            </div>
+		          	</div>
+		          	<div class="box-img-banner col-lg-6 col-md-8 col-sm-12 banner-img-pendukung mb-4">
+			         	<img class="one-third align-self-end order-md-last img-banner img-fluid ftco-animate" src="assets/img/dokumentasi.png" alt="">
+		        	</div>
+		        </div>
+		    </div>
+      	</div>
+    </div>
+    <section class="sc_media_sosial">
+    	<!--!!DN-LOOP-KATEGORIDOKUMENTASI!!-->
+    	<div class="ftco-animate">
+			<div class="row col-md-6 doc-title">
+				<div class="row doc-list-title portfolio-controllers wow fadeLeft" data-wow-duration="1s" data-wow-delay=".1s">
+					<div class="filter-btn mixitup-control-active" data-filter="all"><a class="btn-doc-list">Semua</a></div>
+					<div class="filter-btn" data-filter=".aksi-kamisan"><a class="btn-doc-list">Aksi Kamisan</a></div>
+					<div class="filter-btn" data-filter=".studi-banding"><a class="btn-doc-list">Studi Banding</a></div>
+					<div class="filter-btn" data-filter=".rapat-rapat"><a class="btn-doc-list">Rapat-rapat</a></div>
+					<div class="filter-btn" data-filter=".ulang-tahun"><a class="btn-doc-list">Ulang Tahun</a></div>
+					<div class="filter-btn" data-filter=".aksi-jumatan"><a class="btn-doc-list">Aksi Jumatan</a></div>
+					<div class="filter-btn" data-filter=".omnibus-law"><a class="btn-doc-list">Omnibus Law</a></div>
+				</div>
+			</div>
+		</div>
+		<!--/!!DN-LOOP-KATEGORIDOKUMENTASI!!-->
+		<!--!!DN-LOOP-DOKUMENTASI!!-->
+		<div class="box-doc ftco-animate col-md-11 row doc-row-list">
+			<div class="mix col-lg-4 col-md-6 col-sm-6 doc-list aksi-kamisan">
+				<div class="img-doc">
+					<a href="assets/img/doc 1.png" target="_blank">
+					<img src="assets/img/doc 1.png">
+					</a>
+				</div>
+			</div>
+			<div class="mix col-lg-4 col-md-6 col-sm-6 doc-list studi-banding">
+				<div class="img-doc">
+					<a href="assets/img/doc 1.png" target="_blank">
+					<img src="assets/img/doc 1.png">
+					</a>
+				</div>
+			</div>
+			<div class="mix col-lg-4 col-md-6 col-sm-6 doc-list studi-banding">
+				<div class="img-doc">
+					<a href="assets/img/DSCF3243.png" target="_blank">
+					<img src="assets/img/DSCF3243.png">
+					</a>
+				</div>
+			</div>
+			<div class="mix col-lg-4 col-md-6 col-sm-6 doc-list rapat-rapat">
+				<div class="img-doc">
+					<a href="assets/img/img-ketua.png" target="_blank">
+					<img src="assets/img/img-ketua.png" class="img-fluid">
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="box-desc-list ftco-animate">
+			<?php $link = db::data_where('link_dokumentasi','configuration','id','1'); ?>
+			<h5 class="desc-list mt-5 col-md-6 mb-4">Agar dapat melihat hasil dokumentasi lebih lanjut, Kema FISIP dapat meng-klik tombol dibawah.</h5>
+			<a href="<?php echo $link ?>" target="<?= ($link == '#' ? '_self' : '_blank' ?>" class="btn-cek-selengkapnya mt-4">Cek Selengkapnya</a>
+		</div>
+		<!--/!!DN-LOOP-DOKUMENTASI!!-->
+    </section>
+    <!--/MOD-MEDIASOSIAL-->
+<!--!!ST-FOOTER!!-->

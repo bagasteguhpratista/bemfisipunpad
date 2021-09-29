@@ -1,0 +1,27 @@
+<?php
+    $param_name = $param['name'];
+    $validate_name = (isset($_SESSION['validate'][$param_name])) ? $_SESSION['validate'][$param_name] : null ;
+?>
+<div class="position-relative form-group row">
+    <label for="<?php echo $param['name']; ?>" class="col-sm-3 col-form-label"><?php echo admin::lang($param['name']) ?></label>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="drop-zone">
+            <span class="drop-zone__prompt">Drop file here or click to upload<br>[ <?php echo str_replace("|"," or ", $param['accept'])?> extension ] <?= !empty($param['value']) ? "</br></br> Your File: ".$param['value'] : "" ?></span>
+            <input id="dragFile" name="<?= $param['name']?>" value="<?php echo $param['value']; ?>" type="file" class="drop-zone__input" data-type="dragfile" accept="<?php echo $param['accept'] ?>" />
+        </div>
+        <?php if($param['value']){ ?>
+        <center>
+            <input type="checkbox" name="<?php echo $param['name'] ?>_del[]" value="1">&nbsp;<?php echo admin::lang('check_to_remove'); ?>
+        </center>
+            <br/>
+        <?php } ?>
+        <?php
+            view::validation($param['name'],$validate_name);
+        ?>
+    </div>
+</div>
+<link rel="stylesheet" href="<?php echo $var['app_assets']; ?>/_vendors/dragfile/dragfile.css" />"
+
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="<?php echo $var['app_assets']; ?>/_vendors/dragfile/dragfile.js" type="text/javascript" language="javascript"></script>

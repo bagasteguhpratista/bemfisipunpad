@@ -1,0 +1,21 @@
+<?php
+    $param_name = $param['name'];
+    $validate_name = (isset($_SESSION['validate'][$param_name])) ? $_SESSION['validate'][$param_name] : null ;
+?>
+    <div class="position-relative row form-group" <?php echo (isset($param['style'])?$param['style']:"") ?> id="<?php echo $param['name'] ?>">
+		<label class="col-sm-3 col-form-label" for="<?php echo $param['name'] ?>"><?php echo admin::lang($param['name']) ?>
+		</label>
+        <div class="col-sm-7" >
+            <fieldset>
+            <div class="control-group">
+                <div class="controls">
+                    <div class='input-group' id='datetimepicker'>
+                        <input type="text" name="<?php echo $param['name'] ?>" value="<?php echo $param['value'] ?>" class="form-control <?php echo $param['noname'] ? $param['name'] : 'date1'?>" <?php echo (isset($param['validate']))?$param['validate']:""; ?> aria-describedby="<?php echo $param['name'] ?>" >
+                        <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </div>
+                </div>
+            </div>
+            </fieldset>
+	    </div>
+    </div>

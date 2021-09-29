@@ -1,0 +1,9 @@
+<IfModule mod_rewrite.c>
+Options +FollowSymLinks
+RewriteEngine on
+Options -Indexes
+
+
+RewriteRule ^([a-zA-Z_-]+)$ index.php [L]
+
+</IfModule>

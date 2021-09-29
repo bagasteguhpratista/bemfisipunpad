@@ -1,0 +1,36 @@
+
+        <section class="sc_ukm light mb-0  ftco-animate">
+        	<h4 class="title-list title-list-mobile" style="display:none;">UNIT KEGIATAN MAHASISWA TINGKAT FAKULTAS</h4>
+	    	<div class="col-md-10 content-ukm ftco-animate">
+	    		<div class="col-md-6 box-title ml-5">
+        			<h4 class="title-list title-list-ukm">UNIT KEGIATAN MAHASISWA TINGKAT FAKULTAS</h4>
+        			<h5 class="desc-list mt-3 ftco-animate">FISIP Unpad memiliki berbagai unit  kegiatan mahasiswa yang dapat digunakan kema FISIP sebagai tempat mengasah skill diluar kegiatan perkuliahan.</h5>
+        		</div>
+        		<div class="col-md-6">
+	            	<div class="owl-carousel carousel-himpunan ftco-owl">
+	            		<?php
+	            			$data = admin::array_filter_by_value($data,'category','ukm');
+	            			if(count($data) > 0){
+	            				foreach($data as $item){
+	            		?>
+				    	<div class="item">
+				    		<a target="<?= $item['link_instagram'] == '#' ? '_self' : '_blank' ?>" href="<?= $item['link_instagram']?>">
+		                	<div class="card-himpunan-home testimony-wrap text-center card">
+		                		<div class="box-img-ukm-home">
+			                  		<img class="card-img-himpunan-home" src="<?= $item['image'] ?>" alt="Card image cap">
+		                  		</div>
+		                  		<div class="card-body">
+			                    	<h4 class="card-title"><?= $item['name'] ?></h4>
+		                  		</div>
+		                	</div>
+		                	</a>
+		              	</div>
+		              	<?php 
+		              			}
+		              		}
+		              	?>
+		        	</div>
+		        </div>
+		    </div>
+	    </section>
+        

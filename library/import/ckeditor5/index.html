@@ -1,0 +1,72 @@
+<link type="text/css" href="sample/css/sample.css" rel="stylesheet" media="screen" />
+<main>
+	<div class="centered">
+		<div id="editor">
+			<h2>The three greatest things you learn from traveling</h2>
+
+			<p>Like all the great things on earth traveling teaches us by example. Here are some of the most precious lessons I’ve learned over the years of traveling.</p>
+
+			<h3>Appreciation of diversity</h3>
+
+			<p>Getting used to an entirely different culture can be challenging. While it’s also nice to learn about cultures online or from books, nothing comes close to experiencing <a href="https://en.wikipedia.org/wiki/Cultural_diversity">cultural diversity</a> in person. You learn to appreciate each and every single one of the differences while you become more culturally fluid.</p>
+
+			<figure class="image image-style-side"><img src="sample/img/umbrellas.jpg" alt="Three Monks walking on ancient temple.">
+				<figcaption>Leaving your comfort zone might lead you to such beautiful sceneries like this one.</figcaption>
+			</figure>
+
+			<h3>Confidence</h3>
+
+			<p>Going to a new place can be quite terrifying. While change and uncertainty makes us scared, traveling teaches us how ridiculous it is to be afraid of something before it happens. The moment you face your fear and see there was nothing to be afraid of, is the moment you discover bliss.</p>
+		</div>
+
+		<div id="references">
+			<section>
+				<h2>Configure the editor</h2>
+				<p>CKEditor 5 is configurable so you can change many of its aspects (like the <a href="https://ckeditor.com/docs/ckeditor5/latest/builds/guides/integration/configuration.html#toolbar-setup">toolbar</a>) to get most of the editor in your project.</p>
+				<p><a href="https://ckeditor.com/docs/ckeditor5/latest/builds/guides/integration/configuration.html">Learn how to configure</a></p>
+			</section>
+
+			<section>
+				<h2>Discover the features</h2>
+				<p>CKEditor 5 comes with plenty of rich text editing features. Most of them are available out of the box in your build.</p>
+				<p><a href="https://ckeditor.com/docs/ckeditor5/latest/features/index.html">Discover rich text editor features</a></p>				</section>
+
+			<section>
+				<h2>Discover editor builds</h2>
+				<p>There are other editor builds you can use in your project. They offer a different user interface and features but they all share the same solid core of CKEditor 5.</p>
+				<p><a href="https://ckeditor.com/docs/ckeditor5/latest/builds/guides/overview.html">Discover the builds</a></p>
+			</section>
+
+			<section>
+				<h2>Real-time collaboration</h2>
+				<p>CKEditor 5 Collaboration Features let you customize any CKEditor 5 build to include real-time collaborative editing and commenting features and tailor them to your needs.</p>
+				<p><a href="https://ckeditor.com/docs/ckeditor5/latest/features/collaboration/collaboration.html">Real-time collaboration overview</a></p>
+			</section>
+
+			<section>
+				<h2>Create your own rich text editor</h2>
+				<p>CKEditor 5 is a rich text editing framework that allows you to create your own editor using the building blocks it offers. You can customize existing builds or create a new one from scratch.</p>
+				<p><a href="https://ckeditor.com/docs/ckeditor5/latest/builds/guides/development/custom-builds.html">Create your own build</a></p>
+			</section>
+
+			<section>
+				<h2>Integration with the frameworks</h2>
+				<p>CKEditor 5 supports the most popular web frameworks like React, Angular or Vue.js &mdash; get the full benefit of CKEditor 5 in your project using official integrations.</p>
+				<p><a href="https://ckeditor.com/docs/ckeditor5/latest/builds/guides/integration/frameworks/overview.html">Browse the integrations</a></p>
+			</section>	
+		</div>
+	</div>
+</main>
+<script src="ckeditor.js"></script>
+<script>
+	BalloonEditor
+		.create( document.querySelector( '#editor' ), {
+			// toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
+		} )
+		.then( editor => {
+			window.editor = editor;
+		} )
+		.catch( err => {
+			console.error( err.stack );
+		} );
+</script>

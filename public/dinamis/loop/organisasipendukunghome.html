@@ -1,0 +1,33 @@
+
+        <section class="container sc_organisasi_pendukung light mb-0">
+        	<h4 class="title-list ftco-animate">HIMPUNAN DAN HURIA MAHASISWA</h4>
+        	<h5 class="desc-list mt-3 col-md-9 ftco-animate">FISIP Unpad menjadi salah satu Fakultas yang memiliki jurusan terbanyak yaitu terdiri dari 12 Jurusan. Sehingga memiliki 12 Hima dan Huria, yang merupakan organisasi kemahasiswaan pada tingkat jurusan.</h5>
+	    	<div class="col-md-12 align-items-center content-organisasi-pendukung ftco-animate">
+		            <div class="box-organisasi-pendukung mt-5 mb-5">
+		            	<div class="owl-carousel carousel-organisasi-pendukung ftco-owl">
+		            		<?php
+		            			$data = admin::array_filter_by_value_not_same($data,'category','ukm');
+		            			if(count($data) > 0){
+		            				foreach($data as $item){
+		            		?>
+					    	<div class="item m-3">
+					    		<a target="<?= $item['link_instagram'] == '#' ? '_self' : '_blank' ?>" href="<?= $item['link_instagram']?>">
+			                	<div class="card-organisasi-pendukung testimony-wrap p-3 text-center card">
+			                  		<div class="box-img-organisasi-home">
+			                  			<img class="card-img-himpunan card-img-top-dept" src="<?= $item['image'] ?>" alt="Card image cap">
+			                  		</div>
+			                  		<div class="card-body">
+				                    	<h4 class="card-title"><?= $item['name'] ?></h4>
+			                  		</div>
+			                	</div>
+			                	</a>
+			              	</div>
+			              	<?php 
+			              			}
+			              		}
+			              	?>
+			            </div>
+		            </div>
+		    </div>
+	    </section>
+        

@@ -1,0 +1,31 @@
+
+    <section class="sc_faq">
+  		<div class="box-media-sosial ftco-animate">
+  			<div class="col-md-10 row container-media-sosial">
+  				<ul class="accordion-list list-unstyled" style="width: 100%">
+                    <?php
+                        if(count($data) > 0){
+                            foreach($data as $item){
+                    ?>
+                    <li class="accordion-list-item px-3 py-2 mb-4">
+                    	<div class="accordion-title d-flex justify-content-between">
+	                        <h5>
+	                            <?= $item['questions']?>
+	                        </h5>
+	                        <span class="ni ni-plus"></span>
+                        </div>
+                        <div class="accordion-desc">
+                            <div class="content-faq pe-5 pt-3 pb-3">
+                                <?= $item['answer'];?>
+                            </div>
+                        </div>
+                    </li>
+                    <?php
+                        }} 
+                    ?>
+                </ul>
+            </div>
+  			</div>
+  		</div>
+    </section>
+    

@@ -1,0 +1,32 @@
+
+        <section class="sc_akun_pendukung_home">
+      		<h4 class="title-list ftco-animate">AKUN PENDUKUNG</h4>
+      		<div class="box-akun-pendukung ftco-animate">
+	        	<div class="navItem swiper-container mySwiper">
+		        	<div class="col-md-12 swiper-wrapper ">
+		        		<?php 
+		        			if(count($data) > 0){
+		        				foreach($data as $item){
+		        		?>
+		        		<div class="item swiper-slide">
+		        			<div class="col-lg-2 col-md-4 box-img-akun">
+				          		<img class="card-img-top-akun" src="<?= $item['image'] ?>" alt="Card image cap">
+		        			</div>
+			          		<div class="card-body content-akun col-md-5">
+			                	<h4 class="card-title"><?= $item['name'] ?></h4>
+						    	<p class="card-text"><?= admin::limit_text($item['content'],30) ?></p>
+						    	<a href="<?= $var['http'] . '/pendukung#' . $item['alias'] ?>" class="btn-cek-selengkapnya">Cek Selengkapnya</a>
+			          		</div>
+		          		</div>
+		          		<?php
+		          				}
+		          			}
+		          		?>
+			        </div>
+			        <div class="swiper-pagination"></div>
+		            <div class="swiper-button-next"></div>
+		            <div class="swiper-button-prev"></div>
+		        </div>
+		    </div>
+        </section>
+        

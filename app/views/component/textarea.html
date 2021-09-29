@@ -1,0 +1,14 @@
+<?php
+    $param_name = $param['name'];
+    $validate_name = (isset($_SESSION['validate'][$param_name])) ? $_SESSION['validate'][$param_name] : null ;
+?>
+<div class="position-relative row form-group">
+    <label for="<?php echo $param['name']; ?>" class="col-sm-3 col-form-label"><?php echo admin::lang($param['name']) ?></label>
+    <div class="col-sm-7" id="<?php echo $param['name'] . '_class'?>">
+        <textarea id="<?php echo $param['name'] ?>" <?php echo isset($param['editor']) ? 'class="mceEditor"':null ?> <?php echo isset($param['validate'])?$param['validate']:null; ?> name="<?php echo $param['name'] ?>" rows="1" style="width:100%;"><?php echo $param['value'] ?></textarea>
+        <?php
+            view::validation($param['name'],$validate_name);
+        ?>
+    </div>
+
+</div>

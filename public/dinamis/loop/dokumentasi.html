@@ -1,0 +1,21 @@
+
+		<div class="box-doc ftco-animate col-md-11 row doc-row-list">
+			<?php 
+				if(count($data) > 0){
+					foreach($data as $item){
+			?>
+			<div class="mix col-lg-4 col-md-6 col-sm-6 doc-list <?= $item['category_name']?>">
+				<div class="img-doc">
+					<a href="<?= $item['photo']?>" target="_blank">
+					<img src="<?= $item['photo']?>">
+					</a>
+				</div>
+			</div>
+			<?php }} ?>
+		</div>
+		<div class="box-desc-list ftco-animate">
+			<?php $link = db::data_where('link_dokumentasi','configuration','id','1'); ?>
+			<h5 class="desc-list mt-5 col-md-6 mb-4">Agar dapat melihat hasil dokumentasi lebih lanjut, Kema FISIP dapat meng-klik tombol dibawah.</h5>
+			<a href="<?php echo $link; ?>" target="<?= ($link == '#') ? '_self' : '_blank'; ?>" class="btn-cek-selengkapnya mt-4">Cek Selengkapnya</a>
+		</div>
+		

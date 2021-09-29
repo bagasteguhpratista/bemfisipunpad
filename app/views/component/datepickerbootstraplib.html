@@ -1,0 +1,12 @@
+<link href="<?php echo $var['app_assets'] .'/_css/glyphicon/glyphicon.css?'. rand(1,1000); ?>" rel="stylesheet"/>
+<!-- <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/css/bootstrap.css" rel="stylesheet"/> -->
+<link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.css" rel="stylesheet"/>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+      $('.date1, #datetimepicker').datetimepicker({
+        format: 'YYYY-MM-DD',
+      });
+    });
+</script>

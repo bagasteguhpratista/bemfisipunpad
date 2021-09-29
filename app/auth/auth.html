@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+    Login | <?= db::data_where("title_cms","configuration","id","1") ?>
+  </title>
+  <link rel="icon" type="text/css" href="<?= $var['app_assets'] . '/_images/Logo_Unpad_Transparent.png' ?>">
+  <link rel="stylesheet" type="text/css" href="<?= $var['app_assets']?>/_css/auth.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+  <script src="<?= $var['app_assets']?>/_js/jquery.min.js"></script>
+  <link href="<?= $var['app_assets']?>/_css/main.css" rel="stylesheet"></head>
+  <link href="<?= $var['app_assets']?>/_css/style-login.css" rel="stylesheet"></head>
+  <script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js?ver=2.1.3'></script>
+</head>
+<body>
+  <div class="container">
+    <div class="img">
+      <img src="<?= $var['app_assets']?>/_images/template/mobile_apps.svg">
+    </div>
+    <div class="login-container">
+       <form autocomplete="off" method="post" action="<?php echo $var['app_url'] .'/auth'; ?>" class="installer-form form-login">
+        <img class="avatar" src="<?= $var['app_assets']?>/_images/template/profile_pic.svg">
+        <h2>Welcome</h2>
+        <?php flasher::flash() ?>
+        <div class="input-div one">
+          <div class="i">
+            <i class="fas fa-user"></i>
+          </div>
+          <div>
+            <h5>Username</h5>
+            <input id="username" class="input" type="text" name="p_username" value="">
+          </div>
+        </div>
+        <div class="input-div two">
+          <div class="i">
+            <i class="fas fa-lock"></i>
+          </div>
+          <div>
+            <h5>Password</h5>
+            <span class="btn-show-pass">
+              <i class="zmdi zmdi-eye"></i>
+            </span>
+            <input id="password" type="password" name="p_password" value="" class="r input">
+          </div>
+        </div>
+        <input type="hidden" value="login" name="act">
+        <input type="hidden" value="002" name="_to">
+        <input type="hidden" value="<?= $_SESSION['token_login']?>" name="tkn">
+        <input type="submit" name="login" class="btn btn-login" value="LOGIN">
+      </form>
+    </div>
+  </div>
+  <script type="text/javascript" src="<?= $var['app_assets']?>/_js/auth.js"></script>
+  <script type="text/javascript" src="<?= $var['app_assets']?>/_js/main.js"></script>
+</body>
+</html>

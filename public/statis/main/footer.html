@@ -1,0 +1,57 @@
+
+    <footer>
+		<div class="footer">
+			<div class="footer_logo">
+				<img src="assets/img/bemfisip.png" alt="" />
+			</div>
+			<nav class="navbar-footer" style="display: block">
+				<!--!!DN-NAV-MENUFOOTER!!-->
+				<div class="navbar-nav-footer col-md-12d-flex justify-content-center">
+		          	<div class="nav-item active"><a href="index.html" class="nav-link">Beranda</a></div>
+		          	<div class="nav-item"><a href="tentangkami.html" class="nav-link">Tentang Kami</a></div>
+		          	<div class="nav-item"><a href="deptbiro.html" class="nav-link">Dept & Biro</a></div>
+		          	<div class="nav-item"><a href="postingan.html" class="nav-link">Postingan</a></div>
+		          	<div class="nav-item"><a href="pendukung.html" class="nav-link">Pendukung</a></div>
+		          	<div class="nav-item"><a href="artikel.html" class="nav-link">Artikel</a></div>
+		        </div>
+				<div class="social_media col-md-12d-flex justify-content-center">
+					<div><a href="[FACEBOOK]"><i class="fab fa-twitter"></i></a></div>
+					<div><a href="[INSTAGRAM]"><i class="fab fa-line"></i></a></div>
+					<div><a href="[TWITTER]"><i class="fab fa-youtube"></i></a></div>
+					<div><a href="[YOUTUBE]"><i class="fab fa-instagram"></i></a></div>
+				</div>
+				<!--/!!DN-NAV-MENUFOOTER!!-->
+			</nav>
+		</div>
+	</footer>
+
+
+    <script src="_frontend/scripts/jquery.min.js"></script>
+	<script src="_frontend/scripts/jquery-migrate-3.0.1.min.js"></script>
+	<script src="_frontend/scripts/popper.min.js"></script>
+	<script src="_frontend/scripts/bootstrap.min.js"></script>
+	<script src="_frontend/scripts/jquery.easing.1.3.js"></script>
+	<script src="_frontend/scripts/jquery.waypoints.min.js"></script>
+	<script src="_frontend/scripts/jquery.stellar.min.js"></script>
+	<script src="_frontend/scripts/owl.carousel.min.js"></script>
+	<script src="_frontend/scripts/jquery.magnific-popup.min.js"></script>
+	<script src="_frontend/scripts/aos.js"></script>
+	<script src="_frontend/scripts/jquery.animateNumber.min.js"></script>
+	<script src="_frontend/scripts/bootstrap-datepicker.js"></script>
+	<script src="_frontend/scripts/scrollax.min.js"></script>
+	<script src="_frontend/vendor/dist/js/swiper.min.js"></script>
+	<script src="_frontend/vendor/slick/slick.min.js"></script>
+	<script src="_frontend/scripts/mixitup.min.js"></script>
+	<script src="_frontend/scripts/main.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			    var urlHash = window.location.href.split("#")[1];
+			    // alert(urlHash);
+			    $('html,body').animate({
+			        scrollTop: $('#' + urlHash).offset().top - 180
+			    }, 1000);
+		  	$('.owl-carousel').owlCarousel();
+		});
+	</script>
+</body>
+</html>

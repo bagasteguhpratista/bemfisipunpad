@@ -1,0 +1,66 @@
+    <style type="text/css">
+        .ck-reset_all{display: none;}
+        .ck .ck-widget:hover{outline-color: transparent;}
+
+}
+    </style>
+    <section class="detail_artikel">
+        <div class="col-md-12 align-items-center ftco-animate">
+            <div class="content-detail-artikel content-center-text tab-content ftco-animate justify-content-center align-items-center pt-5">
+            <?php
+                $item = admin::array_filter_by_value($data, 'alias', $detail);
+                if(count($item[0]) > 0 && $item[0]['publish_date'] <= date("Y-m-d H:i:s")){
+                    //foreach($data as $item){
+                        //if($item['publish_date'] <= date("Y-m-d H:i:s")){
+                        
+            ?>
+                <div class="head-artikels">
+                    <h3 class="judul-artikel mb-3"><?= $item[0]['title']; ?></h3>
+                    <div class="dateby mb-2">
+                        <p class="datepost"><?= admin::format_date($item[0]['publish_date'],"id","A"); ?></p>
+                        <?php
+                        if($item[0]['writer'] == 'show'){
+                        ?>
+                        &nbsp;&nbsp;&nbsp;
+                        <p class="dash-ver">|</p>
+                        &nbsp;&nbsp;&nbsp;
+                        <p class="dash-ver">oleh <b><?= isset($item[0]['writer_n']) ? $item[0]['writer_n'] : 'Anonymous'?></b></p>
+                        <?php } ?>
+                    </div>
+                </div>
+
+                <div class="img-detail-artikel">
+                    <img class="" src="<?= $item[0]['image_cover']; ?>">
+                </div>
+                <div class="content-detail mt-3">
+                    <p class="kategori-artikel"><b><?= strtoupper($item[0]['category_name'])?></b> &nbsp;&nbsp; - &nbsp;&nbsp; <?= $item[0]['min_read']?> min read</p>
+                    <div class="isi-artikel mt-3">
+                        <div name="content" id="p_content" class="ckeditor ck ck-content ck-blurred" lang="en" dir="ltr" role="textbox" aria-label="Rich Text Editor, main" contenteditable="false">
+                            <?= $item[0]['content']?>
+                        </div>
+                    </div>
+                </div>
+                <?php 
+                    if(!empty($item[0]['reference'])){
+                ?>
+                <hr style="width: 50%;">
+                <div class="reference-article mt-5 mb-5">
+                    <h4 class="mb-4">Referensi</h4>
+                    <div>
+                        <?= $item[0]['reference']?>
+                    </div>
+                </div>
+                <?php } ?>
+                <hr>
+            <?php }else{?>
+                <div class="img-detail-artikel">
+                    <img class="" src="<?= $var['v_images_url'] .'/default.jpg';?>">
+                </div>
+                <div class="content-detail">
+                    <h3 class="judul-artikel mt-5" style="text-align: center;">Artikel tidak ditemukan</h3>
+                </div>
+            <?php } ?>
+            </div>
+        </div>
+    </section>
+<script src="<?= $var['ckeditor_path'] ?>/ckeditor.js"></script>

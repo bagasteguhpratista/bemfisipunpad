@@ -1,0 +1,95 @@
+<style>
+	.btn-span{
+		display: block;
+	}
+</style>
+<?php 
+$msg='';
+$param_name = $param['name'];
+$validate_name = (isset($_SESSION['validate'][$param_name])) ? $_SESSION['validate'][$param_name] : null ;
+echo $validate_name;
+if(!isset($param['filemedia'])){?>
+<style>
+	[type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+		position:relative;
+		left: 0px;
+		opacity: 1;
+		visibility: visible !important;
+	}
+</style>
+<script>
+	$(function(){
+		$('#btn-file-<?php echo $param["name"] ?>').click(function(){
+			$('#file_<?php echo $param["name"] ?>').trigger('click');
+		});
+	});
+</script>
+<?php } ?>
+<div class="position-relative row form-group">
+	<label class="col-form-label col-md-3 col-sm-3 col-xs-12" for="<?php echo $param['name'] ?>"><?php echo admin::lang($param['name']); ?><?php echo (isset($param['validate']))? '<span class="required">*</span>' : null ?>
+	</label>
+	<div class="col-md-7 col-sm-7 col-xs-12">
+		<?php if(isset($param['filemedia'])){ ?>
+		<p style="text-align:center;width:100%;overflow:auto;margin:0;">
+			<?php if($param['category'] == 'video'){ ?>
+			<span id="view-span-<?php echo $param['name'];?>" <?php echo (!$param['value']?'style="display:none;"':null); ?>><?= $param['value']; ?></span>
+			<?php }else{ ?>
+			<img id="view-file-<?php echo $param['name']; ?>" <?php echo (!$param['value']?'style="display:none;"':null); ?> src="<?php echo $var['data_lib'] ."/". $param['value']; ?>"/>
+			<?php } ?>
+
+		</p><br>
+		<input id="file-<?php echo $param['name']; ?>" name="p_<?php echo $param['name']; ?>" type="hidden" value="<?php echo $param['value']; ?>" origin-name="<?= $param['name']?>" category="<?= $param['category']?>" <?php echo (isset($param['validate']))?$param['validate']:""; ?> />
+		<a class="btn btn-info btn-sm <?php echo ($msg)? 'error-style' : null ?>" <?php echo ($msg)? 'data-error="'.$msg.'"' : null ?> href="javascript:open_popup('file-<?php echo $param['name']; ?>')"><i class="fa fa-file-image-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;<?php echo admin::lang($param['name']); ?></a>
+		<span><?php echo (isset($param['size'])?$param['size']:"") ?></span>
+		<?php }else{ ?>
+		<div class="file-field">
+			<center>
+				<?php if($param['category'] == 'image'){ ?>
+				<?php if($param['value']){ ?>
+				<img id="p_<?php echo $param['name'] ?>" src="<?php echo $param['value']; ?>" width="256"/>
+				<br/>
+				<input type="checkbox" name="p_<?php echo $param['name'] ?>_del[]" value="1">&nbsp;<?php echo admin::lang('check_to_remove'); ?>
+				<br/>
+				<?php }else{ ?>
+				<img id="p_<?php echo $param['name'] ?>" src="<?php echo $var['img_static'] .'/noimage.png'; ?>" style="max-width:200px" />
+				<br />
+				<?php } ?>
+				<?php }else{ ?>
+				<?php if($param['value']){ ?>
+				<?php
+									if(isset($param['url'])){
+								?>
+				<a id="p_<?php echo $param['name']?>" href="<?php echo $param['url'] . $param['value']?>"><?php echo $param['url'] . $param['value']?></a>
+				<?php }else{ ?>
+				<p id="p_<?php echo $param['name'] ?>">
+					<?php echo $param['value'] ?>
+				</p>
+				<?php } ?>
+
+
+				<input type="checkbox" name="p_<?php echo $param['name'] ?>_del" value="1">&nbsp;<?php echo admin::lang('check_to_remove'); ?>
+				<br/>
+				<?php }else{ ?>
+				<p id="p_<?php echo $param['name'] ?>"></p>
+				<?php } ?>
+				<?php } ?>
+			</center>
+			<div class="btn-span">
+				<div class="mt-2">
+					<span>
+						<?php echo (isset($param['size'])?$param['size']:"") ?>
+					</span>
+				</div>
+				<button type="button" id="btn-file-<?php echo $param['name'] ?>" class="mt-2 btn btn-success <?php echo ($msg)? 'error-style' : null ?>" <?php echo ($msg)? 'data-error="'.$msg.'"' : null ?> >
+				<span><?php echo admin::lang($param['name']); ?></span>
+				</button>
+			</div>
+		</div>
+		<?php
+            view::validation($param['name'],$validate_name);
+        ?>
+		<input name="p_<?php echo $param['name'] ?>" style="display:none;" id="file_<?php echo $param['name'] ?>" category="<?php echo $param['category'] ?>" type="file" <?php echo (isset($param['validate']))?$param['validate']:""; ?> accept="<?php echo $param['accept'] ?>" />
+
+		<?php } ?>
+	</div>
+</div>

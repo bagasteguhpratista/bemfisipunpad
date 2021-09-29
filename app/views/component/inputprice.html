@@ -1,0 +1,74 @@
+<script src="<?= $var['app_assets']?>/_js/phone.js"></script>
+<?php
+    $param_name = $param['name'];
+    $validate_name = (isset($_SESSION['validate'][$param_name])) ? $_SESSION['validate'][$param_name] : null ;
+?>
+<div class="position-relative row form-group">
+    <label for="<?php echo $param['name']; ?>" class="col-sm-3 col-form-label"><?php echo admin::lang($param['name']) ?></label>
+    <div class="col-sm-3" id="<?php echo $param['name'] . '_class'?>">
+        <div class="input-group" id="form1">
+            <span class="input-group-addon">
+                Rp.
+            </span>
+            <input name="<?php echo $param['name']; ?>" id="<?php echo $param['name']; ?> amount" type="<?php echo (isset($param['type'])?$param['type']:'text'); ?>" value="<?php echo isset($param['value']) ? $param['value'] : '' ?>"<?php echo (isset($param['placeholder']))? 'placeholder="'.$param['placeholder'].'"' : null ?><?php echo isset($param['readonly'])?"readonly":null; ?> class="form-control <?php echo isset($validate_name) ? 'form-invalid' : ''?>" <?php echo (isset($param['validate']) ? 'required' : '')?>>
+            <?php
+                view::validation($param['name'],$validate_name);
+            ?>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    (function($, undefined) {
+        "use strict";
+        // When ready.
+        $(function() {
+            var $form = $( "#form, #form1" );
+            var $input = $form.find( "input" );
+            $input.on( "keyup", function( event ) {
+                // When user select text in the document, also abort.
+                var selection = window.getSelection().toString();
+                if ( selection !== '' ) {
+                    return;
+                }
+                // When the arrow keys are pressed, abort.
+                if ( $.inArray( event.keyCode, [38,40,37,39] ) !== -1 ) {
+                    return;
+                }
+
+                var $this = $( this );
+
+                // Get the value.
+                var input = $this.val();
+
+                var input = input.replace(/[\D\s\._\-]+/g, "");
+                input = input ? parseInt( input, 10 ) : 0;
+
+                $this.val( function() {
+                    return ( input === 0 ) ? "" : input.toLocaleString( "en-US" );
+                } );
+            } );
+
+            /**
+             * ==================================
+             * When Form Submitted
+             * ==================================
+             */
+            $form.on( "submit", function( event ) {
+
+                var $this = $( this );
+                var arr = $this.serializeArray();
+
+                for (var i = 0; i < arr.length; i++) {
+                    arr[i].value = arr[i].value.replace(/[($)\s\._\-]+/g, ''); // Sanitize the values.
+                };
+
+                console.log( arr );
+
+                event.preventDefault();
+            });
+
+        });
+    })(jQuery);
+</script>

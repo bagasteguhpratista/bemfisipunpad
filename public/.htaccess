@@ -1,0 +1,18 @@
+<IfModule mod_rewrite.c>
+Options +FollowSymLinks
+RewriteEngine on
+
+RewriteRule ^assets/(.*)$ assets/$1 [L]
+RewriteRule ^static/(.*)$ assets/imgs/static/$1 [L]
+RewriteRule ^styles/(.*)$ assets/css/$1 [L]
+RewriteRule ^scripts/(.*)$ assets/js/$1 [L]
+RewriteRule ^images/(.*)$ assets/images/$1 [L]
+RewriteRule ^video/(.*)$ assets/videos/$1 [L]
+RewriteRule ^vendor/(.*)$ assets/vendor/$1 [L]
+RewriteRule ^font/(.*)$ assets/font/$1 [L]
+RewriteRule ^webfonts/(.*)$ assets/webfonts/$1 [L]
+RewriteRule ^pages/(.*)$ pages/$1 [L]
+
+ErrorDocument 404 error/404.html
+
+</IfModule>

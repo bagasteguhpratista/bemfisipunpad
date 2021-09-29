@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="94fccbbc-9395-4e78-a1d2-cd5d747b77d3" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectId" id="1nJiy1Rzg8oZ2oev7qM7g0Grpor" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../Mama/website/sprei" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Bagas\Kuliah\Diluar Perkuliahan\Hima Ilpol\www\app\controllers\default" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="94fccbbc-9395-4e78-a1d2-cd5d747b77d3" name="Default Changelist" comment="" />
+      <created>1611114844776</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1611114844776</updated>
+      <workItem from="1611114845917" duration="12436000" />
+      <workItem from="1611151490883" duration="6332000" />
+      <workItem from="1611198488706" duration="12244000" />
+      <workItem from="1611476233067" duration="2353000" />
+      <workItem from="1611538269513" duration="14116000" />
+      <workItem from="1611566741705" duration="13732000" />
+      <workItem from="1611624154598" duration="8926000" />
+      <workItem from="1613313253039" duration="478000" />
+      <workItem from="1613367959954" duration="1265000" />
+      <workItem from="1613374717679" duration="3784000" />
+      <workItem from="1613393502176" duration="4055000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="360" y="93" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1613313709449">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="360" y="93" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1366.738@0.0.1366.738" timestamp="1613313709449" />
+    <state x="92" y="92" width="1182" height="554" key="DiffContextDialog" timestamp="1611205434507">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="92" y="92" width="1182" height="554" key="DiffContextDialog/0.0.1366.738@0.0.1366.738" timestamp="1611205434507" />
+    <state x="410" y="65" key="FileChooserDialogImpl" timestamp="1613397602806">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="410" y="65" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1613397602806" />
+    <state x="469" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1613376946035">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="469" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1366.738@0.0.1366.738" timestamp="1613376946035" />
+    <state x="349" y="44" width="667" height="650" key="find.popup" timestamp="1613377590786">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="349" y="44" width="667" height="650" key="find.popup/0.0.1366.738@0.0.1366.738" timestamp="1613377590786" />
+    <state x="255" y="161" key="run.anything.popup" timestamp="1611631152560">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="255" y="161" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1611631152560" />
+    <state x="262" y="-1" width="840" height="1034" key="search.everywhere.popup" timestamp="1613397547705">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="262" y="-1" width="840" height="1034" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1613397547705" />
+  </component>
+</project>
