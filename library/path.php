@@ -20,6 +20,7 @@ $var['v_display_url']  = $var['view_url'] . '/display';
 $var['v_public_url']   = $var['http'] . '/public';
 
 $var['v_images_url']   = $var['v_assets_url'] . '/images';
+$var['v_pdf_url']   = $var['v_assets_url'] . '/pdf';
 
 
 // to app [Path]

@@ -103,6 +103,14 @@ view::get_views_template("dsp_header");
                 "note"=> "dalam satuan menit"
             )
         );
+        view::get_component('dragfile',
+            array(
+                "name" => "file",
+                "value" => isset($data['file_pdf']) ? $data['file_pdf'] : '',
+                "validate" => "required",
+                "accept" => "pdf+docx",
+            )
+        );
         view::get_component('submit',
             array(
                 "id"=>(isset($id))?$id:""
@@ -140,7 +148,7 @@ view::get_views_template("dsp_header");
 <script type="text/javascript">
     $(document).ready(function(){
         $('#submit-btn').on("click",function(){
-            var ckeditor = $('#p_content').text();
+            var ckeditor = $('#p_content').html();
             $('#i_content').val(ckeditor);
         });
     });

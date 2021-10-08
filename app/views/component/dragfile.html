@@ -6,7 +6,7 @@
     <label for="<?php echo $param['name']; ?>" class="col-sm-3 col-form-label"><?php echo admin::lang($param['name']) ?></label>
     <div class="col-md-6 col-sm-6 col-xs-12">
         <div class="drop-zone">
-            <span class="drop-zone__prompt">Drop file here or click to upload<br>[ <?php echo str_replace("|"," or ", $param['accept'])?> extension ] <?= !empty($param['value']) ? "</br></br> Your File: ".$param['value'] : "" ?></span>
+            <span class="drop-zone__prompt"><?= !empty($param['value']) ? "Your File: ".$param['value'] : "Drop file here or click to upload<br>[" . str_replace("+"," or ", $param['accept']) . " extension ]" ?></span>
             <input id="dragFile" name="<?= $param['name']?>" value="<?php echo $param['value']; ?>" type="file" class="drop-zone__input" data-type="dragfile" accept="<?php echo $param['accept'] ?>" />
         </div>
         <?php if($param['value']){ ?>
@@ -20,7 +20,7 @@
         ?>
     </div>
 </div>
-<link rel="stylesheet" href="<?php echo $var['app_assets']; ?>/_vendors/dragfile/dragfile.css" />"
+<link rel="stylesheet" href="<?php echo $var['app_assets']; ?>/_vendors/dragfile/dragfile.css" />
 
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>

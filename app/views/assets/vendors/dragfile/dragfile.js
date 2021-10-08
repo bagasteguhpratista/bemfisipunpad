@@ -8,7 +8,7 @@ document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
     inputElement.addEventListener("change", (e) => {
         if (inputElement.files.length) {
             $(function(){
-                if (!chkExtFile($('input[data-type=dragfile]').val(), $('input[data-type=dragfile]').attr("accept").split("|"))) {
+                if (!chkExtFile($('input[data-type=dragfile]').val(), $('input[data-type=dragfile]').attr("accept").split("+"))) {
                     return false;
                 }else{
                     updateThumbnail(dropZoneElement, inputElement.files[0]);
@@ -34,7 +34,7 @@ document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
         if (e.dataTransfer.files.length) {
             inputElement.files = e.dataTransfer.files;
             // $(function(){
-                if (!chkExtFile($('input[data-type=dragfile]').val(), $('input[data-type=dragfile]').attr("accept").split("|"))) {
+                if (!chkExtFile($('input[data-type=dragfile]').val(), $('input[data-type=dragfile]').attr("accept").split("+"))) {
                     return false;
                 }else{
                     updateThumbnail(dropZoneElement, e.dataTransfer.files[0]);
@@ -98,7 +98,7 @@ function chkExtFile(file, exts) {
 }
 $(function(){
     $('input[data-type=dragfile]').change(function(){
-        if(!chkExtFile($(this).val(), $(this).attr("accept").split("|")))
+        if(!chkExtFile($('input[data-type=dragfile]').val(), $('input[data-type=dragfile]').attr("accept").split("+")))
         {
             alert('Invalid file extension !');
             $(this).val("");

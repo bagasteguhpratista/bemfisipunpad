@@ -66,14 +66,17 @@
                     exit;
                 }
                 $id = rand(1, 100).date("dmYHis");
+                $alias  = admin::alias($title);
                 if($p_image_cover_size > 0){
                     $data['image_cover'] = file::compressImage('p_image_cover',$var['v_images_path']."/artikel/",50,'ic');
                 }
+                if($file_size > 0){
+                    $data['file'] = file::save_file('file', $var['v_pdf_path']."/artikel/",$alias);
+                }
                 $writer = ($writer_n == 'show') ? $writer : '';
 //                $passwordhash = md5(serialize($password));
-                $alias  = admin::alias($title);
                 $urut = db::data_where("max(reorder)",self::$table,"1=1");
-                $content = htmlspecialchars($content);
+                // $content = htmlspecialchars($content);
                 $urut = ($urut==0) ? 1 : $urut+1;
                 db::insert(self::$table,
                 [
@@ -89,6 +92,7 @@
                     'writer_n'          => $writer_n,
                     'tagline'           => $tagline,
                     'min_read'          => $min_read,
+                    'file_pdf'          => $data['file'],
                     'status'            => 'active',
                     'reorder'           => $urut,
                     'created_by'        => $var['auth']['id'],
@@ -111,7 +115,6 @@
             if($_to == "002"){
                 valid::unsetValidate();
                 valid::setData();
-                echo json_encode($_POST);exit;
                 valid::setValidate([
                     'title'  => 'required'
                 ]);
@@ -127,9 +130,17 @@
                 if($p_image_cover_size > 0){
                     @unlink($var['v_images_path']."/artikel/". $data['image_cover']);
                     $data['image_cover'] = file::compressImage('p_image_cover',$var['v_images_path']."/artikel/",50,'ic');
-                } 
-                $writer = ($writer_n == 'show') ? $writer : '';
+                }
                 $alias  = admin::alias($title);
+                if(isset($file_del)){
+                    @unlink($var['v_pdf_path']."/artikel/". $data['file_pdf']);
+                    $data['file'] = "";
+                }
+                if($file_size > 0){
+                    // @unlink($var['v_pdf_path']."/majalah/". $data['file_pdf']);
+                    $data['file'] = file::save_file('file', $var['v_pdf_path']."/artikel/",$alias);
+                }
+                $writer = ($writer_n == 'show') ? $writer : '';
                 // $content = htmlspecialchars($content);
                 db::update(self::$table,
                 [
@@ -144,6 +155,7 @@
                     'writer_n'          => $writer_n,
                     'tagline'           => $tagline,
                     'min_read'          => $min_read,
+                    'file_pdf'          => $data['file'],
                     'updated_by'        => $var['auth']['id'],
                     'updated_at'        => $now
                 ],'id',$id);
@@ -165,9 +177,13 @@
             }
             if($_to == "002"){
                 if($p_id)$delid  = implode("','", $p_id);
-                $sql = "SELECT image_cover FROM ". $var['table'][self::$table] ." WHERE id IN ('". $delid ."')";
+                $sql = "SELECT image_cover,file_pdf FROM ". $var['table'][self::$table] ." WHERE id IN ('". $delid ."')";
                 db::query($sql, $rs['row'], $nr['row']);
-                while($row=db::fetch($rs['row'])) @unlink($var['v_images_path']."/artikel/". $row['image_cover']);
+                while($row=db::fetch($rs['row'])){
+                    @unlink($var['v_images_path']."/artikel/". $row['image_cover']);
+                    @unlink($var['v_pdf_path']."/artikel/". $row['file_pdf']);
+                }
+
                 
                 db::delete(self::$table,'id',$delid);
                 flasher::setFlash('success', admin::lang('delete'));
