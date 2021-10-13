@@ -27,6 +27,7 @@
                 "noname"=>true
             )
         );
+        
         view::get_component('submit',
             array(
                 "id"=>(isset($id))?$id:""

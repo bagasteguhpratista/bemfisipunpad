@@ -25,8 +25,9 @@
 		</div>
 	</footer>
 
-
+	<?php if($pg != 'fisipcrisiscenter'){ ?>
     <script src="_frontend/scripts/jquery.min.js"></script>
+    <?php } ?>
 	<script src="_frontend/scripts/jquery-migrate-3.0.1.min.js"></script>
 	<script src="_frontend/scripts/popper.min.js"></script>
 	<script src="_frontend/scripts/bootstrap.min.js"></script>
@@ -41,7 +42,7 @@
 	<script src="_frontend/scripts/scrollax.min.js"></script>
 	<script src="_frontend/vendor/dist/js/swiper.min.js"></script>
 	<script src="_frontend/vendor/slick/slick.min.js"></script>
-	<script src="_frontend/scripts/mixitup.min.js"></script>
+	<!-- <script src="_frontend/scripts/mixitup.min.js"></script> -->
 	<script src="_frontend/scripts/main.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
@@ -53,5 +54,25 @@
 		  	$('.owl-carousel').owlCarousel();
 		});
 	</script>
+	<?php if($pg == 'fisipcrisiscenter'){ ?>
+	<script type="text/javascript">
+	    $(document).ready(function () {
+	        $('#phone').inputmask({
+	            mask: "9999-9999-9999",
+	        });
+
+	        $('a[href="#finish"]').on('click',function(){
+	            if($('.box-label-statement').is(':checked')){
+	                $("#send").submit();
+	            }else{
+	                alert("Checklist pernyataan yang telah dibuat");
+	            }
+	            return 0;
+	        });
+	    });
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<?php } ?>
 </body>
 </html>

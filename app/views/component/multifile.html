@@ -1,0 +1,13 @@
+
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+<link href="<?php echo $var['app_assets']; ?>/_vendors/multiimage/imageuploadify.min.css" rel="stylesheet">
+
+	<input name="<?= $param['name']?>[]" class="image" type="file" accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf" data-type="dragfile" multiple>
+
+<script type="text/javascript" src="<?php echo $var['app_assets']; ?>/_vendors/multiimage/imageuploadify.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.image').imageuploadify();
+    })
+</script>

@@ -94,7 +94,7 @@ view::get_component("form_up");
         );
 ?>
 <script>
-    $( document ).ready(function() {
+    $( document ).ready(function(){
         $('#internal_content').hide();
         $('#eksternal_content').hide();
         $('#category_page').hide();
@@ -121,10 +121,7 @@ view::get_component("form_up");
         if(type){$("#"+type+"_content").show();}
     });
 </script>
-
-
 <?php
     view::get_component("form_down");
     view::get_views_template("dsp_footer");
 ?>
-

@@ -2,25 +2,21 @@
     view::get_views_template("dsp_header");
         view::get_component("form_up");
 
-        view::get_component("uploadlib");
-
         view::get_component('inputtext',
             array(
-                "name"=>"name",
-                "value"=>isset($data['name']) ? $data['name'] : '',
+                "name"=>"title",
+                "value"=>isset($data['title']) ? $data['title'] : '',
                 "validate"=>"required"
             )
         );
-
-        view::get_component('inputupload',
+        if(!isset($id)){
+        view::get_component('multifile',
             array(
-                "name"=>"image",
-                "value"=> ((!empty($data['image']) AND file_exists($var['v_images_path'] ."/user/". $data['image']))? $var['v_images_url']."/user/". $data['image']:''),
-                "category"=>"image",
-                "accept"=>"jpg+jpeg+png+gif"
+                "name"=>"images"
             )
         );
-
+        }
+        
         view::get_component('submit',
             array(
                 "id"=>(isset($id))?$id:""

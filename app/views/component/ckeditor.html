@@ -8,7 +8,7 @@
 <body>
 
 <div class="position-relative row form-group">
-    <label for="<?php echo $param['name']; ?>" class="col-sm-3 col-form-label"></label>
+    <label for="<?php echo $param['name']; ?>" class="col-sm-3 col-form-label"><?php echo admin::lang($param['name']) ?></label>
     <div class="col-sm-9" id="<?php echo $param['name'] . '_class'?>">
 		<div name="<?= $param['name']?>" id="p_<?= $param['name']?>" class="ckeditor"><?= (isset($param['value']) ? $param['value'] : 'Masukan text disini.' ) ?></div>
 		<input type="hidden" id="i_<?= $param['name']?>" name="<?= $param['name']?>">

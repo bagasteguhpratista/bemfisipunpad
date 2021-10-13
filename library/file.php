@@ -76,6 +76,7 @@
             $filename       = $_FILES[$source]['name'];
             $sources        = $_FILES[$source]['tmp_name'];
             $type           = $_FILES[$source]['type'];
+            echo $filename;exit;
             // $ext = pathinfo($path, PATHINFO_EXTENSION);
             // $info = getimagesize($sources);
             $ext = pathinfo($filename, PATHINFO_EXTENSION);
@@ -124,7 +125,61 @@
             }
             // $new_name = $prefix."_".strtoupper(md5(uniqid(rand(), true))).'.'.$ext;
             return $new_name;
-             
+        }
+
+        public static function compressImageArray($source, $destination, $quality, $prefix,$array)
+        {
+            $filename       = $_FILES[$source]['name'][$array];
+            $sources        = $_FILES[$source]['tmp_name'][$array];
+            $type           = $_FILES[$source]['type'][$array];
+            // $ext = pathinfo($path, PATHINFO_EXTENSION);
+            // $info = getimagesize($sources);
+            $ext = pathinfo($filename, PATHINFO_EXTENSION);
+            $new_name = $prefix."_".strtoupper(md5(uniqid(rand(), true))).'.'.$ext;
+            $destination = $destination.$new_name;
+            $imgInfo = getimagesize($sources); 
+            $mime = $imgInfo['mime'];
+            $exif = exif_read_data($sources);
+            $info = getimagesize($sources);
+            // echo round($_FILES[$source]['size']/1048576,2);
+            switch ($info['mime']) {
+                case 'image/jpeg': 
+                    $image = imagecreatefromjpeg($sources); 
+                    if(isset($exif['Orientation'])){
+                        switch ($exif['Orientation']) {
+                            case 3:
+                                $image = imagerotate($image, 180, 0);
+                                break;
+                            case 6:
+                                $image = imagerotate($image, -90, 0);
+                                break;
+                            case 8:
+                                $image = imagerotate($image, 90, 0);
+                                break;
+                            default:
+                                $image = $image;
+                        }
+                    }
+                    imagejpeg($image , $destination , $quality); 
+                    break;
+                case 'image/gif': $image = imagecreatefromgif($sources); imagejpeg($image , $destination , $quality); break;
+                case 'image/png':
+                    $image = imagecreatefrompng($sources);
+                    if(file::check_transparent($image)){
+                        imagealphablending($image, false);
+                        imagesavealpha($image, true);
+                        $qf = ($quality==100) ? 99 : $quality;
+                        $qf = $qf / 10;
+                        $qf = 10 - $qf;
+                        imagepng($image , $destination , $qf);
+                    }else{
+                        imagejpeg($image , $destination , $quality);
+                    }
+                break;
+                default: return false; break;
+            }
+            // $new_name = $prefix."_".strtoupper(md5(uniqid(rand(), true))).'.'.$ext;
+            return $new_name;
         }
 
         public static function check_transparent($im) {

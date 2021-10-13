@@ -63,6 +63,25 @@
                 $alias  = admin::alias($title);
                 $urut = db::data_where("max(reorder)",self::$table,"1=1");
                 $urut = ($urut==0) ? 1 : $urut+1;
+                // echo json_encode($images);
+                // exit;
+                if($images_size > 0){
+                    for($i=0;$i<count($images);$i++){
+                        $data['images'] = file::compressImageArray('images',$var['v_images_path']."/sapa_kamu/",50,'d',$i);
+                        $uruts          = db::data_where("max(reorder)","sapa_kamu_images","1=1");
+                        $uruts          = ($uruts==0) ? 1 : $uruts+1;
+                        $id_sapa_kamu   = rand(1, 100).date("dmYHis")."-sk";
+                        db::insert("sapa_kamu_images",
+                        [
+                            'id'                => $id_sapa_kamu,
+                            'id_sapa_kamu'      => $id,
+                            'images'            => $data['images'],
+                            'reorder'           => $uruts,
+                            'created_by'        => $var['auth']['id'],
+                            'created_at'        => $now
+                        ]);
+                    }
+                }
                 db::insert(self::$table,
                 [
                     'id'                => $id,
@@ -123,7 +142,10 @@
             }
             if($_to == "002"){
                 if($p_id)$delid  = implode("','", $p_id);
-                
+                $sql = "SELECT images FROM ". $var['table']["sapa_kamu_images"] ." WHERE id_sapa_kamu IN ('". $delid ."')";
+                db::query($sql, $rs['row'], $nr['row']);
+                while($row=db::fetch($rs['row'])) @unlink($var['v_images_path']."/sapa_kamu/". $row['images']);
+                db::delete("sapa_kamu_images","id_sapa_kamu",$delid);
                 db::delete(self::$table,'id',$delid);
                 flasher::setFlash('success', admin::lang('delete'));
                 header("location: " . $var['app_url'] . '/' . route::controller());

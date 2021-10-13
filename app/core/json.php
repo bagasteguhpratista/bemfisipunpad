@@ -185,5 +185,22 @@
                 echo json_encode($data);
                 setJson($data, "kategoriartikel");
             break;
+            case 'sapa_kamu':
+                $sql  = "SELECT * FROM ". $var['table']['sapa_kamu'] . " WHERE status ='active'";
+                db::query($sql, $rs['data'], $nr['data']);
+                while($row  = db::fetch($rs['data']))
+                {
+                    $sapa_kamu =  "SELECT * FROM ". $var['table']['sapa_kamu_images'] . " WHERE id_sapa_kamu='".$row['id']."'";
+                    db::query($sapa_kamu, $rs['sapa_kamu'], $nr['sapa_kamu']);
+                    while($rows  = db::fetch($rs['sapa_kamu']))
+                    {
+                        $row['image'][] = $var['v_images_url']."/sapa_kamu/". $rows['images'];
+                    }
+                    // $row['publish_date'] = admin::format_date($item['publish_date'],'id','A');
+                    $data[] = $row;
+                }
+                echo json_encode($data);
+                setJson($data, "sapakamu");
+            break;
         }
     }

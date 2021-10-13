@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <?php
-                    if(isset($item[0]['file_pdf'])){
+                    if(!empty($item[0]['file_pdf'])){
                 ?>
                 <div style="text-align: center;">
                     <a style="font-size: 14px;padding: 7px 15px;" href="<?= $var['v_pdf_url'].'/artikel/'.$item[0]['file_pdf'] ?>" class="btn btn-primary">Selengkapnya dapat di unduh disini</a>

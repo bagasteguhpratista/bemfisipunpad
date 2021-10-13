@@ -1,0 +1,194 @@
+		<?php
+			$programstudi = ['Administrasi Publik','Hubungan Internasional','Kesejahteraan Sosial','Ilmu Pemerintahan','Antropologi','Administrasi Bisnis','Sosiologi','Ilmu Politik','Administrasi Bisnis PSDKU Pangandaran','D-IV Administrasi Pemerintahan','D-IV Administrasi Keuangan Publik','D-IV Bisnis Logistik','D-IV Kersipan Digital'];
+
+			$angkatan = ['2021','2020','2019','2018','2017','2016','2015','2014','2013']
+		?>
+		<div class="wrapper">
+	        <form action="<?= $var['v_public_url'].'/dinamis/code/fisipcrisiscenter.php' ?>" id="send" method="post">
+	            <div id="wizard">
+	                <h4></h4>
+	                <section>
+	                    <div class="form-header-intro">
+	                        <h1>Formulir Pengaduan Kasus Anti Kekerasan Seksual BEM FISIP Unpad</h1>
+	                        <p>
+	                        <b>Halo, KEMA FISIP!</b>
+	                        </br></br>
+	                        Ancaman kekerasan seksual nyatanya begitu dekat dengan kita semua. Tentu sudah menjadi tanggung jawab kita semua untuk menciptakan lingkungan yang aman bagi bersama. 
+	                        </br></br>
+	                        Oleh karenanya, dengan harapan agar kita dapat bersama-sama menciptakan lingkungan yang aman dari segala bentuk kekerasan seksual, BEM FISIP Unpad membuka kanal pelaporan kasus kekerasan seksual bagi seluruh KEMA FISIP Unpad untuk melaporkan segala bentuk kekerasan seksual yang terjadi di lingkungan kita. Melalui kanal pelaporan ini, BEM FISIP Unpad diharapkan dapat mengoptimalkan perannya untuk melakukan pendampingan bagi korban dan mengupayakan penyelesaian kasus dengan sebaik-baiknya.
+	                        </br></br>
+	                        Agar dapat ditangani lebih lanjut, kasus yang dilaporkan pun harus memenuhi salah satu dari dua poin di bawah ini:
+	                        </br>
+	                        1. Korban dan/atau pelaku merupakan bagian dari KEMA FISIP Unpad, dan/atau;
+	                        </br>
+	                        2. Lokasi kejadian bertempat di lingkungan fisik maupun virtual yang berkenaan dengan FISIP Unpad.
+	                        </br></br>
+	                        Laporan kamu akan ditangani oleh Tim Khusus Penanganan Kekerasan Seksual BEM FISIP Unpad yang identitasnya dirahasiakan demi keamanan informasi yang diberikan. Identitas pelapor, laporan, kesaksian, dan barang bukti yang diberikan pun akan sepenuhnya dirahasiakan. Setelah mengisi formulir ini, kamu akan dihubungi oleh Tim Khusus Penanganan Kekerasan Seksual BEM FISIP Unpd 2021 untuk didampingi dan dimintai keterangan lebih lanjut.
+	                        </br></br>
+	                        Yuk, #KitaYangMulai bergerak dan bicara untuk mewujudkan lingkungan FISIP Unpad yang aman dan jauh dari segala bentuk kekerasan seksual!
+	                        </br></br>
+	                        Narahubung: ID LINE <b><a href="https://line.me/ti/p/~@fisipcarecenter" target="_blank">@fisipcarecenter</a></b>
+	                        </br></br>
+	                        Departemen Advokasi dan Kesejahteraan Mahasiswa
+	                        </br>
+	                        BEM FISIP Unpad 2021
+	                        </br>
+	                        Kita Yang Mulai
+	                        </p>
+	                    </div>
+	                </section>
+	                <h4></h4>
+	                <section class="section-form">
+	                    <h1>Identitas Diri</h1>
+	                    <br><br>
+
+	                    <div class="row form-group position-relative">
+	                        <label for="nama_lengkap" class="col-sm-3 col-form-label">Nama Lengkap</label>
+	                        <div class="col-sm-9">
+	                            <input type="text" placeholder="" name="nama_lengkap" class="form-control">
+	                        </div>
+	                    </div>
+
+	                    <div class="row form-group position-relative">
+	                        <label for="program_studi" class="col-sm-3 col-form-label">Program Studi</label>
+	                        <div class="col-sm-9">
+	                            <select name="program_studi" placeholder="" class="select2 form-control">
+	                                <option value="" selected disabled>Pilih</option>
+	                                <?php for($i=0;$i < count($programstudi);$i++){ ?>
+	                                <option value="<?= $programstudi[$i]?>"><?= $programstudi[$i]?></option>
+	                                <?php } ?>
+	                            </select>
+	                        </div>
+	                    </div>
+
+	                    <div class="row form-group position-relative">
+	                        <label for="angkatan" class="col-sm-3 col-form-label">Angkatan</label>
+	                        <div class="col-sm-9">
+	                            <select name="angkatan" placeholder="" class="select2 form-control">
+	                                <option value="" selected disabled>Pilih</option>
+	                                <?php for($i=0;$i < count($angkatan);$i++){ ?>
+	                                <option value="<?= $angkatan[$i]?>"><?= $angkatan[$i]?></option>
+	                                <?php } ?>
+	                            </select>
+	                        </div>
+	                    </div>
+
+	                    <div class="row form-group position-relative">
+	                        <label for="no_telp" class="col-sm-3 col-form-label">Nomor Telepon</label>
+	                        <div class="col-sm-9">
+	                            <input name="no_telp" type="text" id="phone" class="form-control phone">
+	                        </div>
+	                    </div>
+
+	                    <div class="row form-group position-relative">
+	                        <label for="id_line" class="col-sm-3 col-form-label">ID Line</label>
+	                        <div class="col-sm-9">
+	                            <input name="id_line" type="text" placeholder="" class="form-control">
+	                        </div>
+	                    </div>
+	                </section>
+	                <h4></h4>
+	                <section class="section-form">
+	                    <h1>Persoalan yang dihadapi</h1>
+	                    <br>
+	                    <div class="row form-group position-relative">
+	                        <label for="kasus_terjadi" class="col-sm-6 col-form-label">Saya ingin melaporkan kasus yang terjadi pada</label>
+	                        <div class="col-sm-5 input-radio">
+	                            <div class="form-radio">
+	                                <input type="radio" name="kasus_terjadi" class="" value="Diri Sendiri" >
+	                                <label class="col-value-label" for="">Diri Sendiri</label>
+	                            </div>
+	                            <div class="form-radio">
+	                                <input type="radio" name="kasus_terjadi" class="" value="Orang Lain" >
+	                                <label class="col-value-label" for="">Orang Lain</label>
+	                            </div>
+	                        </div>
+	                    </div>
+
+	                    <div class="row form-group position-relative">
+	                        <label for="pelaku_kekerasan" class="col-sm-6 col-form-label">Apakah pelaku kekerasan seksual dalam kasus ini merupakan civitas FISIP Unpad?</label>
+	                        <div class="col-sm-5 input-radio">
+	                            <div class="form-radio">
+	                                <input type="radio" name="pelaku_kekerasan" class="" value="Ya" >
+	                                <label class="col-value-label" for="">Ya</label>
+	                            </div>
+	                            <div class="form-radio">
+	                                <input type="radio" name="pelaku_kekerasan" class="" value="Tidak" >
+	                                <label class="col-value-label" for="">Tidak</label>
+	                            </div>
+	                        </div>
+	                    </div>
+
+	                    <div class="row form-group position-relative">
+	                        <label for="korban_kekerasan" class="col-sm-6 col-form-label">Apakah korban kekerasan seksual dalam kasus ini merupakan civitas FISIP Unpad??</label>
+	                        <div class="col-sm-5 input-radio">
+	                            <div class="form-radio">
+	                                <input type="radio" name="korban_kekerasan" class="" value="Ya" >
+	                                <label class="col-value-label" for="">Ya</label>
+	                            </div>
+	                            <div class="form-radio">
+	                                <input type="radio" name="korban_kekerasan" class="" value="Tidak" >
+	                                <label class="col-value-label" for="">Tidak</label>
+	                            </div>
+	                        </div>
+	                    </div>
+
+	                    <div class="row form-group position-relative">
+	                        <label for="lingkungan_kekerasan" class="col-sm-6 col-form-label">Apakah kasus kekerasan seksual ini terjadi di sekitar lingkungan FISIP Unpad?</label>
+	                        <div class="col-sm-5 input-radio">
+	                            <div class="form-radio">
+	                                <input type="radio" name="lingkungan_kekerasan" class="" value="Ya" >
+	                                <label class="col-value-label" for="">Ya</label>
+	                            </div>
+	                            <div class="form-radio">
+	                                <input type="radio" name="lingkungan_kekerasan" class="" value="Tidak" >
+	                                <label class="col-value-label" for="">Tidak</label>
+	                            </div>
+	                        </div>
+	                    </div>
+
+	                    <div class="row form-group position-relative">
+	                        <label for="jenis_kekerasan" class="col-sm-6 col-form-label">Jenis kekerasan seksual apa yang terjadi?</label>
+	                        <div class="col-sm-5">
+	                            <select name="jenis_kekerasan" placeholder="" class="select2 form-control">
+	                                <option value="" selected disabled>Pilih</option>
+	                                <option value="Pelecehan Seksual">Pelecehan Seksual</option>
+	                                <option value="Eksploitasi Seksual">Eksploitasi Seksual</option>
+	                                <option value="Pemaksaan Kontrasepsi">Pemaksaan Kontrasepsi</option>
+	                                <option value="Pemaksaan Aborsi">Pemaksaan Aborsi</option>
+	                                <option value="Pemerkosaan">Pemerkosaan</option>
+	                                <option value="Penyiksaan Seksual">Penyiksaan Seksual</option>
+	                                <option value="Kekerasan Berbasis Gender Online (KBGO)">Kekerasan Berbasis Gender Online (KBGO)</option>
+	                                <option value="Tidak yakin">Tidak yakin</option>
+	                            </select>
+	                        </div>
+	                    </div>
+
+	                    <div class="row form-group position-relative">
+	                        <div class="input-radio modal-btn">
+	                            <input type="checkbox" name="question_box" class="box-label-statement" value="" >
+	                            <span>Menyetujui <a type="button" class="pernyataan" data-toggle="modal" data-target="#exampleModalCenter"> pernyataan </a> yang dibuat.</span>
+	                        </div>
+	                    </div>
+
+	                    <!-- Modal -->
+	                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	                      <div class="modal-dialog modal-dialog-centered" role="document">
+	                        <div class="modal-content">
+	                          <div class="modal-header">
+	                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	                                <span aria-hidden="true">&times;</span>
+	                            </button>
+	                          </div>
+	                          <div class="modal-body">
+	                                <p class="text-statement">
+	                                    Dengan mencentang kolom ini, saya menyatakan bahwa informasi yang saya berikan adalah sebenar-benarnya. Saya melaporkan kasus ini atas kesadaran saya pribadi (apabila saya melaporkan kasus sebagai korban) atau atas sepengetahuan dan perizinan korban (apabila saya melaporkan kasus sebagai seseorang yang mengenali korban). Kasus ini dilaporkan tanpa paksaan apapun dan/atau siapapun.
+	                                </p>
+	                          </div>
+	                        </div>
+	                      </div>
+	                    </div>
+	                </section>
+	            </div>
+	        </form>
+	    </div>

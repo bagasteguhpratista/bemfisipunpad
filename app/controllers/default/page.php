@@ -24,7 +24,7 @@
             $results = [];
             $show_all = isset($show_all) ? $show_all : 0;
             // view::pagination();
-            $pagination = isset($pagination) ? $pagination : 10;
+            $pagination = isset($pagination) ? $pagination : 20;
             
             if(isset($search))$v .= " AND name LIKE '%".$search."%'";
             $halamanaktif = (isset($halamanaktif)) ? $halamanaktif : 1;

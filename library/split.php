@@ -94,8 +94,13 @@ class split {
                 $ctx = stream_context_create($op);
                 $parseKey		= $basis[1][$key];
                 $parseName 	    = strtolower($parseKey);
+                if(isset($page1)){
+                    $page = explode("-",$page);
+                    if(isset($page[1])){$page = $page[1];}
+                }
+                $pages = isset($_GET['page']) ? $_GET['page'] : $page;
                 $parseSource    = file_get_contents($var['public_path'] .'/statis/main/'. strtolower($parseName) .'.html');
-                $parseSource    = file_get_contents($var['http'] . "/statis&st=".$parseName, false, $ctx);
+                $parseSource    = file_get_contents($var['http'] . "/statis&st=".$parseName."&pg=".$pages, false, $ctx);
                 $parseContent   = htmlentities($parseSource);
                 $files           = str_replace($value, $parseContent, $files);
             }
