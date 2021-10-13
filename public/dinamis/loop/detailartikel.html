@@ -20,12 +20,12 @@
                     <div class="dateby mb-2">
                         <p class="datepost"><?= admin::format_date($item[0]['publish_date'],"id","A"); ?></p>
                         <?php
-                        if($item[0]['writer'] == 'show'){
+                        if($item[0]['writer_n'] == 'show'){
                         ?>
                         &nbsp;&nbsp;&nbsp;
-                        <p class="dash-ver">|</p>
+                        <p class="dash-ver">-</p>
                         &nbsp;&nbsp;&nbsp;
-                        <p class="dash-ver">oleh <b><?= isset($item[0]['writer_n']) ? $item[0]['writer_n'] : 'Anonymous'?></b></p>
+                        <p class="dash-ver">oleh <b><?= isset($item[0]['writer']) ? $item[0]['writer'] : 'Anonymous'?></b></p>
                         <?php } ?>
                     </div>
                 </div>

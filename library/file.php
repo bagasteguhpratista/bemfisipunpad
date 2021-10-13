@@ -76,7 +76,6 @@
             $filename       = $_FILES[$source]['name'];
             $sources        = $_FILES[$source]['tmp_name'];
             $type           = $_FILES[$source]['type'];
-            echo $filename;exit;
             // $ext = pathinfo($path, PATHINFO_EXTENSION);
             // $info = getimagesize($sources);
             $ext = pathinfo($filename, PATHINFO_EXTENSION);

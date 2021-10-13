@@ -27,7 +27,7 @@
             
             if(isset($search))$v .= " AND title LIKE '%".$search."%'";
             $halamanaktif = (isset($halamanaktif)) ? $halamanaktif : 1;
-            $sql = "SELECT * FROM " . $var['table'][self::$table] . " $v ORDER BY created_at DESC";
+            $sql = "SELECT * FROM " . $var['table'][self::$table] . " $v ORDER BY reorder ASC";
 
             list($query,$limit,$jumlahdatasql,$awalData,$halamanaktif) = admin::pagination($sql,$pagination,$show_all,$halamanaktif);
             db::query($query,$rs['sql'],$nr['sql']);

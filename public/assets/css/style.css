@@ -1952,3 +1952,34 @@ p.card-text{
   }
 }
 /*End Responsive Web*/
+
+/*sapa kamu*/
+.banner-sapakamu .h1-banner-beranda{
+  font-size: 64px;
+}
+.banner-sapakamu .box-img-banner{
+  text-align: left;
+  position: absolute;
+}
+.banner-sapakamu .box-img-banner .one-third{
+  width: 85%;
+}
+.sc_sapa_kamu .box-img{
+  display: flex;
+}
+.sc_sapa_kamu .img-sk{
+  width: 100%;
+  padding: 10px;
+}
+.title_sapa_kamu .number_sk{
+  font-size: 56px;
+  font-weight: 700;
+}
+.title_sapa_kamu .name_sk{
+  font-size: 46px;
+  font-weight: 500;
+}
+.img-sapa-kamu .img-doc{
+  height: 180px;
+  margin: 14px 7px;
+}

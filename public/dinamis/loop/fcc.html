@@ -3,6 +3,8 @@
 
 			$angkatan = ['2021','2020','2019','2018','2017','2016','2015','2014','2013']
 		?>
+
+		<link rel="stylesheet" href="_frontend/vendor/notify/css/notify.min.css">
 		<div class="wrapper">
 	        <form action="<?= $var['v_public_url'].'/dinamis/code/fisipcrisiscenter.php' ?>" id="send" method="post">
 	            <div id="wizard">
@@ -166,7 +168,7 @@
 
 	                    <div class="row form-group position-relative">
 	                        <div class="input-radio modal-btn">
-	                            <input type="checkbox" name="question_box" class="box-label-statement" value="" >
+	                            <input type="checkbox" name="question_box" class="box-label-statement" value="setuju" >
 	                            <span>Menyetujui <a type="button" class="pernyataan" data-toggle="modal" data-target="#exampleModalCenter"> pernyataan </a> yang dibuat.</span>
 	                        </div>
 	                    </div>
@@ -192,3 +194,17 @@
 	            </div>
 	        </form>
 	    </div>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	    <script src="_frontend/vendor/notify/js/notify.js"></script>
+	    <?php 
+	    	if(isset($_SESSION['msg_content'])){ ?>
+	    <script type="text/javascript">
+	    	notify("<?= $_SESSION['status'] ?>", "<?= $_SESSION['status_msg'] ?>", "<?= $_SESSION['msg_content'] ?>");
+	    </script>
+	    <?php
+	    	session_destroy();
+			unset($_SESSION['status']); 
+			unset($_SESSION['status_msg']); 
+			unset($_SESSION['msg_content']); 
+	    	} 
+	    ?>

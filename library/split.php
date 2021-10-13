@@ -70,7 +70,7 @@ class split {
                     $parse   = str_replace('&lt;!--!!DN-'.$type.'-'.$parseKey.'!!--&gt;', '', $parse);
                     $parse   = str_replace('&lt;!--/!!DN-'.$type.'-'.$parseKey.'!!--&gt;', '', $parse);
                     $parse   = html_entity_decode($parse);
-                    $fopen      = fopen($parseFile, 'w') or die("can't open file");
+                    $fopen   = fopen($parseFile, 'w') or die("can't open file");
                     fwrite($fopen, $parse);
                     fclose($fopen);
                 }

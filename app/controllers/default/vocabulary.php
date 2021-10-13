@@ -25,7 +25,7 @@
             // view::pagination();
             $pagination = isset($pagination) ? $pagination : 10;
             
-            if(isset($search))$v .= " AND name LIKE '%".$search."%'";
+            if(isset($search))$v .= " AND name LIKE '%".$search."%' OR alias LIKE '%".$search."%'";
             $halamanaktif = (isset($halamanaktif)) ? $halamanaktif : 1;
             $sql = "SELECT * FROM " . $var['table']['vocab'] . " $v ORDER BY created_at DESC";
 
