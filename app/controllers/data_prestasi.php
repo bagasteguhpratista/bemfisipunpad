@@ -102,6 +102,7 @@
                 $alias  = admin::alias($name);
                 db::update(self::$table,
                 [
+				
                     'name'             => $name,
 					'jurusan_angkatan'             => $jurusan_angkatan,
 					'prestasi'             => $prestasi,

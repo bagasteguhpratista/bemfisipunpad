@@ -18,7 +18,7 @@
             )
         );
 
-        view::get_component('inputtext',
+        view::get_component('textarea',
             array(
                 "name"=>"prestasi",
                 "value"=>isset($data['prestasi']) ? $data['prestasi'] : '',
