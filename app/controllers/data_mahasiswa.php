@@ -75,8 +75,8 @@
                     'alias'             => $alias,
 					'angkatan'             => $angkatan,
 					'jurusan'             => $jurusan,
+					'status'             => 'active',
 					'file'             => $data['file'],
-                    'status'            => 'active',
                     'created_by'        => $var['auth']['id'],
                     'created_at'        => $now
                 ]);
@@ -106,13 +106,21 @@
                     exit;
                 }
                 $alias  = admin::alias($name);
+				  if(isset($file_del)){
+                    @unlink($var['v_pdf_path']."/data_mahasiswa/". $data['file_pdf']);
+                    $data['file'] = "";
+                }
+				if($file_size > 0){
+                    // @unlink($var['v_pdf_path']."/majalah/". $data['file_pdf']);
+                    $data['file'] = file::save_file('file', $var['v_pdf_path']."/data_mahasiswa/",$alias);
+                }
                 db::update(self::$table,
                 [
                     'name'             => $name,
                     'alias'             => $alias,
 					'angkatan'             => $angkatan,
 					'jurusan'             => $jurusan,
-					'file'             => $file,
+					'file'             => $data['file'],
                     'updated_by'        => $var['auth']['id'],
                     'updated_at'        => $now
                 ],'id',$id);
@@ -135,7 +143,11 @@
             }
             if($_to == "002"){
                 if($p_id)$delid  = implode("','", $p_id);
-                
+                $sql = "SELECT file FROM ". $var['table'][self::$table] ." WHERE id IN ('". $delid ."')";
+                db::query($sql, $rs['row'], $nr['row']);
+                while($row=db::fetch($rs['row'])){
+                    @unlink($var['v_pdf_path']."/data_mahasiswa/". $row['file_pdf']);
+                }
                 db::delete(self::$table,'id',$delid);
                 flasher::setFlash('success', admin::lang('delete'));
                 header("location: " . $var['app_url'] . '/' . route::controller());
