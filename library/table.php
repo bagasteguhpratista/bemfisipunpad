@@ -33,4 +33,5 @@ $var["table"]["test"] 								= $table_name . "test";
 $var["table"]["sapa_kamu"] 							= $table_name . "sapa_kamu";
 $var["table"]["sapa_kamu_images"] 					= $table_name . "sapa_kamu_images";
 $var["table"]["data_mahasiswa"] = $table_name . "data_mahasiswa";
+$var["table"]["data_prestasi"] = $table_name . "data_prestasi";
 //add-table//
