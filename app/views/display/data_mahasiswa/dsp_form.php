@@ -31,7 +31,7 @@
           view::get_component('dragfile',
             array(
                 "name" => "file",
-                "value" => isset($data['file_pdf']) ? $data['file_pdf'] : '',
+                "value" => isset($data['file']) ? $data['file'] : '',
                 "validate" => "required",
                 "accept" => "pdf+docx",
             )

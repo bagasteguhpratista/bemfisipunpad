@@ -31,11 +31,15 @@
 
             list($query,$limit,$jumlahdatasql,$awalData,$halamanaktif) = admin::pagination($sql,$pagination,$show_all,$halamanaktif);
             db::query($query,$rs['sql'],$nr['sql']);
-            while($row = db::fetch($rs['sql'])) $results[] = $row;
+            while($row = db::fetch($rs['sql']))
+			
+			$results[] = $row;
+			
+			
             $pagination = ($nr['sql'] > 0) ? $nr['sql'] : 0;
 
             $status = true;
-            $vocab = ['name'];
+            $vocab = ['name','jurusan','angkatan'];
             // $results = db::all_data("self::$table");
             include_once $var['path'] . "/app/views/template/dsp_list.php";
         }
@@ -60,12 +64,13 @@
                     header("location: ". admin::link_() . '/add');
                     exit;
                 }
-			  if($file_size > 0){
-                    $data['file'] = file::save_file('file', $var['v_pdf_path']."/data_mahasiswa/",$alias);
-                }
+			  
                 $id = rand(1, 100).date("dmYHis");
 //                $passwordhash = md5(serialize($password));
                 $alias  = admin::alias($name);
+                if($file_size > 0){
+                    $data['file'] = file::save_file('file', $var['v_pdf_path']."/data_mahasiswa/",$alias);
+                }
                 $urut = db::data_where("max(reorder)",self::$table,"1=1");
                 $urut = ($urut==0) ? 1 : $urut+1;
                 db::insert(self::$table,
@@ -136,7 +141,7 @@
             $_to = $idd == null ? $_to : $idd;
             if($_to == "001"){
                 $items  = implode("','", $p_del);
-                $sql    = "SELECT id, name as name FROM ".$var['table'][self::$table]." WHERE id IN ('". $items ."')";
+                $sql    = "SELECT id, name as title FROM ".$var['table'][self::$table]." WHERE id IN ('". $items ."')";
                 db::query($sql, $rs['row'], $nr['row']);
             
                 include_once $var['path'] . "/app/views/template/dsp_delete.php";

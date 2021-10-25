@@ -1,7 +1,6 @@
 <?php
 	include '../../../global.php';
 	global $var;foreach($GLOBALS as $k=> $v) $$k=$v; //harus ada di fungsi apapun
-  	include $var['library']. "/mailer/class.phpmailer.php";
   	include $var['library']. "/mailer/function.php";
 	if ($_POST['question_box'] == 'setuju') {
 		$input_data = array('nama_lengkap', 'program_studi','angkatan','no_telp','id_line','kasus_terjadi','pelaku_kekerasan','korban_kekerasan','lingkungan_kekerasan','jenis_kekerasan');
@@ -25,46 +24,60 @@
 				// 'verifikasi'	=> trim(htmlspecialchars(htmlentities($_POST['verifikasi']))),		
 			);
 			$date = date("Y/m/d");
+			$idrandom = rand(10,1000);
 			// if (check_empty($input_post) == true) {
 			// 		$msg_content = "<b>Gagal:</b> Isi form dengan benar";
 			// } else {
 				// body email
-				$body_email = '
-				<html>
-				<body>
-				Laporan FCC<br><br>
-				___________________________________________________________________<br>
-				Nama: '.$input_post['nama_lengkap'].'<br>
-				Program Studi: '.$input_post['program_studi'].'<br>
-				Angkatan: '.$input_post['angkatan'].'<br>
-				Kontak: '.$input_post['no_telp'].' <br>
-				Id Line:'.$input_post['id_line'].'<br>
-				<br>
-				Kasus terjadi pada: '.$input_post['kasus_terjadi'].'<br>
-				Apakah pelaku kekerasan seksual dalam kasus ini merupakan civitas FISIP Unpad?: '.$input_post['pelaku_kekerasan'].'<br>
-				Apakah korban kekerasan seksual dalam kasus ini merupakan civitas FISIP Unpad ?: '.$input_post['korban_kekerasan'].'<br>
-				Apakah kasus kekerasan seksual ini terjadi di sekitar lingkungan FISIP Unpad?: '.$input_post['lingkungan_kekerasan'].'<br>
-				Jenis kekerasan seksual apa yang terjadi?: '.$input_post['jenis_kekerasan'].'<br>
-				<br>
-				Date: '.$date.'<br>
-				<br>_________________________________________________________<br>
-				</body>
-				</html>
-				';
-                $mail = new PHPMailer; 
-                $mail->IsSMTP();
-                $mail->SMTPSecure 	= 'ssl'; 
-                $mail->Host 		= 'smtp.gmail.com'; //host masing2 provider email
-                $mail->SMTPDebug 	= 0;
-                $mail->Port 		= 465;
-                $mail->SMTPAuth 	= true;
-                $mail->Username 	= 'webbemfisipunpad@gmail.com'; //user email
-                $mail->Password 	= 'webwebweb123'; //password email 
-                $mail->SetFrom('admin@bemfisipunpad.com','BEM FISIP UNPAD'); //set email pengirim
-                $mail->Subject 		= "LAPORAN FISIP CRISIS CENTER"; //subyek email
-                $mail->AddAddress('bagaskawan@gmail.com','bagass Teguh');  //tujuan email
-                $mail->MsgHTML($body_email);
-                if($mail->Send()){
+				$email_body = [
+				    	'Messages' => [
+				        [
+				        'From' => [
+				            'Email' => "web@bemfisipunpad.com",
+				            'Name' => "FCC REPORT"
+				        ],
+				        'To' => [
+				            [
+				                'Email' => "lijeuki@gmail.com", // tujuan email
+				                'Name' => "ADKESMA"
+				            ]
+				        ],
+				        'Subject' => "LAPORAN FCC. #".$idrandom." ",
+				        'HTMLPart' => "Laporan FCC<br><br>
+								___________________________________________________________________<br>
+								Nama: ".$input_post['nama_lengkap']."<br>
+								Program Studi: ".$input_post['program_studi']."<br>
+								Angkatan: ".$input_post['angkatan']."<br>
+								Kontak: ".$input_post['no_telp']." <br>
+								Id Line:".$input_post['id_line']."<br>
+								<br>
+								Kasus terjadi pada: ".$input_post['kasus_terjadi']."<br>
+								Apakah pelaku kekerasan seksual dalam kasus ini merupakan civitas FISIP Unpad?: ".$input_post['pelaku_kekerasan']."<br>
+								Apakah korban kekerasan seksual dalam kasus ini merupakan civitas FISIP Unpad ?: ".$input_post['korban_kekerasan']."<br>
+								Apakah kasus kekerasan seksual ini terjadi di sekitar lingkungan FISIP Unpad?: ".$input_post['lingkungan_kekerasan']."<br>
+								Jenis kekerasan seksual apa yang terjadi?: ".$input_post['jenis_kekerasan']."<br>
+								<br>
+								Date: ".$date."<br>
+								<br>_________________________________________________________<br>"
+				        ]
+				    ]
+				];
+  
+$ch = curl_init();
+  
+curl_setopt($ch, CURLOPT_URL, "https://api.mailjet.com/v3.1/send");
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($email_body));
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
+    'Content-Type: application/json')
+);
+curl_setopt($ch, CURLOPT_USERPWD, "7e56915b4f26c23049cc3d7966425f53:a218c01ece5a0b6a39dabe80a13dfe8c"); //Mailjet credentials
+$server_output = curl_exec($ch);
+curl_close ($ch);
+  
+$response = json_decode($server_output);
+                if($response->Messages[0]->Status == 'success'){
 				$msg_content = "Laporan anda telah kami terima";
 				$status = "success";
 				$status_msg = "Sukses";
