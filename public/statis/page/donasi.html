@@ -1,0 +1,87 @@
+<!--!!ST-HEADER!!-->
+	
+    <section class="detail_artikel">
+        <div class="col-md-12 align-items-center ftco-animate">
+            <div class="content-detail-artikel content-center-text tab-content ftco-animate justify-content-center align-items-center pt-5">
+                <div class="head-artikels">
+                    <h3 class="judul-artikel mb-3">Galang Dana : FMS UNPAD</h3>
+                    
+                </div>
+
+                <div class="img-detail-artikel">
+                    <img class="" src="assets/img/1_9A97Z9SpVlitiS86klgPNw@2x.jpeg">
+                </div>
+                <div class="content-detail mt-3">
+                    <h3>Jumlah terkumpul <br>
+                    Rp5.000.000    </h1>    <span><a type="button" class="btn-cek-selengkapnya" data-toggle="modal" data-target="#donasi"> Donasi Sekarang </a></span> <span><a type="button" class="btn-cek-selengkapnya" data-toggle="modal" data-target="#transparansi"> Transparansi Dana </a></span>
+                    <p class="isi-artikel mt-3">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        <br><br>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        <br><br>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        <br><br>
+                    </p>
+                </div>
+                </div>
+                <hr>
+            </div>
+        </div>
+         <!-- Modal FORM -->
+                        <div class="modal fade" id="donasi" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header"> Donasi Sekarang
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                 <form action="<?= $var['v_public_url'].'/dinamis/code/donasi.php' ?>" method="post">
+ <div class="row form-group position-relative">
+                            <label for="nama_lengkap" class="col-sm-3 col-form-label">Nama</label>
+                            <div class="col-sm-9">
+                                <input type="text" placeholder="" name="nama" class="form-control">
+                            </div>
+                        </div>
+                          <div class="row form-group position-relative">
+                            <label for="program_studi" class="col-sm-3 col-form-label">Metode Pembayaran</label>
+                            <div class="col-sm-9">
+                                <select name="program_studi" placeholder="" class="select2 form-control">
+                                    <option value="" selected disabled>Pilih</option>
+                                    <option value="bca">BCA</option>
+                                    <option value="gopay">GOPAY</option>
+                                    <option value="ovo">OVO</option>
+                                </select>
+                            </div>
+                        </div>
+ <div class="row form-group position-relative">
+                            <label for="nama_lengkap" class="col-sm-3 col-form-label">Jumlah</label>
+                            <div class="col-sm-9">
+                                <input type="number" placeholder="" name="jumlah" class="form-control">
+                            </div>
+                        </div>
+                        <button>Donasi Sekarang</button>
+                    </form>
+
+                                                      </div>
+                            </div>
+                          </div>
+                        </div>
+    </section>
+<!--!!ST-FOOTER!!-->
