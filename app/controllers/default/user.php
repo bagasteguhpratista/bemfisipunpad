@@ -36,6 +36,7 @@
             while($row = db::fetch($rs['sql']))
             {
                 if(admin::checkRole("CP","b")){
+                    $row['role'] = db::data_where("name","role","id",$row['id_role']);
                     $row['change_password'] = '<center><a title="Change Password" href="'.admin::getLink().'/user.dev/change_password/'.$row['id'].'"><i class="pe-7s-key" ></i></a></center>';
                 }
                 $results[] = $row;
@@ -44,7 +45,7 @@
 
             $status = true;
             $cp = null;
-            if(admin::checkRole("CP","b")){$cp='change_password';$vocab=[$cp,'name'];}
+            if(admin::checkRole("CP","b")){$cp='change_password';$vocab=[$cp,'name','role'];}
             else{$vocab = ['name'];}
             
             // $results = db::all_data("self::$table");
