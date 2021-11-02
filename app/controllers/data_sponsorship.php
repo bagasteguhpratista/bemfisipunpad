@@ -1,9 +1,9 @@
 <?php
 
-    class data_mahasiswa extends controller
+    class data_sponsorship extends controller
     {
         private $db;
-        public static $table = "data_mahasiswa";
+        public static $table = "data_sponsorship";
 
         public function __construct()
         {
@@ -39,7 +39,7 @@
             $pagination = ($nr['sql'] > 0) ? $nr['sql'] : 0;
 
             $status = true;
-            $vocab = ['name','jurusan','angkatan'];
+            $vocab = ['name'];
             // $results = db::all_data("self::$table");
             include_once $var['path'] . "/app/views/template/dsp_list.php";
         }
@@ -57,8 +57,6 @@
                 valid::setData();
                 valid::setValidate([
                     'name'      => 'required',
-                    'angkatan'  => 'required',
-                    'jurusan'   => 'required'
                 ]);
                 if(valid::checkError()){
                     header("location: ". admin::link_() . '/add');
@@ -69,7 +67,7 @@
 //                $passwordhash = md5(serialize($password));
                 $alias  = admin::alias($name);
                 if($file_size > 0){
-                    $data['file'] = file::save_file('file', $var['v_pdf_path']."/data_mahasiswa/",$alias);
+                    $data['file'] = file::save_file('file', $var['v_pdf_path']."/data_sponsorship/",$alias);
                 }
                 $urut = db::data_where("max(reorder)",self::$table,"1=1");
                 $urut = ($urut==0) ? 1 : $urut+1;
@@ -78,8 +76,6 @@
                     'id'               => $id,
                     'name'             => $name,
                     'alias'            => $alias,
-                    'angkatan'         => $angkatan,
-                    'jurusan'          => $jurusan,
                     'status'           => 'active',
                     'file'             => $data['file'],
                     'created_by'       => $var['auth']['id'],
@@ -112,19 +108,17 @@
                 }
                 $alias  = admin::alias($name);
                   if(isset($file_del)){
-                    @unlink($var['v_pdf_path']."/data_mahasiswa/". $data['file']);
+                    @unlink($var['v_pdf_path']."/data_sponsorship/". $data['file']);
                     $data['file'] = "";
                 }
                 if($file_size > 0){
                     // @unlink($var['v_pdf_path']."/majalah/". $data['file']);
-                    $data['file'] = file::save_file('file', $var['v_pdf_path']."/data_mahasiswa/",$alias);
+                    $data['file'] = file::save_file('file', $var['v_pdf_path']."/data_sponsorship/",$alias);
                 }
                 db::update(self::$table,
                 [
                     'name'          => $name,
                     'alias'         => $alias,
-                    'angkatan'      => $angkatan,
-                    'jurusan'       => $jurusan,
                     'file'          => $data['file'],
                     'updated_by'    => $var['auth']['id'],
                     'updated_at'    => $now
@@ -151,7 +145,7 @@
                 $sql = "SELECT file FROM ". $var['table'][self::$table] ." WHERE id IN ('". $delid ."')";
                 db::query($sql, $rs['row'], $nr['row']);
                 while($row=db::fetch($rs['row'])){
-                    @unlink($var['v_pdf_path']."/data_mahasiswa/". $row['file']);
+                    @unlink($var['v_pdf_path']."/data_sponsorship/". $row['file']);
                 }
                 db::delete(self::$table,'id',$delid);
                 flasher::setFlash('success', admin::lang('delete'));

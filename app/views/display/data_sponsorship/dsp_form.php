@@ -12,23 +12,7 @@
             )
         );
 
-        view::get_component('inputtext',
-            array(
-                "name"=>"angkatan",
-                "value"=>isset($data['angkatan']) ? $data['angkatan'] : '',
-                "validate"=>"required"
-            )
-        );
-
-        view::get_component('inputtext',
-            array(
-                "name"=>"jurusan",
-                "value"=>isset($data['jurusan']) ? $data['jurusan'] : '',
-                "validate"=>"required"
-            )
-        );
-
-          view::get_component('dragfile',
+        view::get_component('dragfile',
             array(
                 "name" => "file",
                 "value" => isset($data['file']) ? $data['file'] : '',

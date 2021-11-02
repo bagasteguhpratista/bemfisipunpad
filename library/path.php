@@ -66,3 +66,5 @@ $var['filemanager_path']    = $var['v_images_path'] . '/filemanager';
 
 $var['ckeditor_path']     	= $var['http'].'/_import/ckeditor5';
 $var['ckfinder_path']     	= $var['http'].'/_import/ckfinder';
+
+// echo $var['v_public_url'].'/dinamis/code/fisipcrisiscenter.php';exit;

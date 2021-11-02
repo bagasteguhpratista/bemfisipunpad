@@ -1,9 +1,9 @@
 <?php
 
-    class data_mahasiswa extends controller
+    class data_alumni extends controller
     {
         private $db;
-        public static $table = "data_mahasiswa";
+        public static $table = "data_alumni";
 
         public function __construct()
         {
@@ -69,7 +69,7 @@
 //                $passwordhash = md5(serialize($password));
                 $alias  = admin::alias($name);
                 if($file_size > 0){
-                    $data['file'] = file::save_file('file', $var['v_pdf_path']."/data_mahasiswa/",$alias);
+                    $data['file'] = file::save_file('file', $var['v_pdf_path']."/data_alumni/",$alias);
                 }
                 $urut = db::data_where("max(reorder)",self::$table,"1=1");
                 $urut = ($urut==0) ? 1 : $urut+1;
@@ -112,12 +112,12 @@
                 }
                 $alias  = admin::alias($name);
                   if(isset($file_del)){
-                    @unlink($var['v_pdf_path']."/data_mahasiswa/". $data['file']);
+                    @unlink($var['v_pdf_path']."/data_alumni/". $data['file']);
                     $data['file'] = "";
                 }
                 if($file_size > 0){
                     // @unlink($var['v_pdf_path']."/majalah/". $data['file']);
-                    $data['file'] = file::save_file('file', $var['v_pdf_path']."/data_mahasiswa/",$alias);
+                    $data['file'] = file::save_file('file', $var['v_pdf_path']."/data_alumni/",$alias);
                 }
                 db::update(self::$table,
                 [
@@ -151,7 +151,7 @@
                 $sql = "SELECT file FROM ". $var['table'][self::$table] ." WHERE id IN ('". $delid ."')";
                 db::query($sql, $rs['row'], $nr['row']);
                 while($row=db::fetch($rs['row'])){
-                    @unlink($var['v_pdf_path']."/data_mahasiswa/". $row['file']);
+                    @unlink($var['v_pdf_path']."/data_alumni/". $row['file']);
                 }
                 db::delete(self::$table,'id',$delid);
                 flasher::setFlash('success', admin::lang('delete'));

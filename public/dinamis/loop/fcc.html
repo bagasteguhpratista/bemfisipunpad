@@ -8,8 +8,7 @@
 		<div class="wrapper">
 	        <form action="<?= $var['v_public_url'].'/dinamis/code/fisipcrisiscenter.php' ?>" id="send" method="post">
 	            <div id="wizard">
-	                <h4></h4>
-	                <section>
+	                <section class="section-1 show">
 	                    <div class="form-header-intro">
 	                        <h1>Formulir Pengaduan Kasus Anti Kekerasan Seksual BEM FISIP Unpad</h1>
 	                        <p>
@@ -38,9 +37,13 @@
 	                        Kita Yang Mulai
 	                        </p>
 	                    </div>
+	                    <div class="box-button">
+	                    	<div class="btn-first">
+	                    		<a class="btn-fcc" id="btn-continue-1">Continue</a>
+	                    	</div>
+	                    </div>
 	                </section>
-	                <h4></h4>
-	                <section class="section-form">
+	                <section class="section-form section-2 hidden">
 	                    <h1>Identitas Diri</h1>
 	                    <br><br>
 
@@ -88,9 +91,17 @@
 	                            <input name="id_line" type="text" placeholder="" class="form-control">
 	                        </div>
 	                    </div>
+
+	                    <div class="box-button second pt-3">
+	                    	<div class="btn-second-1 back">
+	                    		<a class="btn-fcc btn-back" id="btn-back-2">Back</a>
+	                    	</div>
+	                    	<div class="btn-second-2">
+	                    		<a class="btn-fcc" id="btn-continue-2">Continue</a>
+	                    	</div>
+	                    </div>
 	                </section>
-	                <h4></h4>
-	                <section class="section-form">
+	                <section class="section-form section-3 hidden">
 	                    <h1>Persoalan yang dihadapi</h1>
 	                    <br>
 	                    <div class="row form-group position-relative">
@@ -173,6 +184,15 @@
 	                        </div>
 	                    </div>
 
+	                     <div class="box-button second pt-3">
+	                    	<div class="btn-third-3 back">
+	                    		<a class="btn-fcc btn-back" id="btn-back-3">Back</a>
+	                    	</div>
+	                    	<div class="btn-third-3">
+	                    		<a class="btn-fcc" id="btn-continue-3">Continue</a>
+	                    	</div>
+	                    </div>
+
 	                    <!-- Modal -->
 	                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 	                      <div class="modal-dialog modal-dialog-centered" role="document">
@@ -196,6 +216,15 @@
 	    </div>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	    <script src="_frontend/vendor/notify/js/notify.js"></script>
+	    <script type="text/javascript">
+	    	$(document).ready(function(){
+	    		$('#btn-continue-1').click(function(){
+	    			$('.section-1').addClass('hidden').removeClass('show');
+	    			$('.section-2').addClass('show').removeClass('hidden');
+	    		});
+	    		
+	    	});
+	    </script>
 	    <?php 
 	    	if(isset($_SESSION['msg_content'])){ ?>
 	    <script type="text/javascript">
