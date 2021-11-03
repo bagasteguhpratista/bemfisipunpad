@@ -1,16 +1,17 @@
 <?php
 	include '../../../global.php';
 		global $var;foreach($GLOBALS as $k=> $v) $$k=$v; //harus ada di fungsi apapun
-    $table = "build_list_donasi";
+    $table = "list_donasi";
 	$date = date('Y-m-d');
 	$tgl = date('Y-m-d 23:59:00'); 
 	$tgl1 = date('Y-m-d 00:00:01', strtotime('-1 day', strtotime($tgl)));
-	  $query = "SELECT * FROM " .  $table . " WHERE status ='inactive' AND metode_bayar = '2147483647' AND created_at BETWEEN '$tgl1' AND '$tgl' ";
+	  $query = "SELECT * FROM build_list_donasi WHERE status ='inactive' AND metode_bayar = '8503112021145135' AND created_at BETWEEN '$tgl1' AND '$tgl' ";
            db::query($query,$rs['sql'],$nr['sql']);
             while($rows = db::fetch($rs['sql'])) {
             	$id = $rows['id'];
-            	$jumlahdb =  $rows['jumlah'];
-
+            	$jumlah =  $rows['jumlah'];
+				$kodeunik =  $rows['kode_unik'];
+				$jumlahdb = $jumlah +$kodeunik;
 if(time() - strtotime($rows['created_at']) > (60 * 60 * 24)) { //Ubah status 1x24
             echo "Proses check dihentikan dan status diubah menjadi Error karena sudah 1 hari tidak melakukan pembayaran.";
             	$update_deposit = db::update($table,
@@ -55,5 +56,6 @@ if(time() - strtotime($rows['created_at']) > (60 * 60 * 24)) { //Ubah status 1x2
 				],'id',$id);
 	                    echo "$jumlahdb => Mutasi ditemukan, deposit sukses.<br />";                
    	}
-}}
+}
+}
 ?>
