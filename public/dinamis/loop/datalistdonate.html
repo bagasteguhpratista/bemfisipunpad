@@ -1,0 +1,49 @@
+
+    <section class="sc_fund_transparency" id="fund-transparency">
+    	<div class="box-fund-transparency ftco-animate">
+    		<h3>Transparansi Donasi Terkumpul</h3>
+      		<div class="table-responsive mt-4 card">
+                    <table class="table table-fixed">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="col-1">No</th>
+                                <th scope="col" class="col-4">Nama</th>
+                                <th scope="col" class="col-3">Jumlah</th>
+                                <th scope="col" class="col-4">Catatan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php 
+                                $no=1;
+                                if($data != 'null'){
+                                    if(count($data) > 0){
+                                        foreach($data as $item){
+                                
+                            ?>
+                            <tr>
+                                <td scope="row" class="col-1"><?= $no++ ?></td>
+                                <td class="col-4"><?php 
+                                    if($item['is_private'] == 'yes'){
+                                        echo $row['nama'] = admin::changestar($item['nama']);
+                                    }else{
+                                        echo $item['nama'];
+                                    } 
+                                ?>
+                                     
+                                 </td>
+                                <td class="col-3">Rp. <?= !empty($item['jumlah']) ? str_replace(',','.', number_format($item['jumlah'])) : 0 ?> ,-</td>
+                                <td class="col-4"><?= $item['catatan']?></td>
+                            </tr>
+                            <?php 
+                                        }
+                                    }
+                                }else{
+                            ?>
+                                <td scope="row" class="col-12" colspan="4">Data belum ada</td>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div><!-- End -->
+  		</div>
+    </section>
+    

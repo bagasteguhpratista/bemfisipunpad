@@ -10,9 +10,25 @@
             )
         );
 
-        view::get_component('textarea',
+        view::get_component('inputtext',
             array(
-                "name"=>"metode_bayar",
+                "name"=>"nama_bank",
+                "value"=>isset($data['nama_bank']) ? $data['nama_bank'] : '',
+                "validate"=>"required"
+            )
+        );
+
+        view::get_component('inputtext',
+            array(
+                "name"=>"atas_nama",
+                "value"=>isset($data['atas_nama']) ? $data['atas_nama'] : '',
+                "validate"=>"required"
+            )
+        );
+
+        view::get_component('inputtext',
+            array(
+                "name"=>"rekening",
                 "value"=>isset($data['rekening']) ? $data['rekening'] : '',
                 "validate"=>"required"
             )

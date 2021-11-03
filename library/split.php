@@ -121,7 +121,7 @@ class split {
                 $op = array( 'http'=>array( 'method'=>"GET",
                     'header'=>"Accept-language: en\r\n" .
                         "Cookie: ".session_name()."=".session_id()."\r\n" ) );
-                session_write_close();
+                // session_write_close();
                 $ctx = stream_context_create($op);
                 $parseKey		= $basis[1][$key];
                 $parseName 	    = strtolower($parseKey);

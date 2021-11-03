@@ -1,9 +1,9 @@
 <?php
 
-    class metode_pembayaran extends controller
+    class fisipcrisiscenter extends controller
     {
         private $db;
-        public static $table = "metode_pembayaran";
+        public static $table = "fisipcrisiscenter";
 
         public function __construct()
         {
@@ -34,8 +34,8 @@
             while($row = db::fetch($rs['sql'])) $results[] = $row;
             $pagination = ($nr['sql'] > 0) ? $nr['sql'] : 0;
 
-            $status = false;
-            $vocab = ['bank','nama_bank','atas_nama','rekening'];
+            $status = true;
+            $vocab = ['nama_lengkap','program_studi','angkatan','no_telp','id_line'];
             // $results = db::all_data("self::$table");
             include_once $var['path'] . "/app/views/template/dsp_list.php";
         }
@@ -52,8 +52,7 @@
                 valid::unsetValidate();
                 valid::setData();
                 valid::setValidate([
-                    'bank'      => 'required',
-                    'rekening'  => 'required'
+                    'title'  => 'required'
                 ]);
                 if(valid::checkError()){
                     header("location: ". admin::link_() . '/add');
@@ -61,16 +60,16 @@
                 }
                 $id = rand(1, 100).date("dmYHis");
 //                $passwordhash = md5(serialize($password));
-                $alias  = admin::alias($bank);
+                $alias  = admin::alias($title);
                 $urut = db::data_where("max(reorder)",self::$table,"1=1");
                 $urut = ($urut==0) ? 1 : $urut+1;
                 db::insert(self::$table,
                 [
                     'id'                => $id,
-                    'bank'              => $bank,
-                    'rekening'          => $rekening,                   
-                    'nama_bank'         => $nama_bank,                   
-                    'atas_nama'         => $atas_nama,                   
+                    'title'             => $title,
+                    'alias'             => $alias,
+                    'status'            => 'active',
+                    'reorder'           => $urut,
                     'created_by'        => $var['auth']['id'],
                     'created_at'        => $now
                 ]);
@@ -91,20 +90,17 @@
                 valid::unsetValidate();
                 valid::setData();
                 valid::setValidate([
-                    'bank'      => 'required',
-                    'rekening'  => 'required'
+                    'title'  => 'required'
                 ]);
                 if(valid::checkError()){
                     header("location: ". admin::link_() . '/edit/'.$id);
                     exit;
                 }
-                $alias  = admin::alias($bank);
+                $alias  = admin::alias($title);
                 db::update(self::$table,
                 [
-                    'bank'              => $bank,
-                    'rekening'          => $rekening,                   
-                    'nama_bank'         => $nama_bank,                   
-                    'atas_nama'         => $atas_nama,     
+                    'title'             => $title,
+                    'alias'             => $alias,
                     'updated_by'        => $var['auth']['id'],
                     'updated_at'        => $now
                 ],'id',$id);
@@ -120,7 +116,7 @@
             $_to = $idd == null ? $_to : $idd;
             if($_to == "001"){
                 $items  = implode("','", $p_del);
-                $sql    = "SELECT id, bank as title FROM ".$var['table'][self::$table]." WHERE id IN ('". $items ."')";
+                $sql    = "SELECT id, nama_lengkap as title FROM ".$var['table'][self::$table]." WHERE id IN ('". $items ."')";
                 db::query($sql, $rs['row'], $nr['row']);
             
                 include_once $var['path'] . "/app/views/template/dsp_delete.php";

@@ -12,6 +12,14 @@
             )
         );
 
+        view::get_component('inputtext',
+            array(
+                "name"=>"email",
+                "value"=>isset($data['email']) ? $data['email'] : '',
+                "validate"=>"required"
+            )
+        );
+
         view::get_component('select2',
             array(
                 "name"=>"metode_bayar",

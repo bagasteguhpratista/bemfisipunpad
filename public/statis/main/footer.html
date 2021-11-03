@@ -25,7 +25,7 @@
 		</div>
 	</footer>
 
-	<?php if($pg != 'fisipcrisiscenter'){ ?>
+	<?php if($pg != 'fisipcrisiscenter' AND $pg != 'donasi'){ ?>
     <script src="_frontend/scripts/jquery.min.js"></script>
     <?php } ?>
 	<script src="_frontend/scripts/jquery-migrate-3.0.1.min.js"></script>
@@ -42,7 +42,7 @@
 	<script src="_frontend/scripts/scrollax.min.js"></script>
 	<script src="_frontend/vendor/dist/js/swiper.min.js"></script>
 	<script src="_frontend/vendor/slick/slick.min.js"></script>
-	<!-- <script src="_frontend/scripts/mixitup.min.js"></script> -->
+	<script src="_frontend/scripts/mixitup.min.js"></script>
 	<script src="_frontend/scripts/main.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
@@ -73,6 +73,98 @@
 	</script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<?php }
+	if($pg=='donasi'){ ?>
+		<script type="text/javascript">
+			 (function($, undefined) {
+                "use strict";
+                // When ready.
+                $(function() {
+                    var $form = $( "#form, #form1" );
+                    var $input = $form.find( "input" );
+                    $input.on( "keyup", function( event ) {
+                        // When user select text in the document, also abort.
+                        var selection = window.getSelection().toString();
+                        if ( selection !== '' ) {
+                            return;
+                        }
+                        // When the arrow keys are pressed, abort.
+                        if ( $.inArray( event.keyCode, [38,40,37,39] ) !== -1 ) {
+                            return;
+                        }
+
+                        var $this = $( this );
+
+                        // Get the value.
+                        var input = $this.val();
+
+                        var input = input.replace(/[\D\s\._\-]+/g, "");
+                        input = input ? parseInt( input, 10 ) : 0;
+
+                        $this.val( function() {
+                            return ( input === 0 ) ? "" : input.toLocaleString( "en-US" );
+                        } );
+                    } );
+
+                    /**
+                     * ==================================
+                     * When Form Submitted
+                     * ==================================
+                     */
+                    $form.on( "submit", function( event ) {
+
+                        var $this = $( this );
+                        var arr = $this.serializeArray();
+
+                        for (var i = 0; i < arr.length; i++) {
+                            arr[i].value = arr[i].value.replace(/[($)\s\._\-]+/g, ''); // Sanitize the values.
+                        };
+
+                        console.log( arr );
+
+                        event.preventDefault();
+                    });
+                });
+            })(jQuery);
+            $('a[href*="#"]')
+              // Remove links that don't actually link to anything
+              .not('[href="#"]')
+              .not('[href="#0"]')
+              .click(function(event) {
+                // On-page links
+                if (
+                  location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
+                  && 
+                  location.hostname == this.hostname
+                ) {
+                  // Figure out element to scroll to
+                  var target = $(this.hash);
+                  target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                  // Does a scroll target exist?
+                  if (target.length) {
+                    // Only prevent default if animation is actually gonna happen
+                    event.preventDefault();
+                    $('html, body').animate({
+                      scrollTop: target.offset().top - 200
+                    }, 1000, function() {
+                      // Callback after animation
+                      // Must change focus!
+                      var $target = $(target);
+                      $target.focus();
+                      if ($target.is(":focus")) { // Checking if the target was focused
+                        return false;
+                      } else {
+                        $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+                        $target.focus(); // Set focus again
+                      };
+                    });
+                  }
+                }
+            });
+            document.getElementById("donatesubmit").onclick = function() {
+			    document.getElementById("formdonasi").submit();
+			}
+		</script>
 	<?php } ?>
 </body>
 </html>

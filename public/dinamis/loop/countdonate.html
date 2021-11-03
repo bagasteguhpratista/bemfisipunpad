@@ -1,0 +1,16 @@
+<?php 
+	$rs['total'] = db::data_record_select("jumlah","list_donasi","status='active'");
+	$total = 0;
+	while($row=db::fetch($rs['total'])){
+		$total += $row['jumlah'];
+	}
+?>
+    <section class="sc_count_donate mt-3">
+    	<div class="ftco-animate">
+			<div class="row total-donate">
+				<h5>Jumlah donasi terkumpul:</h5>
+				<h1>Rp. <?= !empty($total) ? str_replace(',','.', number_format($total)) : 0 ?> ,-</h1>
+			</div>
+		</div>
+    </section>
+    

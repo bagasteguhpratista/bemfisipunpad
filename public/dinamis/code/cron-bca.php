@@ -5,11 +5,20 @@
 	$date = date('Y-m-d');
 	$tgl = date('Y-m-d 23:59:00'); 
 	$tgl1 = date('Y-m-d 00:00:01', strtotime('-1 day', strtotime($tgl)));
-	  $query = "SELECT * FROM " .  $table . " WHERE status ='Pending' AND metode_bayar = '2147483647' AND created_at BETWEEN '$tgl1' AND '$tgl' ";
+	  $query = "SELECT * FROM " .  $table . " WHERE status ='inactive' AND metode_bayar = '2147483647' AND created_at BETWEEN '$tgl1' AND '$tgl' ";
            db::query($query,$rs['sql'],$nr['sql']);
             while($rows = db::fetch($rs['sql'])) {
             	$id = $rows['id'];
             	$jumlahdb =  $rows['jumlah'];
+
+if(time() - strtotime($rows['created_at']) > (60 * 60 * 24)) { //Ubah status 1x24
+            echo "Proses check dihentikan dan status diubah menjadi Error karena sudah 1 hari tidak melakukan pembayaran.";
+            	$update_deposit = db::update($table,
+                [ 
+                	'status'             => 'inactive', 
+				],'id',$id);
+        } else {
+
             	$padded = sprintf('%0.2f', $jumlahdb);
 			$data = array(
 			            "search"  => array(
@@ -41,13 +50,9 @@
 
     	$update_deposit = db::update($table,
                 [ 
-                	'status'             => 'Sukses',
+                	'status'             => 'active',
 				],'id',$id);
-	    	 if ($update_deposit == TRUE) {
-	                    echo "$jumlahdb => Mutasi ditemukan, deposit sukses.<br />";
-	                } else {
-	                    echo "$jumlahdb => Mutasi ditemukan, deposit gagal, gagal update. <br />";
-	                }
+	                    echo "$jumlahdb => Mutasi ditemukan, deposit sukses.<br />";                
    	}
-}
+}}
 ?>

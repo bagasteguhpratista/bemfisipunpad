@@ -1,7 +1,7 @@
 		<?php
 			$programstudi = ['Administrasi Publik','Hubungan Internasional','Kesejahteraan Sosial','Ilmu Pemerintahan','Antropologi','Administrasi Bisnis','Sosiologi','Ilmu Politik','Administrasi Bisnis PSDKU Pangandaran','D-IV Administrasi Pemerintahan','D-IV Administrasi Keuangan Publik','D-IV Bisnis Logistik','D-IV Kersipan Digital'];
 
-			$angkatan = ['2021','2020','2019','2018','2017','2016','2015','2014','2013']
+			$angkatan = ['2021','2020','2019','2018','2017','2016','2015','2014','2013'];
 		?>
 
 		<link rel="stylesheet" href="_frontend/vendor/notify/css/notify.min.css">
@@ -231,7 +231,6 @@
 	    	notify("<?= $_SESSION['status'] ?>", "<?= $_SESSION['status_msg'] ?>", "<?= $_SESSION['msg_content'] ?>");
 	    </script>
 	    <?php
-	    	session_destroy();
 			unset($_SESSION['status']); 
 			unset($_SESSION['status_msg']); 
 			unset($_SESSION['msg_content']); 

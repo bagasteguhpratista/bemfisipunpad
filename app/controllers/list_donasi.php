@@ -31,11 +31,18 @@
 
             list($query,$limit,$jumlahdatasql,$awalData,$halamanaktif) = admin::pagination($sql,$pagination,$show_all,$halamanaktif);
             db::query($query,$rs['sql'],$nr['sql']);
-            while($row = db::fetch($rs['sql'])) $results[] = $row;
+            while($row = db::fetch($rs['sql'])){
+                // if($row['is_private'] == 'yes'){
+                //     $row['nama'] = admin::changestar($row['nama']);
+                // }
+                $row['jumlah_kode_unik'] = $row['jumlah'] + $row['kode_unik'];
+                $row['bank'] = db::data_where("bank","metode_pembayaran","id",$row['metode_bayar']);
+                $results[] = $row;
+            }
             $pagination = ($nr['sql'] > 0) ? $nr['sql'] : 0;
 
             $status = true;
-            $vocab = ['nama','jumlah'];
+            $vocab = ['nama','email','bank','jumlah','kode_unik','jumlah_kode_unik'];
             // $results = db::all_data("self::$table");
             include_once $var['path'] . "/app/views/template/dsp_list.php";
         }
@@ -53,12 +60,12 @@
                 valid::unsetValidate();
                 valid::setData();
                 valid::setValidate([
-                    'name'  => 'required',
-                    'metode_bayar'  => 'required',
-                    'jumlah'  => 'required',
-                    'catatan'  => 'required',
-                    'privasi'  => 'required',
-                    'status_pembayaran'  => 'required'
+                    'name'              => 'required',
+                    'metode_bayar'      => 'required',
+                    'jumlah'            => 'required',
+                    'catatan'           => 'required',
+                    'privasi'           => 'required',
+                    'status_pembayaran' => 'required'
 
                 ]);
                 if(valid::checkError()){
@@ -70,17 +77,19 @@
                 $alias  = admin::alias($title);
                 $urut = db::data_where("max(reorder)",self::$table,"1=1");
                 $urut = ($urut==0) ? 1 : $urut+1;
+                $status_pembayaran = ($status_pembayaran == 'Sukses') ? 'active' : 'inactive';
                 db::insert(self::$table,
                 [
-                    'id'                => $id,
-                    'nama'             => $name,
-                    'metode_bayar'      => $metode_bayar,
-                    'jumlah'             => $jumlah,
-                    'catatan'             => $catatan,
-                    'is_private'             => $privasi,
-                    'status'             => $status_pembayaran,
-                    'created_by'        => $var['auth']['id'],
-                    'created_at'        => $now
+                    'id'              => $id,
+                    'nama'            => $name,
+                    'metode_bayar'    => $metode_bayar,
+                    'email'           => $email,
+                    'jumlah'          => $jumlah,
+                    'catatan'         => $catatan,
+                    'is_private'      => $privasi,
+                    'status'          => $status_pembayaran,
+                    'created_by'      => $var['auth']['id'],
+                    'created_at'      => $now
                 ]);
                 flasher::setFlash('success', admin::lang('create'));
                 header("location: " . $var['app_url'] . '/' . route::controller());
@@ -91,8 +100,9 @@
             global $var;foreach($GLOBALS as $k=> $v) $$k=$v;
             admin::checkRole("UPDT");
             if($_to == "001"){
-                 $rs['metode_bayar'] = db::data_record_select("id,bank as name","metode_pembayaran","1=1 ORDER BY created_at ASC");
+                $rs['metode_bayar'] = db::data_record_select("id,bank as name","metode_pembayaran","1=1 ORDER BY created_at ASC");
                 $data = db::data_record(self::$table,"id",$id);
+                $data['status'] = ($data['status'] == 'active') ? 'Sukses' : 'Pending';
                 include_once $var['v_display_path'] . '/' .route::controller(). '/dsp_form.php';
                 exit;
             }
@@ -100,28 +110,31 @@
                 valid::unsetValidate();
                 valid::setData();
                 valid::setValidate([
-                     'name'  => 'required',
-                     'metode_bayar'  => 'required',
-                      'jumlah'  => 'required',
-                       'catatan'  => 'required',
-                       'privasi'  => 'required',
-                         'status_pembayaran'  => 'required'
+                    'name'              => 'required',
+                    'metode_bayar'      => 'required',
+                    'jumlah'            => 'required',
+                    'catatan'           => 'required',
+                    'privasi'           => 'required',
+                    'status_pembayaran' => 'required'
                 ]);
                 if(valid::checkError()){
                     header("location: ". admin::link_() . '/edit/'.$id);
                     exit;
                 }
+
+                $status_pembayaran = ($status_pembayaran == 'Sukses') ? 'active' : 'inactive';
                 $alias  = admin::alias($title);
                 db::update(self::$table,
                 [
-                    'nama'             => $name,
-                    'metode_bayar'             => $metode_bayar,
-                    'jumlah'             => $jumlah,
-                    'catatan'             => $catatan,
-                    'is_private'             => $privasi,
-                    'status'             => $status_pembayaran,
-                    'updated_by'        => $var['auth']['id'],
-                    'updated_at'        => $now
+                    'nama'                  => $name,
+                    'metode_bayar'          => $metode_bayar,
+                    'jumlah'                => $jumlah,
+                    'email'                 => $email,
+                    'catatan'               => $catatan,
+                    'is_private'            => $privasi,
+                    'status'                => $status_pembayaran,
+                    'updated_by'            => $var['auth']['id'],
+                    'updated_at'            => $now
                 ],'id',$id);
 
                 flasher::setFlash('success', admin::lang('update'));

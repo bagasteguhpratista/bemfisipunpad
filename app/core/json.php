@@ -202,5 +202,19 @@
                 echo json_encode($data);
                 setJson($data, "sapakamu");
             break;
+            case 'list_donasi':
+                $sql  = "SELECT * FROM ". $var['table']['list_donasi'] . " WHERE status ='active' ORDER BY reorder ASC";
+                // echo $sql;exit;
+                db::query($sql, $rs['data'], $nr['data']);
+                while($row  = db::fetch($rs['data']))
+                {
+                    $data[] = $row;
+                }
+                $data = ($data == null) ? 'null' : $data;
+                echo json_encode($data);
+                setJson($data, "countdonate");
+                setJson($data, "formdonate");
+                setJson($data, "datalistdonate");
+            break;
         }
     }

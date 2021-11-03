@@ -494,4 +494,11 @@
             $result = $text ? $text : '-';
             return $result;
         }
+        public static function changestar($text){
+            $nama = explode(" ", $text);
+            foreach($nama as $name){
+                $namas[] = substr($name, 0, 1) . preg_replace('/[^@]/', '*', substr($name, 1));
+            }
+            return implode(" ", $namas);
+        }
     }
