@@ -54,5 +54,5 @@ if(time() - strtotime($rows['created_at']) > (60 * 60 * 24)) { //Ubah status 1x2
 				],'id',$id);
 	                    echo "$jumlahdb => Mutasi ditemukan, deposit sukses.<br />";                
    	}
-}
+}}
 ?>
