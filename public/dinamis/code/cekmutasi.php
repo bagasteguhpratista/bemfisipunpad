@@ -1,7 +1,8 @@
 <?php
 	include '../../../global.php';
 		global $var;foreach($GLOBALS as $k=> $v) $$k=$v; //harus ada di fungsi apapun
-            	$jumlahdb =  '450000';
+            	$jumlahdb =  '450000'; //data mutasi yang ada dicekmutasi.co.id
+            	//apabila dicek dengan curl dibawah ditemukan maka sistem curl udah bener
             	$padded = sprintf('%0.2f', $jumlahdb);
 			$data = array(
 			            "search"  => array(
@@ -27,6 +28,7 @@
 				$result = curl_exec($ch);
            		$response_curl = json_decode($result, true);
             	$cek = $response_curl['response']['0']['amount'];
+            	print $result;exit();
 	if ($padded !== $cek) {
             echo "Pesan tidak ditemukan pada database, ID: ".$jumlahdb.".<br />";
     } else {

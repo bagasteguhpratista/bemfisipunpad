@@ -10,6 +10,15 @@
             while($rows = db::fetch($rs['sql'])) {
             	$id = $rows['id'];
             	$jumlahdb =  $rows['jumlah'];
+
+if(time() - strtotime($rows['created_at']) > (60 * 60 * 24)) { //Ubah status 1x24
+            echo "Proses check dihentikan dan status diubah menjadi Error karena sudah 1 hari tidak melakukan pembayaran.";
+            	$update_deposit = db::update($table,
+                [ 
+                	'status'             => 'Cancel', 
+				],'id',$id);
+        } else {
+
             	$padded = sprintf('%0.2f', $jumlahdb);
 			$data = array(
 			            "search"  => array(
@@ -43,11 +52,7 @@
                 [ 
                 	'status'             => 'Sukses',
 				],'id',$id);
-	    	 if ($update_deposit == TRUE) {
-	                    echo "$jumlahdb => Mutasi ditemukan, deposit sukses.<br />";
-	                } else {
-	                    echo "$jumlahdb => Mutasi ditemukan, deposit gagal, gagal update. <br />";
-	                }
+	                    echo "$jumlahdb => Mutasi ditemukan, deposit sukses.<br />";                
    	}
 }
 ?>
