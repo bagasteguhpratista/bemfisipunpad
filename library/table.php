@@ -42,5 +42,5 @@ $var["table"]["data_donasi"] 						= $table_name . "data_donasi";
 $var["table"]["metode_pembayaran"] 					= $table_name . "metode_pembayaran";
 $var["table"]["metode_pembayaran"] 					= $table_name . "metode_pembayaran";
 $var["table"]["list_donasi"] 						= $table_name . "list_donasi";
-$var["table"]["list_donasi"] 						= $table_name . "list_donasi";
+$var["table"]["fisipcrisiscenter"] 					= $table_name . "fisipcrisiscenter";
 //add-table//

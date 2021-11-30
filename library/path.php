@@ -22,7 +22,6 @@ $var['v_public_url']   = $var['http'] . '/public';
 $var['v_images_url']   = $var['v_assets_url'] . '/images';
 $var['v_pdf_url']   = $var['v_assets_url'] . '/pdf';
 
-
 // to app [Path]
 $var['app_path']       = $var['path'] . '/app';
 $var['core_path']      = $var['app_path'] . '/core';
@@ -54,6 +53,7 @@ $var['http_images']   = $var['http']."/_frontend/images";
 $var['video']      	  = $var['http']."/_frontend/video";
 $var['vendor']        = $var['http']."/_frontend/vendor";
 $var['lib']      	  = $var['http']."/lib";
+// echo $var['images'];exit;
 
 //$var['get_session']   = "dummy_session";
 

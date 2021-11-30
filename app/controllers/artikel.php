@@ -66,7 +66,7 @@
                     exit;
                 }
                 $id = rand(1, 100).date("dmYHis");
-                $alias  = admin::alias($title);
+                $alias  = admin::slugify($title);
                 if($p_image_cover_size > 0){
                     $data['image_cover'] = file::compressImage('p_image_cover',$var['v_images_path']."/artikel/",50,'ic');
                 }
@@ -123,6 +123,7 @@
                     exit;
                 }
                 $data = db::data_record(self::$table,"id",$id);
+                // echo json_encode($data);exit;
                 if(isset($p_image_cover_del)){
                     @unlink($var['v_images_path']."/artikel/". $data['image_cover']);
                     $data['image_cover'] = "";
@@ -131,14 +132,14 @@
                     @unlink($var['v_images_path']."/artikel/". $data['image_cover']);
                     $data['image_cover'] = file::compressImage('p_image_cover',$var['v_images_path']."/artikel/",50,'ic');
                 }
-                $alias  = admin::alias($title);
+                $alias  = admin::slugify($title);
                 if(isset($file_del)){
                     @unlink($var['v_pdf_path']."/artikel/". $data['file_pdf']);
-                    $data['file'] = "";
+                    $data['file_pdf'] = "";
                 }
                 if($file_size > 0){
                     // @unlink($var['v_pdf_path']."/majalah/". $data['file_pdf']);
-                    $data['file'] = file::save_file('file', $var['v_pdf_path']."/artikel/",$alias);
+                    $data['file_pdf'] = file::save_file('file', $var['v_pdf_path']."/artikel/",$alias);
                 }
                 $writer = ($writer_n == 'show') ? $writer : '';
                 // $content = htmlspecialchars($content);
@@ -155,7 +156,7 @@
                     'writer_n'          => $writer_n,
                     'tagline'           => $tagline,
                     'min_read'          => $min_read,
-                    'file_pdf'          => $data['file'],
+                    'file_pdf'          => $data['file_pdf'],
                     'updated_by'        => $var['auth']['id'],
                     'updated_at'        => $now
                 ],'id',$id);

@@ -148,11 +148,12 @@
                 setJson($data, "faq");
             break;
             case 'artikel':
-                $sql  = "SELECT * FROM ". $var['table']['artikel'] . " WHERE status ='active'";
+                $sql  = "SELECT * FROM ". $var['table']['artikel'] . " WHERE status ='active' ORDER BY reorder DESC";
                 db::query($sql, $rs['data'], $nr['data']);
                 while($row  = db::fetch($rs['data']))
                 {
                     $row['url'] = $var['http'].'/artikel/detail/'.$row['alias'];
+                    $row['image'] = $row['image_cover'];
                     $row['image_cover'] = $var['v_images_url']."/artikel/". $row['image_cover'];
                     // $row['publish_date'] = admin::format_date($item['publish_date'],'id','A');
                     $row['category_alias'] = db::data_where("alias","kategori_artikel","id",$row['category']);

@@ -25,7 +25,7 @@
             // view::pagination();
             $pagination = isset($pagination) ? $pagination : 10;
             
-            if(isset($search))$v .= " AND title LIKE '%".$search."%'";
+            if(isset($search))$v .= " AND nama LIKE '%".$search."%'";
             $halamanaktif = (isset($halamanaktif)) ? $halamanaktif : 1;
             $sql = "SELECT * FROM " . $var['table'][self::$table] . " $v ORDER BY created_at DESC";
 
@@ -42,9 +42,10 @@
             $pagination = ($nr['sql'] > 0) ? $nr['sql'] : 0;
 
             $status = true;
-            $vocab = ['nama','email','bank','jumlah','kode_unik','jumlah_kode_unik'];
+            $vocab = ['nama','email','bank','jumlah','kode_unik','jumlah_kode_unik','is_private'];
             // $results = db::all_data("self::$table");
-            include_once $var['path'] . "/app/views/template/dsp_list.php";
+            // include_once $var['path'] . "/app/views/template/dsp_list.php";
+            include_once $var['v_display_path'] . '/' .route::controller(). '/dsp_list.php';
         }
         ##ADD##
         function add(){
@@ -163,7 +164,7 @@
         }
         ##STATUS##
         function status($id,$status){
-            global $var;
+             global $var;foreach($GLOBALS as $k=> $v) $$k=$v; //harus ada di fungsi apapun
             admin::checkRole("UPDT");
             // admin::cek_validasi();
             $url = route::controller();
@@ -173,10 +174,19 @@
             elseif($status == 'inactive'){
                 $statusnya = 'active';
             }
-            $sql = "UPDATE ".$var['table'][self::$table]."
-			SET status = '$statusnya'
-            WHERE id = '$id'";
-            db::execute($sql);
+   //          $sql = "UPDATE ".$var['table'][self::$table]."
+			// SET 
+   //          status = '$statusnya',
+   //          'updated_by'            => $var['auth']['id'],
+   //          'updated_at'            => $now
+   //          WHERE id = '$id'";
+   //          db::execute($sql);
+            db::update(self::$table,
+                [
+                    'status'                => $statusnya,
+                    'updated_by'            => $var['auth']['id'],
+                    'updated_at'            => $now
+                ],'id',$id);
             header("location: " . $var['app_url'] . '/' . route::controller());
             // return redirect()->route('slider')->with('create', 'Status berhasil diubah');
         }

@@ -10,7 +10,7 @@
 	            <div id="wizard">
 	                <section class="section-1 show">
 	                    <div class="form-header-intro">
-	                        <h1>Formulir Pengaduan Kasus Anti Kekerasan Seksual BEM FISIP Unpad</h1>
+	                        <h1 class="mb-5">Formulir Pengaduan Kasus Anti Kekerasan Seksual BEM FISIP Unpad</h1>
 	                        <p>
 	                        <b>Halo, KEMA FISIP!</b>
 	                        </br></br>
@@ -39,25 +39,23 @@
 	                    </div>
 	                    <div class="box-button">
 	                    	<div class="btn-first">
-	                    		<a class="btn-fcc" id="btn-continue-1">Continue</a>
+	                    		<a class="btn-fcc" id="btn-continue-1" href="#wizard">Continue</a>
 	                    	</div>
 	                    </div>
 	                </section>
 	                <section class="section-form section-2 hidden">
 	                    <h1>Identitas Diri</h1>
 	                    <br><br>
-
 	                    <div class="row form-group position-relative">
 	                        <label for="nama_lengkap" class="col-sm-3 col-form-label">Nama Lengkap</label>
 	                        <div class="col-sm-9">
-	                            <input type="text" placeholder="" name="nama_lengkap" class="form-control">
+	                            <input type="text" placeholder="" name="nama_lengkap" class="form-control nama_lengkap">
 	                        </div>
 	                    </div>
-
 	                    <div class="row form-group position-relative">
 	                        <label for="program_studi" class="col-sm-3 col-form-label">Program Studi</label>
 	                        <div class="col-sm-9">
-	                            <select name="program_studi" placeholder="" class="select2 form-control">
+	                            <select name="program_studi" placeholder="" class="select2 form-control program_studi">
 	                                <option value="" selected disabled>Pilih</option>
 	                                <?php for($i=0;$i < count($programstudi);$i++){ ?>
 	                                <option value="<?= $programstudi[$i]?>"><?= $programstudi[$i]?></option>
@@ -65,11 +63,10 @@
 	                            </select>
 	                        </div>
 	                    </div>
-
 	                    <div class="row form-group position-relative">
 	                        <label for="angkatan" class="col-sm-3 col-form-label">Angkatan</label>
 	                        <div class="col-sm-9">
-	                            <select name="angkatan" placeholder="" class="select2 form-control">
+	                            <select name="angkatan" placeholder="" class="select2 form-control angkatan">
 	                                <option value="" selected disabled>Pilih</option>
 	                                <?php for($i=0;$i < count($angkatan);$i++){ ?>
 	                                <option value="<?= $angkatan[$i]?>"><?= $angkatan[$i]?></option>
@@ -77,27 +74,24 @@
 	                            </select>
 	                        </div>
 	                    </div>
-
 	                    <div class="row form-group position-relative">
 	                        <label for="no_telp" class="col-sm-3 col-form-label">Nomor Telepon</label>
 	                        <div class="col-sm-9">
-	                            <input name="no_telp" type="text" id="phone" class="form-control phone">
+	                            <input name="no_telp" type="text" id="phone" class="form-control phone no_telp">
 	                        </div>
 	                    </div>
-
 	                    <div class="row form-group position-relative">
 	                        <label for="id_line" class="col-sm-3 col-form-label">ID Line</label>
 	                        <div class="col-sm-9">
-	                            <input name="id_line" type="text" placeholder="" class="form-control">
+	                            <input name="id_line" type="text" placeholder="" class="form-control id_line">
 	                        </div>
 	                    </div>
-
 	                    <div class="box-button second pt-3">
 	                    	<div class="btn-second-1 back">
-	                    		<a class="btn-fcc btn-back" id="btn-back-2">Back</a>
+	                    		<a class="btn-fcc btn-back" id="btn-back-2" href="#wizard">Back</a>
 	                    	</div>
 	                    	<div class="btn-second-2">
-	                    		<a class="btn-fcc" id="btn-continue-2">Continue</a>
+	                    		<a class="btn-fcc" id="btn-continue-2" href="#wizard">Continue</a>
 	                    	</div>
 	                    </div>
 	                </section>
@@ -108,62 +102,58 @@
 	                        <label for="kasus_terjadi" class="col-sm-6 col-form-label">Saya ingin melaporkan kasus yang terjadi pada</label>
 	                        <div class="col-sm-5 input-radio">
 	                            <div class="form-radio">
-	                                <input type="radio" name="kasus_terjadi" class="" value="Diri Sendiri" >
+	                                <input type="radio" name="kasus_terjadi" class="kasus_terjadi" value="Diri Sendiri" >
 	                                <label class="col-value-label" for="">Diri Sendiri</label>
 	                            </div>
 	                            <div class="form-radio">
-	                                <input type="radio" name="kasus_terjadi" class="" value="Orang Lain" >
+	                                <input type="radio" name="kasus_terjadi" class="kasus_terjadi" value="Orang Lain" >
 	                                <label class="col-value-label" for="">Orang Lain</label>
 	                            </div>
 	                        </div>
 	                    </div>
-
 	                    <div class="row form-group position-relative">
 	                        <label for="pelaku_kekerasan" class="col-sm-6 col-form-label">Apakah pelaku kekerasan seksual dalam kasus ini merupakan civitas FISIP Unpad?</label>
 	                        <div class="col-sm-5 input-radio">
 	                            <div class="form-radio">
-	                                <input type="radio" name="pelaku_kekerasan" class="" value="Ya" >
+	                                <input type="radio" name="pelaku_kekerasan" class="pelaku_kekerasan" value="Ya" >
 	                                <label class="col-value-label" for="">Ya</label>
 	                            </div>
 	                            <div class="form-radio">
-	                                <input type="radio" name="pelaku_kekerasan" class="" value="Tidak" >
+	                                <input type="radio" name="pelaku_kekerasan" class="pelaku_kekerasan" value="Tidak" >
 	                                <label class="col-value-label" for="">Tidak</label>
 	                            </div>
 	                        </div>
 	                    </div>
-
 	                    <div class="row form-group position-relative">
 	                        <label for="korban_kekerasan" class="col-sm-6 col-form-label">Apakah korban kekerasan seksual dalam kasus ini merupakan civitas FISIP Unpad??</label>
 	                        <div class="col-sm-5 input-radio">
 	                            <div class="form-radio">
-	                                <input type="radio" name="korban_kekerasan" class="" value="Ya" >
+	                                <input type="radio" name="korban_kekerasan" class="korban_kekerasan" value="Ya" >
 	                                <label class="col-value-label" for="">Ya</label>
 	                            </div>
 	                            <div class="form-radio">
-	                                <input type="radio" name="korban_kekerasan" class="" value="Tidak" >
+	                                <input type="radio" name="korban_kekerasan" class="korban_kekerasan" value="Tidak" >
 	                                <label class="col-value-label" for="">Tidak</label>
 	                            </div>
 	                        </div>
 	                    </div>
-
 	                    <div class="row form-group position-relative">
 	                        <label for="lingkungan_kekerasan" class="col-sm-6 col-form-label">Apakah kasus kekerasan seksual ini terjadi di sekitar lingkungan FISIP Unpad?</label>
 	                        <div class="col-sm-5 input-radio">
 	                            <div class="form-radio">
-	                                <input type="radio" name="lingkungan_kekerasan" class="" value="Ya" >
+	                                <input type="radio" name="lingkungan_kekerasan" class="lingkungan_kekerasan" value="Ya" >
 	                                <label class="col-value-label" for="">Ya</label>
 	                            </div>
 	                            <div class="form-radio">
-	                                <input type="radio" name="lingkungan_kekerasan" class="" value="Tidak" >
+	                                <input type="radio" name="lingkungan_kekerasan" class="lingkungan_kekerasan" value="Tidak" >
 	                                <label class="col-value-label" for="">Tidak</label>
 	                            </div>
 	                        </div>
 	                    </div>
-
 	                    <div class="row form-group position-relative">
 	                        <label for="jenis_kekerasan" class="col-sm-6 col-form-label">Jenis kekerasan seksual apa yang terjadi?</label>
 	                        <div class="col-sm-5">
-	                            <select name="jenis_kekerasan" placeholder="" class="select2 form-control">
+	                            <select name="jenis_kekerasan" placeholder="" class="select2 form-control jenis_kekerasan">
 	                                <option value="" selected disabled>Pilih</option>
 	                                <option value="Pelecehan Seksual">Pelecehan Seksual</option>
 	                                <option value="Eksploitasi Seksual">Eksploitasi Seksual</option>
@@ -176,17 +166,15 @@
 	                            </select>
 	                        </div>
 	                    </div>
-
 	                    <div class="row form-group position-relative">
 	                        <div class="input-radio modal-btn">
 	                            <input type="checkbox" name="question_box" class="box-label-statement" value="setuju" >
 	                            <span>Menyetujui <a type="button" class="pernyataan" data-toggle="modal" data-target="#exampleModalCenter"> pernyataan </a> yang dibuat.</span>
 	                        </div>
 	                    </div>
-
-	                     <div class="box-button second pt-3">
+	                    <div class="box-button second pt-3">
 	                    	<div class="btn-third-3 back">
-	                    		<a class="btn-fcc btn-back" id="btn-back-3">Back</a>
+	                    		<a class="btn-fcc btn-back" id="btn-back-3" href="#wizard">Back</a>
 	                    	</div>
 	                    	<div class="btn-third-3">
 	                    		<a class="btn-fcc" id="btn-continue-3">Continue</a>
@@ -222,8 +210,99 @@
 	    			$('.section-1').addClass('hidden').removeClass('show');
 	    			$('.section-2').addClass('show').removeClass('hidden');
 	    		});
-	    		
-	    	});
+	    		$('#btn-continue-2').click(function(){
+	    			var nama_lengkap	    = $('.nama_lengkap').val(),
+					program_studi          	= $('.program_studi').val(),
+					angkatan   				= $('.angkatan').val(),
+					no_telp   				= $('.no_telp').val(),
+					id_line   				= $('.id_line').val();
+
+					// alert("nm: " + nama_lengkap +" & ps: "+ program_studi +" & akt: "+ angkatan +" & nt: "+ no_telp +" & il: "+ id_line);
+
+					if(nama_lengkap == "" || program_studi == null || angkatan == null || no_telp == "" || id_line == "" ){
+						alert("Data tidak boleh kosong.");
+						return false;
+					}
+					else if(!nama_lengkap || program_studi != null || angkatan != null || !no_telp || !id_line){
+		    			$('.section-2').addClass('hidden').removeClass('show');
+		    			$('.section-3').addClass('show').removeClass('hidden');
+						return true;
+					}
+					// return false;
+	    		});
+	    		$('#btn-continue-3').click(function(){
+	    			var kasus_terjadi	    = $(".kasus_terjadi:checked").val(),
+	    			pelaku_kekerasan		= $(".pelaku_kekerasan:checked").val(),
+	    			korban_kekerasan		= $(".korban_kekerasan:checked").val(),
+	    			lingkungan_kekerasan	= $(".lingkungan_kekerasan:checked").val(),
+	    			jenis_kekerasan	    	= $(".jenis_kekerasan").val();
+					// program_studi          	= $('.program_studi').val(),
+					// angkatan   				= $('.angkatan').val(),
+					// no_telp   				= $('.no_telp').val(),
+					// id_line   				= $('.id_line').val();
+
+					// alert("nm: " + nama_lengkap +" & ps: "+ program_studi +" & akt: "+ angkatan +" & nt: "+ no_telp +" & il: "+ id_line);
+
+					if(kasus_terjadi == undefined || pelaku_kekerasan == undefined || korban_kekerasan == undefined || lingkungan_kekerasan == undefined || jenis_kekerasan == null ){
+						alert("Data tidak boleh kosong.");
+						return false;
+					}
+					else if(kasus_terjadi != undefined || pelaku_kekerasan != undefined || korban_kekerasan != undefined || lingkungan_kekerasan != undefined || jenis_kekerasan != null){
+		    			if($('.box-label-statement').is(':checked')){
+			                $("#send").submit();
+			            }else{
+			                alert("Checklist pernyataan yang telah dibuat");
+			            }
+						return 0;
+					}
+	    		});
+	    		$('#btn-back-2').click(function(){
+	    			$('.section-2').addClass('hidden').removeClass('show');
+	    			$('.section-1').addClass('show').removeClass('hidden');
+	    		});
+	    		$('#btn-back-3').click(function(){
+	    			$('.section-3').addClass('hidden').removeClass('show');
+	    			$('.section-2').addClass('show').removeClass('hidden');
+	    		});
+	    		// var target = window.location.hash;
+	    		// alert(target);
+	    		$('a[href*="#"]')
+	              // Remove links that don't actually link to anything
+	              .not('[href="#"]')
+	              .not('[href="#0"]')
+	              .click(function(event) {
+	                // On-page links
+	                if (
+	                  location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
+	                  && 
+	                  location.hostname == this.hostname
+	                ) {
+	                  // Figure out element to scroll to
+	                  var target = $(this.hash);
+	                  // alert(target);
+	                  target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+	                  // Does a scroll target exist?
+	                  if (target.length) {
+	                    // Only prevent default if animation is actually gonna happen
+	                    event.preventDefault();
+	                    $('html, body').animate({
+	                      scrollTop: target.offset().top
+	                    }, 500, function() {
+	                      // Callback after animation
+	                      // Must change focus!
+	                      var $target = $(target);
+	                      $target.focus();
+	                      if ($target.is(":focus")) { // Checking if the target was focused
+	                        return false;
+	                      } else {
+	                        $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+	                        $target.focus(); // Set focus again
+	                      };
+	                    });
+	                  }
+	                }
+	            });
+	        });
 	    </script>
 	    <?php 
 	    	if(isset($_SESSION['msg_content'])){ ?>

@@ -26,13 +26,13 @@
                                     if($item['is_private'] == 'yes'){
                                         echo $row['nama'] = admin::changestar($item['nama']);
                                     }else{
-                                        echo $item['nama'];
+                                        echo admin::nullisslug($item['nama']);
                                     } 
                                 ?>
                                      
                                  </td>
                                 <td class="col-3">Rp. <?= !empty($item['jumlah']) ? str_replace(',','.', number_format($item['jumlah'])) : 0 ?> ,-</td>
-                                <td class="col-4"><?= $item['catatan']?></td>
+                                <td class="col-4"><?= admin::nullisslug($item['catatan'])?></td>
                             </tr>
                             <?php 
                                         }

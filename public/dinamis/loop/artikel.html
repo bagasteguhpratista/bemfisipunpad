@@ -1,19 +1,21 @@
 
-        <div class="artikel-content row col-md-12" id="artikel-list-1">
+        <div class="artikel-content row col-md-11" id="artikel-list-1">
 			<?php
                 if(count($data) > 0){
                     foreach($data as $item){
                         if($item['publish_date'] <= date("Y-m-d H:i:s")){
+                    //list($width, $height) = getimagesize($item['image_cover']);
             ?>
-            <div class="mix card col-lg-3 col-md-4 col-sm-8 <?= $item['category_alias'] ?> ftco-animate" id="box-<?= $item['category_alias']; ?>" data-i="<?= $item['category_alias']?>">
+            <div class="mix card col-lg-4 col-md-4 col-sm-8 <?= $item['category_alias'] ?> ftco-animate" id="box-<?= $item['category_alias']; ?>" data-i="<?= $item['category_alias']?>">
                 <a href="<?= $item['url']; ?>">
                     <div class="artikel-img-box">
-                        <img class="card-img-top" src="<?= $item['image_cover']?>" alt="Card image cap">
+                        <img class="card-img-top" src="<?php echo ($item['image']) ? $item['image_cover'] : '_frontend/images/no-image.jpg'  ?>" alt="Card image cap">
                     </div>
     		  		<div class="card-body">
                         <div class="cat-det">
-                            <p class="category-article"><?= strtoupper($item['category_name'])?></p>
-                            <p class="read-article"><?= $item['min_read']?> Min Read</p>
+                            <!-- <p class="category-article"><?php // strtoupper($item['category_name'])?></p> -->
+                            <p class="publish_date"><?=  admin::format_date($item['publish_date'],"id","A"); ?></p>
+                            <p class="read-article">Dibaca Normal <?= $item['min_read']?> menit</p>
                         </div>
     				    <h5 class="card-title judul"><?= admin::limit_text($item['title'],10)?></h5>
     		  		</div>

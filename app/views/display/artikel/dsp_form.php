@@ -139,7 +139,7 @@ view::get_views_template("dsp_header");
         $(function() {
             $('.publish_date, #datetimepicker').datetimepicker({
                 format: 'YYYY-MM-DD',
-                minDate: today,
+                // minDate: today,
             });
         });
         $('.input-group-addon').off("click");

@@ -76,7 +76,7 @@
 	<?php }
 	if($pg=='donasi'){ ?>
 		<script type="text/javascript">
-			 (function($, undefined) {
+			 			(function($, undefined) {
                 "use strict";
                 // When ready.
                 $(function() {
@@ -139,6 +139,7 @@
                 ) {
                   // Figure out element to scroll to
                   var target = $(this.hash);
+                  // alert(target);
                   target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
                   // Does a scroll target exist?
                   if (target.length) {
@@ -161,9 +162,9 @@
                   }
                 }
             });
-            document.getElementById("donatesubmit").onclick = function() {
-			    document.getElementById("formdonasi").submit();
-			}
+          document.getElementById("donatesubmit").onclick = function() {
+					    document.getElementById("formdonasi").submit();
+					}
 		</script>
 	<?php } ?>
 </body>

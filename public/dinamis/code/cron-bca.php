@@ -12,14 +12,6 @@
             	$jumlah =  $rows['jumlah'];
 				$kodeunik =  $rows['kode_unik'];
 				$jumlahdb = $jumlah +$kodeunik;
-if(time() - strtotime($rows['created_at']) > (60 * 60 * 24)) { //Ubah status 1x24
-            echo "Proses check dihentikan dan status diubah menjadi Error karena sudah 1 hari tidak melakukan pembayaran.";
-            	$update_deposit = db::update($table,
-                [ 
-                	'status'             => 'inactive', 
-
-				],'id',$id);
-        } else {
 
             	$padded = sprintf('%0.2f', $jumlahdb);
 			$data = array(
@@ -47,15 +39,14 @@ if(time() - strtotime($rows['created_at']) > (60 * 60 * 24)) { //Ubah status 1x2
            		$response_curl = json_decode($result, true);
             	$cek = $response_curl['response']['0']['amount'];
 	if ($padded !== $cek) {
-            echo "Pesan tidak ditemukan pada database, ID: ".$id.".<br />";
+            echo "Pesan tidak ditemukan pada database, ID: ".$id.". Jumlah = ".$jumlahdb."<br />";
     } else {
 
     	$update_deposit = db::update($table,
                 [ 
                 	'status'             => 'active',
 				],'id',$id);
-	                    echo "$jumlahdb => Mutasi ditemukan, deposit sukses.<br />";                
+	                echo "".$jumlahdb." => Mutasi ditemukan, deposit sukses.<br />";                
    	}
-}
 }
 ?>

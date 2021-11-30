@@ -11,11 +11,18 @@
 		if(str_replace(',','',$_POST['jumlah']) <= 10000){
 			$msg_content = "<b>Gagal:</b> Minimal jumlah donasi sebesar Rp 10.000,-";
 			$status 		= "danger";
+			valid::setData();
+		}
+		else if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+			$msg_content 	= "<b>Gagal:</b> Email tidak valid.";
+			$status 		= "danger";
+			valid::setData();
 		}
 		else if (check_input($_POST, $input_data) == false) {
-				$msg_content = "<b>Gagal:</b> Isi form dengan benar";
-				$status 		= "danger";
-				// echo $msg_content;	
+			$msg_content = "<b>Gagal:</b> Isi form dengan benar";
+			$status 		= "danger";
+			valid::setData();
+			// echo $msg_content;	
 		}else {
 			$input_post = array(
 				'nama' 					=> trim(htmlspecialchars(htmlentities($_POST['nama']))),
@@ -25,6 +32,10 @@
 				'catatan' 				=> trim(htmlspecialchars(htmlentities($_POST['catatan']))),		
 				'is_private' 			=> trim(htmlspecialchars(htmlentities($_POST['is_private']))),			
 			);
+			echo $_POST['email'];
+			exit;
+			$input_post['is_private'] = !isset($input_post) ? 'yes' : 'no';
+			// echo $input_post['is_private'];exit;
 			// $id 		= rand(10,100);
 			$kodetf 	= rand(10,100);
 			$harustf 	= $input_post['jumlah']+$kodetf;
