@@ -183,21 +183,33 @@
 
         public static function check_transparent($im) {
 
-        $width = imagesx($im); // Get the width of the image
-        $height = imagesy($im); // Get the height of the image
+            $width = imagesx($im); // Get the width of the image
+            $height = imagesy($im); // Get the height of the image
 
-        // We run the image pixel by pixel and as soon as we find a transparent pixel we stop and return true.
-        for($i = 0; $i < $width; $i++) {
-            for($j = 0; $j < $height; $j++) {
-                $rgba = imagecolorat($im, $i, $j);
-                if(($rgba & 0x7F000000) >> 24) {
-                    return true;
+            // We run the image pixel by pixel and as soon as we find a transparent pixel we stop and return true.
+            for($i = 0; $i < $width; $i++) {
+                for($j = 0; $j < $height; $j++) {
+                    $rgba = imagecolorat($im, $i, $j);
+                    if(($rgba & 0x7F000000) >> 24) {
+                        return true;
+                    }
                 }
             }
-        }
 
-        // If we dont find any pixel the function will return false.
-        return false;
-    }  
+            // If we dont find any pixel the function will return false.
+            return false;
+        }
+        public static function save_picture_multiple($filename, $folder, $prefix = null, $ke)
+        {
+            global $app;
+            $field = substr($filename, 2);
+            $new_name = $prefix . "_" . strtoupper(md5(uniqid(rand(), true))) . substr($_FILES[$filename]['name'][$ke], -4, 4);
+            //$new_name = $_FILES[$filename]['name'][$ke];
+            if (!@copy($_FILES[$filename]['tmp_name'][$ke], $folder.'/'. $new_name)):
+                //admlib::display_msg($app['lang']['error']['title'], "".$app['lang']['field'][$field]."".$app['lang']['error']['ERR_COPY']."");
+            // echo $new_name;exit;
+            endif;
+            return $new_name;
+        }  
     }
     

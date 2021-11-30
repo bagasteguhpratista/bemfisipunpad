@@ -6,7 +6,7 @@
                         </div>
                     </div>    
                 </div>
-                    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+                   
             </div>
         </div>
         <script type="text/javascript" src="<?= $var['app_assets']?>/_js/main.js"></script>

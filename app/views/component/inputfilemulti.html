@@ -1,0 +1,63 @@
+<?php 
+	$msg='';
+	$param_name = $param['name'];
+	$validate_name = (isset($_SESSION['validate'][$param_name])) ? $_SESSION['validate'][$param_name] : null ;
+?>
+<script>
+	$(document).ready(function() {
+		$('.modify-remove').click(function(e){ 
+			e.preventDefault();
+			var $theAnchor = $(this).parent();
+			$theAnchor.closest("div").remove();
+		}); 
+		$('#btn-file-<?php echo $param['name'] ?>').click(function(){
+			$('#file_<?php echo $param['name'] ?>').trigger('click');
+		});
+	});
+</script>
+<div class="position-relative row form-group">
+	<label class="col-sm-3 col-form-label" for="<?php echo $param['name'] ?>"><?php echo admin::lang($param['name']); ?><?php echo (isset($param['validate']))? '<span class="required">*</span>' : null ?>
+		</label>
+	<div class="col-md-6 col-sm-6 col-xs-12">
+		<input type="file" id="file_<?php echo $param['name'] ?>" name="p_<?php echo $param['name'] ?>[]" value="<?php echo isset($param['value'])?$param['value']:null; ?>" <?php echo (isset($param['validate']))?$param['validate']:""; ?> class="multi with-preview <?php echo (isset($param['with-title']))?"with-title":""; ?> <?php echo (isset($param['with-content']))?"with-content":""; ?> <?php echo ($msg)? 'error-style' : null ?> " <?php echo ($msg)? 'data-error="'.$msg.'"' : null ?> accept="<?php echo $param['accept'] ?>" >
+		<span><?php echo (isset($param['size'])?$param['size']:"") ?></span>
+
+		<?php if($param['value']){ ?>
+		<div class="MultiFile-list" id="file_image_list">
+				<?php
+					$img = explode("|",$param['value']);
+					$name = array();
+					if(isset($param['value_name'])){
+						$name = explode("|",$param['value_name']);
+					}
+					if(isset($param['value_content'])){
+						$content = explode("|", $param['value_content']);
+					}
+					$i=0;
+					foreach($img as $v){
+							$src = $param['path'] . $v;
+							$ext = explode(".",$v);
+					?>
+				<div class="MultiFile-label">
+					<a class="MultiFile-remove modify-remove" href="#file_image"><i style="color:#F44336" class="fa fa-close fa-2x" aria-hidden="true"></i>&nbsp;&nbsp;</a>
+					<span class="MultiFile-label" title="File selected: home-slide3.jpg">
+				<?php	if(preg_match("/".$ext[1]."/i","jpg|jpeg|png|gif|ico")){ ?>
+						<img class="MultiFile-preview" style="max-height:300px; max-width:300px;padding:10px;margin-top:20px;" id="p_<?php echo $param['name'] ?>" src="<?php echo $src; ?>">
+				<?php	}else{ ?>
+						<span class="MultiFile-title"><?php echo (isset($name[$i])?$name[$i]:$v) ?></span>
+				<?php	} ?>
+						<input type="hidden" name="p_<?php echo $param['name'] ?>_mod[]" value="<?php echo $v; ?>">
+						<input type="hidden" name="p_<?php echo $param['name'] ?>_name_mod[]" value="<?php echo (isset($name[$i])?$name[$i]:$v) ?>">
+					</span>
+					<?php if(isset($param['with-title']) && $param['with-title']){ ?>
+					<input type="text" class="form-control col-md-7 col-xs-12" name="p_<?php echo $param['name'] ?>_title[<?php echo $v; ?>]" style="left: 40px;" value="<?php echo (isset($name[$i])?$name[$i]:$v) ?>" placeholder="Title Image">
+					<?php }if(isset($param['with-content']) && $param['with-content']){ ?>
+					<textarea class="form-control col-md-7 col-xs-12" style="left: 40px;top: 10px; height: 100px;" name="p_<?php echo $param['name'] ?>_content[<?php echo $v; ?>]" placeholder="Content Image"><?php echo (isset($content[$i])?$content[$i]:$v)?></textarea>
+					<?php } ?>
+				</div>
+					<?php $i++;} ?>
+		</div>
+				<?php } ?>
+
+	</div>
+</div>

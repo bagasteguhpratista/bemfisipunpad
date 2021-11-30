@@ -528,4 +528,38 @@
 
           return $text;
         }
+        /* update multipleimage */
+        public static function updatemultipleimage($mod, $place, $field, $table, $field_id, $id){
+            global $var;
+
+            $p_gallery_mod = $mod;
+            if(count($p_gallery_mod) > 0){
+                $rs['delete_gallery'] = db::data_record_select($field,$table,$field . " NOT IN ('".implode("','",$p_gallery_mod)."') AND  ".$field_id." ='".$id."' ");
+                while($row = db::fetch($rs['delete_gallery'])){
+                    if($row[$field] != ""){
+                        @unlink($place."/". $row[$field]);
+                    }
+                }
+                db::execute("DELETE FROM ".$var['table'][$table]." WHERE ".$field." NOT IN ('".implode("','",$p_gallery_mod)."') AND  ".$field_id." ='".$id."'");
+            }
+            else
+            {
+                $rs['delete_gallery'] = db::get_record_select($field,$table, $field_id." = '".$id."'");
+                while($row = db::fetch($rs['delete_gallery'])){
+                    if($row[$field] != ""){
+                        @unlink($place."/". $row[$field]);
+                    }
+                }
+                db::execute("DELETE FROM ".$var['table'][$table]." WHERE ".$field_id." ='".$id."'");    
+            }
+        }
+        public static function deleteimagelocation($field,$table,$delid,$ref,$location){
+            global $app;
+            $rs['images'] = db::data_record_select_array($field,$table,$ref,$delid);
+            while($row = db::fetch($rs['images'])){$images[] = $row[$field];}
+            // echo json_encode($images);exit;
+            foreach($images as $image){
+                @unlink($location."/".$image);
+            }
+        }
     }

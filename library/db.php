@@ -225,4 +225,54 @@
             endif;
             return $rs;
         }
+        public static function data_record_select_array()
+        {
+            global $var;
+            $args = func_get_args();
+            switch (func_num_args()):
+                case 2:
+                    $sql = "select $args[0] from ".$var['table'][$args[1]]."";
+                    break;
+                case 3:
+                    $sql = "select $args[0] from ".$var['table'][$args[1]]." where $args[2]";
+                    break;
+                case 4:
+                    $sql = "select $args[0] from ".$var['table'][$args[1]]." where $args[2] IN ( '$args[3]' )";
+                    break;
+                case 5:
+                    $sql = "select $args[0] from ".$var['table'][$args[1]]." where $args[2] IN ( '$args[3]' ) AND $args[4]";
+                    break;
+            endswitch;
+                    // echo $sql;
+                    // exit;
+            if (!stristr($sql,"union")):
+                self::query($sql, $rs, $nr);
+            endif;
+            return $rs;
+        }
+        public static function data_record_filter()
+        {
+            global $var;
+            $args = func_get_args();
+            switch (func_num_args()):
+                case 3:
+                    $sql = "select $args[0] from ".$var['table'][$args[1]]." where $args[2] limit 1";
+                    break;
+                case 4:
+                    $sql = "select $args[0] from ".$var['table'][$args[1]]." where $args[2] = '$args[3]' limit 1";
+                    break;
+            endswitch;
+            // echo $sql;
+            // exit;
+            if (!stristr($sql,"union")):
+                db::query($sql, $rs, $nr);
+            endif;
+            if ($nr):
+                $record = db::fetch($rs);
+            else:
+                $record[0] = "";
+            endif;
+            //unset($rs);
+            return $record;
+        }
     }

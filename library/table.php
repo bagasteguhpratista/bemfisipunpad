@@ -43,4 +43,6 @@ $var["table"]["metode_pembayaran"] 					= $table_name . "metode_pembayaran";
 $var["table"]["metode_pembayaran"] 					= $table_name . "metode_pembayaran";
 $var["table"]["list_donasi"] 						= $table_name . "list_donasi";
 $var["table"]["fisipcrisiscenter"] 					= $table_name . "fisipcrisiscenter";
+$var["table"]["infografis"] 						= $table_name . "infografis";
+$var["table"]["infografis_image"] 					= $table_name . "infografis_image";
 //add-table//
