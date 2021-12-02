@@ -1,23 +1,19 @@
 <?php
   include '../../../global.php';
-  global $var;foreach($GLOBALS as $k=> $v) $$k=$v; //harus ada di fungsi apapun
+    global $var;foreach($GLOBALS as $k=> $v) $$k=$v; //harus ada di fungsi apapun
+
   $id = $_GET['id'];
-  $sql  = "SELECT * FROM ". $var['table']['infografis'] . " WHERE status ='active' AND id = '".$id."' ORDER BY reorder ASC";
-                db::query($sql, $rs['data'], $nr['data']);
-                while($row  = db::fetch($rs['data']))
-                {
-                    $infografisdetail =  "SELECT * FROM ". $var['table']['infografis_image'] . " WHERE id_infografis_image='".$row['id']."' ORDER BY reorder ASC";
+           $infografisdetail =  "SELECT * FROM ". $var['table']['infografis_image'] . " WHERE id_infografis_image='".$id ."' ORDER BY reorder ASC";
                     db::query($infografisdetail, $rs['infografisdet'], $nr['infografisdet']);
-                    while($rowss  = db::fetch($rs['infografisdet']))
+                    while($rows  = db::fetch($rs['infografisdet']))
                     {
-                        $row['images'][] = $var['v_images_url']."/infografis/". $rowss['image'];
+                        $rows['images'][] = $var['v_images_url']."/infografis/". $rows['image'];
                     }// all images
                     // $row['publish_date'] = admin::format_date($item['publish_date'],'id','A');
-                    $data[] = $row;
-                }
+                    $data[] = $rows;
 ?>
 
-<div id="carouselExample" class="bootstrap-css carousel slide" data-ride="carousel">
+<div id="carouselExample" class="bootstrap-css  carousel slide" data-ride="carousel">
           <div class="bootstrap-css  carousel-inner">
         <?php 
           if(count($data) > 0){
