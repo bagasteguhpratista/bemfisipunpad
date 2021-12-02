@@ -1,9 +1,9 @@
 <?php
 
-    class data_sponsorship extends controller
+    class data_format_surat extends controller
     {
         private $db;
-        public static $table = "data_sponsorship";
+        public static $table = "data_format_surat";
 
         public function __construct()
         {
@@ -67,7 +67,7 @@
 //                $passwordhash = md5(serialize($password));
                 $alias  = admin::alias($name);
                 if($file_size > 0){
-                    $data['file'] = file::save_file('file', $var['v_pdf_path']."/data_sponsorship/",$alias);
+                    $data['file'] = file::save_file('file', $var['v_pdf_path']."/data_format_surat/",$alias);
                 }
                 $urut = db::data_where("max(reorder)",self::$table,"1=1");
                 $urut = ($urut==0) ? 1 : $urut+1;
@@ -106,12 +106,12 @@
                 }
                 $alias  = admin::alias($name);
                   if(isset($file_del)){
-                    @unlink($var['v_pdf_path']."/data_sponsorship/". $data['file']);
+                    @unlink($var['v_pdf_path']."/data_format_surat/". $data['file']);
                     $data['file'] = "";
                 }
                 if($file_size > 0){
                     // @unlink($var['v_pdf_path']."/majalah/". $data['file']);
-                    $data['file'] = file::save_file('file', $var['v_pdf_path']."/data_sponsorship/",$alias);
+                    $data['file'] = file::save_file('file', $var['v_pdf_path']."/data_format_surat/",$alias);
                 }
                 db::update(self::$table,
                 [
@@ -143,7 +143,7 @@
                 $sql = "SELECT file FROM ". $var['table'][self::$table] ." WHERE id IN ('". $delid ."')";
                 db::query($sql, $rs['row'], $nr['row']);
                 while($row=db::fetch($rs['row'])){
-                    @unlink($var['v_pdf_path']."/data_sponsorship/". $row['file']);
+                    @unlink($var['v_pdf_path']."/data_format_surat/". $row['file']);
                 }
                 db::delete(self::$table,'id',$delid);
                 flasher::setFlash('success', admin::lang('delete'));

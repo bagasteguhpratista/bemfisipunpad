@@ -45,4 +45,6 @@ $var["table"]["list_donasi"] 						= $table_name . "list_donasi";
 $var["table"]["fisipcrisiscenter"] 					= $table_name . "fisipcrisiscenter";
 $var["table"]["infografis"] 						= $table_name . "infografis";
 $var["table"]["infografis_image"] 					= $table_name . "infografis_image";
+$var["table"]["data_lpj"] = $table_name . "data_lpj";
+$var["table"]["data_format_surat"] = $table_name . "data_format_surat";
 //add-table//
