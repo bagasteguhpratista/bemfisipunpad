@@ -32,8 +32,8 @@
 				'catatan' 				=> trim(htmlspecialchars(htmlentities($_POST['catatan']))),		
 				'is_private' 			=> trim(htmlspecialchars(htmlentities($_POST['is_private']))),			
 			);
-			echo $_POST['email'];
-			exit;
+			// echo $_POST['email'];
+			// exit;
 			$input_post['is_private'] = !isset($input_post) ? 'yes' : 'no';
 			// echo $input_post['is_private'];exit;
 			// $id 		= rand(10,100);

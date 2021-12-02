@@ -1,0 +1,22 @@
+  <div class="artikel-content row col-md-11" id="artikel-list-1">
+      <?php
+
+                if(count($data) > 0){
+                    foreach($data as $item){
+                        if($item['created_at'] <= date("Y-m-d H:i:s")){
+            ?>
+            <div class="mix card col-lg-4 col-md-4 col-sm-8 ftco-animate">
+                <a href="javascript:;" onclick="modal_open('<?= $item['alias']; ?>', '<?= $var['v_public_url']; ?>/dinamis/code/detailinfografis.php?id=<?= $item['id']; ?>')">
+                    <div class="artikel-img-box">
+                        <img class="card-img-top" src="<?php echo $item['image_cover'] ?>" alt="Card image cap">
+                    </div>
+              <div class="card-body">
+                        <div class="cat-det">
+                            <p class="publish_date"><?=  admin::format_date($item['created_at'],"id","A"); ?></p>
+                        </div>
+                <h5 class="card-title judul"><?= admin::limit_text($item['title'],10)?></h5>
+              </div>
+                </a>
+            </div>
+            <?php }}} ?>
+    </div>
