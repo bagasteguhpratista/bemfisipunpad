@@ -147,6 +147,24 @@
                 echo json_encode($data);
                 setJson($data, "faq");
             break;
+            case 'infografis':
+                $sql  = "SELECT * FROM ". $var['table']['infografis'] . " WHERE status ='active' ORDER BY reorder ASC";
+                db::query($sql, $rs['data'], $nr['data']);
+                while($row  = db::fetch($rs['data']))
+                {
+
+                    $infografis =  "SELECT * FROM ". $var['table']['infografis_image'] . " WHERE id_infografis_image='".$row['id']."' ORDER BY reorder ASC LIMIT 1";
+                    db::query($infografis, $rs['infografis'], $nr['infografis']);
+                    while($rows  = db::fetch($rs['infografis']))
+                    {
+                        $row['image_cover'] = $var['v_images_url']."/infografis/". $rows['image'];
+                    }// imagecover
+                    // $row['publish_date'] = admin::format_date($item['publish_date'],'id','A');
+                    $data[] = $row;
+                }
+                echo json_encode($data);
+                setJson($data, "infografis");
+            break;
             case 'artikel':
                 $sql  = "SELECT * FROM ". $var['table']['artikel'] . " WHERE status ='active' ORDER BY reorder DESC";
                 db::query($sql, $rs['data'], $nr['data']);
