@@ -8,12 +8,12 @@
                     while($rows  = db::fetch($rs['infografisdet']))
                     {
                         $rows['images'][] = $var['v_images_url']."/infografis/". $rows['image'];
+                        $data[] = $rows;
                     }// all images
-                    // $row['publish_date'] = admin::format_date($item['publish_date'],'id','A');
-                    $data[] = $rows;
+                    // $row['publish_date'] = admin::format_date($item['publish_date'],'id','A');   
 ?>
 
-<div id="carouselExample" class="bootstrap-css  carousel slide" data-ride="carousel">
+<div id="carouselExample" class="bootstrap-css carousel slide" data-ride="carousel">
           <div class="bootstrap-css  carousel-inner">
         <?php 
           if(count($data) > 0){
@@ -21,22 +21,30 @@
             foreach($data as $item){ 
               $x++;
         ?>
+       
         <?php 
               if(count($item['images']) > 0){
                 for($i=0;$i < count($item['images']);$i++){ 
+                  if($item['reorder'] == 1) {
+                    $label = "active";
+                  } else {
+                    $label = "";
+                  }
             ?>
-            <div class="bootstrap-css  carousel-item">
-              <img class="d-block w-100" src="<?= $item['images'][$i]?>">
-            </div>
+            <div class="bootstrap-css  carousel-item <?= $label; ?>">
+              <img class="bootstrap-css d-block w-100" src="<?= $item['images'][$i]?>">
+              </div>
 <?php
               }
             } 
           ?>
-          </div>
+
+         
           <?php 
           }
         }
       ?>
+       </div>
           <a class="bootstrap-css carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
             <span class="bootstrap-css carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
